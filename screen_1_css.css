@@ -33,6 +33,16 @@ body {
     width: 250px;
     margin: 60px;
     justify-content: center;
+    cursor: pointer;
+    font-weight: bolder;
+
+}
+
+.button:hover {
+    background: salmon;
+    transition: 0.7s;
+
+
 }
 
 .space {
@@ -48,4 +58,19 @@ form {
     margin: 0 auto;
     width: 250px;
     text-align: start;
+}
+
+label {
+    display: block;
+    font-size: 25px;
+}
+
+input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 100px;
+    background-color: #FF9E3D ;
+
 }

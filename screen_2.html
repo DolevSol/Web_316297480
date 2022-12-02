@@ -9,13 +9,24 @@
 <div class="container">
     <div class="header">צור חשבון:</div>
     <form>
-        <label for="fname">שם משתמש:</label>
-        <input type="text" id="fname" name="fname"><br>
-        <label for="lname">סיסמא:</label>
-        <input type="text" id="lname" name="lname"><br>
-        <label for="lname">אימייל:</label>
-        <input type="text" id="lname" name="lname">
-        <input type="submit" value="צור חשבון">
+        <p>
+        <label for="userName">שם משתמש:</label>
+        <input type="text" id="userName" name="userName" autocomplete="on" required>
+        </p>
+        <p>
+        <label for="password">סיסמא:</label>
+        <input type="password" id="password" name="password" autocomplete="on" required>
+        </p>
+        <label for="email">אימייל:</label>
+        <input type="email" id="email" name="email" autocomplete="on" required>
+        </p>
+        </p>
+        <label for="phone">מספר פלאפון:</label>
+        <input type="tel" id="phone" name="phone" autocomplete="on" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        </p>
+        <p>
+            <button type="submit" class="button" >צור חשבון</button>
+        </p>
 
     </form>
 
