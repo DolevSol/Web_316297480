@@ -30,7 +30,7 @@ body {
 
 .button {
     background-color: #FF9E3D;
-    size: 30;
+    size: 30px;
     text-align: center;
     font-size: 30px;
     padding: 14px 40px;
@@ -57,13 +57,32 @@ body {
 form {
     margin: 0 auto;
     text-align: start;
-    background-color: aqua;
+
 }
 
-.fromScreenTwoThree {
+.formScreenTwoThree {
     margin: 0 auto;
     width: 250px;
     text-align: start;
+}
+.formScreen4{
+    /*background-color: aqua;*/
+}
+
+.formScreen4SelectStyle {
+    width: 30%;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 100px;
+    background-color: #FF9E3D;
+}
+
+.formScreen4SelectStyleShort {
+    width: 20%;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 100px;
+    background-color: #FF9E3D;
 }
 
 label {
@@ -83,4 +102,9 @@ input {
 
 h2 {
     margin-right: 600px;
+}
+
+.textInSelect {
+ background-color: purple;
+    color:indigo;
 }

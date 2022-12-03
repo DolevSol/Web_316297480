@@ -9,22 +9,25 @@
 <div class="container">
     <div class="header">חיפוש קורסים:</div>
     <h2>אפשריות חיפוש מתקדמות:</h2>
-    <form>
+    <form class="formScreen4">
 
         <p>
             <label for="departmentNumber">מספר מחלקה:</label>
-            <select name="departmentNumber">
-                <option value="361">364-המחלקה להנדסת חשמל ומחשבים</option>
-                <option value="362">365-המחלקה להנדסה מכונות</option>
-                <option value="363">המחלקה להנדסה כימית</option>
+            <select name="departmentNumber" class="formScreen4SelectStyle" required>
+                <option value="try1" disabled selected class="textInSelect">בחר מספר מחלקה</option>
+                <option value="361">361-המחלקה להנדסת חשמל ומחשבים</option>
+                <option value="362">362-המחלקה להנדסה מכונות</option>
+                <option value="363">363-המחלקה להנדסה כימית</option>
                 <option value="364">364-המחלקה להנדסת תעשייה וניהול</option>
                 <option value="365">365-המחלקה להנדסה חומרים</option>
-                <option value="366">המחלקה להנדסה גרעינית</option>
+                <option value="366">366-המחלקה להנדסה גרעינית</option>
             </select>
         </p>
         <p>
             <label for="courseNumber">מספר קורס:</label>
-            <select name="gender">
+            <select name="courseNumber" class="formScreen4SelectStyle" required>
+
+                <option value="" disabled selected class="textInSelect">בחר מספר קורס</option>
                 <option value="1041">מבוא להסתברות</option>
                 <option value="1061">מודלים של רגרסיה</option>
                 <option value="1081">האינטרנט של הדברים בתעשייה</option>
@@ -37,7 +40,8 @@
 
 
             <label for="hardness">מדד קושי:</label>
-            <select name="gender">
+            <select name="hardness" class="formScreen4SelectStyleShort">
+                <option value="" disabled selected class="textInSelect">בחר מדד קושי</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -49,7 +53,8 @@
         </p>
         <p>
             <label for="load">מדד העומס:</label>
-            <select name="gender">
+            <select name="load" class="formScreen4SelectStyleShort">
+                <option value="" disabled selected class="textInSelect">בחר מדד עומס</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
