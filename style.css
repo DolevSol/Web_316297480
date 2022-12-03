@@ -5,13 +5,18 @@
 
 }
 
-.text {
-    font-size: 35px;
+.header {
+    font-size: 100px;
+    text-align: center;
+    font-weight: bolder;
+}
 
+.textScreen1 {
+    font-size: 35px;
 
 }
 
-.header {
+.headerScreen1 {
     font-size: 100px;
     text-align: center;
     font-weight: bolder;
@@ -42,19 +47,20 @@ body {
     background: salmon;
     transition: 0.7s;
 
-
 }
 
-.space {
-    margin-top: 150px;
-}
-
-img {
+.screen1Hat {
     width: 300px;
     height: 300px;
 }
 
 form {
+    margin: 0 auto;
+    text-align: start;
+    background-color: aqua;
+}
+
+.fromScreenTwoThree {
     margin: 0 auto;
     width: 250px;
     text-align: start;
@@ -71,7 +77,7 @@ input {
     padding: 10px;
     border: 2px solid #eee;
     border-radius: 100px;
-    background-color: #FF9E3D ;
+    background-color: #FF9E3D;
 
 }
 
