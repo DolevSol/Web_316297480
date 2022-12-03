@@ -9,6 +9,7 @@
     font-size: 100px;
     text-align: center;
     font-weight: bolder;
+    margin-bottom: 100px;
 }
 
 .textScreen1 {
@@ -57,6 +58,7 @@ body {
 form {
     margin: 0 auto;
     text-align: start;
+    max-width: 1000px;
 
 }
 
@@ -65,24 +67,38 @@ form {
     width: 250px;
     text-align: start;
 }
-.formScreen4{
-    /*background-color: aqua;*/
+
+.formScreen4 {
+    /*background-color: white;*/
+    display: flex;
+    gap: 50px;
+    min-width: 300px;
+    flex-wrap: wrap;
+}
+
+.box {
+    min-width: 450px;
+    width: 75px;
+    min-height: 100px;
+    /*background-color: purple;*/
 }
 
 .formScreen4SelectStyle {
+    width: 40%;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 100px;
+    background-color: #FF9E3D;
+    border-color: #FF9E3D;
+}
+
+.formScreen4SelectStyleShort {
     width: 30%;
     padding: 10px;
     border: 2px solid #eee;
     border-radius: 100px;
     background-color: #FF9E3D;
-}
-
-.formScreen4SelectStyleShort {
-    width: 20%;
-    padding: 10px;
-    border: 2px solid #eee;
-    border-radius: 100px;
-    background-color: #FF9E3D;
+    border-color: #FF9E3D;
 }
 
 label {
@@ -100,11 +116,8 @@ input {
 
 }
 
-h2 {
-    margin-right: 600px;
-}
 
-.textInSelect {
- background-color: purple;
-    color:indigo;
+.subheader {
+    font-size: 32px;
+    margin-right: 345px;
 }
