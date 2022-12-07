@@ -1,3 +1,53 @@
+nav {
+    background-color: #FF9E3D;
+    display: flex;
+    height: 70px;
+
+
+}
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+
+
+}
+
+nav li {
+    display: inline-block;
+
+
+
+}
+
+nav a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 40px;
+    padding: 10px 40px;
+
+
+
+}
+
+.bgu-img-nav-link {
+    padding: 0px;
+}
+
+nav a:hover {
+    background: salmon;
+}
+
+.nav-main-container {
+
+}
+
 .container {
     text-align: center;
     font-family: 'Libra Sans', sans-serif;
@@ -9,7 +59,8 @@
     font-size: 100px;
     text-align: center;
     font-weight: bolder;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
+
 }
 
 .textScreen1 {
@@ -26,6 +77,7 @@
 
 body {
     background-color: #d9d9d8;
+    height: 300vh;
 
 }
 
@@ -121,38 +173,28 @@ input {
     font-size: 32px;
     margin-right: 345px;
 }
+
 .containerScreen5 {
-    margin: 100px;
+    margin: 20px 100px 20px 100px;
     display: grid;
-    grid-template-columns: repeat(3,0.3fr);
+    grid-template-columns: repeat(3, 0.3fr);
     gap: 2em;
     grid-auto-rows: 0.6fr;
     align-content: center;
 
+
 }
+
 .boxgrid {
     background-color: #efe4c5;
     place-content: center;
     display: grid;
+
 }
+
 .boxgridline1 {
     background-color: #FF9E3D;
     place-content: center;
     display: grid;
 }
-buttonscreen5 {
-    margin-right: 400px;
-       background-color: #FF9E3D;
-    size: 30px;
-    text-align: center;
-    font-size: 30px;
-    padding: 14px 40px;
-    border-radius: 100px;
-    width: 250px;
-    margin: 60px;
-    justify-content: center;
-    cursor: pointer;
-    font-weight: bolder;
-}
-
 
