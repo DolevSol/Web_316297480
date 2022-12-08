@@ -1,3 +1,4 @@
+
 nav {
     background-color: #FF9E3D;
     display: flex;
@@ -14,12 +15,10 @@ nav ul {
     text-align: center;
 
 
-
 }
 
 nav li {
     display: inline-block;
-
 
 
 }
@@ -31,7 +30,6 @@ nav a {
     color: black;
     font-size: 40px;
     padding: 10px 40px;
-
 
 
 }
@@ -98,7 +96,7 @@ body {
 
 .button:hover {
     background: salmon;
-    transition: 0.7s;
+    transition: 1.5s;
 
 }
 
@@ -199,7 +197,7 @@ input {
 }
 
 .button23 {
-        background-color: #FF9E3D;
+    background-color: #FF9E3D;
     size: 30px;
     text-align: center;
     font-size: 30px;
@@ -214,9 +212,73 @@ input {
 }
 
 
-
 .button23:hover {
     background: salmon;
     transition: 0.7s;
+
+}
+
+.active {
+    background-color: aqua;
+}
+
+.header6 {
+    font-size: 80px;
+    text-align: center;
+}
+
+.containerScreen6 {
+    margin: 20px 100px 20px 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    grid-template-rows: repeat(2, auto); /* divide the container into 3 rows */
+    gap: 2em;
+    grid-auto-rows: 0.6fr;
+    align-content: center;
+
+
+}
+
+.boxgridline6_1 {
+   border: 2px solid black;
+    display: grid;
+    height: 18rem;
+    grid-column: 1 /2;
+
+}
+.boxgridline6_3 {
+   border: 2px solid black;
+    display: grid;
+    height: 18rem;
+      grid-column: 2 /5;
+
+
+}
+
+.boxgridline6_2 {
+    border: 2px solid black;
+    place-content: center;
+    display: grid;
+    grid-column: 1 / 5;
+    height: 18rem;
+
+
+}
+
+.formScreen6SelectStyle{
+    width: 7vw;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 100px;
+    background-color: #FF9E3D;
+    border-color: #FF9E3D;
+}
+
+.boxgridline6_4 {
+   border: 2px solid black;
+    display: grid;
+    height: 18rem;
+      grid-column: 2 /3;
+
 
 }

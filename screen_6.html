@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="rtl" lang="he">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>CourseGrade</title>
+    <link rel="stylesheet" href="../statics/style.css">
+    <script defer src="../statics/script.js"></script>
 </head>
 <body>
-$END$
+<div class="nav-main-container">
+    <div class="nav-subcontainer">
+        <nav>
+            <a herf="https://in.bgu.ac.il/Pages/default.aspx" class="bgu-img-nav-link">
+                <img src="bgu-img-nav.png" class="bgu-img-nav">
+            </a>
+            <ul>
+                <li><a href="screen_1.html">בית</a></li>
+                <li><a href="about_us.html">אודות </a></li>
+                <li><a href="screen_4.html">חפש קורס</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="header6">בניית מערכות ממוחשבות מבוססות אינטרנט</div>
+<main class="containerScreen6">
+    <div class="boxgridline6_1">
+        <p>
+            <label for="yeartaken">שנת לימוד:</label>
+            <select name="yeartaken" class="formScreen6SelectStyle">
+                <option value="try1" disabled selected class="textInSelect">בחר שנה</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+
+            </select>
+        </p>
+        <p>
+            <label for="semester"> סמסטר:</label>
+            <select name="semester" class="formScreen6SelectStyle">
+                <option value="" disabled selected class="textInSelect">בחר סמסטר:</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+
+            </select>
+        </p>
+    </div>
+    <div class="boxgridline6_3"></div>
+        <div class="boxgridline6_3"></div>
+    <div class="boxgridline6_2"></div>
+</main>
+<button type="submit" class="button">חזור לחיפוש</button>
+
+
 </body>
 </html>
