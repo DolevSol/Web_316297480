@@ -1,3 +1,5 @@
+<!--TODO:design better , improveplacement of  buttons-->
+<!--TODO: verefications-->
 <!DOCTYPE html>
 <html dir="rtl" lang="he">
 <head>
@@ -27,12 +29,12 @@
 </div>
 <div class="container">
     <div class="header">חיפוש קורסים:</div>
-     <div class="subheader"> אפשריות סינון מתקדמות:</div>
+    <div class="subheader"> אפשריות סינון מתקדמות:</div>
     <form class="formScreen4">
         <div class="box">
             <p>
                 <label for="departmentNumber">מספר מחלקה:</label>
-                <select name="departmentNumber" class="formScreen4SelectStyle" required>
+                <select name="departmentNumber" class="formScreen4SelectStyle">
                     <option value="try1" disabled selected class="textInSelect">בחר מספר מחלקה</option>
                     <option value="361">361-המחלקה להנדסת חשמל ומחשבים</option>
                     <option value="362">362-המחלקה להנדסה מכונות</option>
@@ -44,7 +46,7 @@
             </p>
             <p>
                 <label for="courseNumber">מספר קורס:</label>
-                <select name="courseNumber" class="formScreen4SelectStyle" required>
+                <select name="courseNumber" class="formScreen4SelectStyle">
 
                     <option value="" disabled selected class="textInSelect">בחר מספר קורס</option>
                     <option value="1041">מבוא להסתברות</option>
@@ -59,7 +61,6 @@
         <div class="box">
 
             <p>
-
 
 
                 <label for="hardness">מדד קושי:</label>
@@ -86,10 +87,13 @@
                 </select>
 
             </p>
-             <button type="submit" class="button">חפש</button>
+
         </div>
 
     </form>
+    <a href="screen_5.html">
+        <button type="submit" class="button5">חפש</button>
+    </a>
 
 </div>
 </body>
