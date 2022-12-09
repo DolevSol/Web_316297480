@@ -1,17 +1,16 @@
-<!--TODO: linking bgu logo to bgu website-->
 <!DOCTYPE html>
 <html dir="rtl" lang="he">
 <head>
     <meta charset="UTF-8">
     <title>CourseGrade</title>
-    <link rel="stylesheet" href="../statics/style.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
 <div class="nav-main-container">
     <div class="nav-subcontainer">
         <nav>
             <a herf="https://in.bgu.ac.il/Pages/default.aspx" class="bgu-img-nav-link">
-                <img src="bgu-img-nav.png" class="bgu-img-nav">
+                <img src="../pics/bgu-img-nav.png" class="bgu-img-nav">
             </a>
             <ul>
                 <li><a href="screen_1.html">בית</a></li>
@@ -27,20 +26,22 @@
     </div>
 </div>
 <div class="container">
-    <div class="imgScreen1">
-        <img src="studentHat.png" class="screen1Hat" alt="hat">
-    </div>
-    <div class="headerScreen1">CourseGrade</div>
-    <p class="textScreen1">לקבל את המידע החיוני ביותר, להחלטה הטובה ביותר.</p>
-    <a href="screen_2.html">
-        <input type="submit" class="button" value="צור חשבון" name="createAccount">
-    </a>
-    <a href="screen_3.html">
-        <input type="submit" class="button" value=התחבר name="register">
-    </a>
+    <div class="header">התחברות למערכת:</div>
+    <form class="formScreenTwoThree">
+        <p>
+            <label for="userName">שם משתמש:</label>
+            <input type="text" id="userName" name="userName" autocomplete="on" >
+        </p>
+        <p>
+            <label for="password">סיסמא:</label>
+            <input type="password" id="password" name="password" autocomplete="on" >
+            <a href="screen_4.html">
+                <button type="submit" class="button23">התחבר</button>
+            </a>
+        </p>
 
-    </p>
+    </form>
+
 </div>
 </body>
 </html>
-
