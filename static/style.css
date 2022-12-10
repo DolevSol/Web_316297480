@@ -239,35 +239,9 @@ label {
 
 }
 
-.boxgridline6_1 {
-    border: 2px solid black;
-    display: grid;
-    height: 18rem;
-    grid-column: 1 /2;
-
-}
-
-.boxgridline6_3 {
-    border: 2px solid black;
-    display: grid;
-    height: 18rem;
-    grid-column: 2 /5;
-
-
-}
-
-.boxgridline6_2 {
-    border: 2px solid black;
-    place-content: center;
-    display: grid;
-    grid-column: 1 / 5;
-    height: 18rem;
-
-
-}
 
 .formScreen6SelectStyle {
-    width: 7vw;
+    width: 10vw;
     padding: 10px;
     border: 2px solid #eee;
     border-radius: 100px;
@@ -275,11 +249,113 @@ label {
     border-color: #FF9E3D;
 }
 
+.boxgridline6_1 {
+    /*border: 2px solid black;*/
+    display: grid;
+    height: 18rem;
+    grid-column: 1 /2;
+
+}
+
+
+.boxgridline6_2 {
+    /*border: 2px solid black;*/
+    place-content: left;
+    display: grid;
+    grid-column: 2 / 3;
+    height: 18rem;
+    align-content: flex-start;
+    justify-content: center;
+
+}
+
+.boxgridline6_2 p {
+    font-size: 20px;
+
+}
+
+.rating-css1 {
+
+}
+
+.rating-css1 div {
+    color: #FF9E3D;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    padding: 0px 0px;
+}
+
+.rating-css1 input {
+    display: none;
+
+}
+
+.rating-css1 input + label {
+    font-size: 25px;
+    text-shadow: 1px 1px 0 #FF9E3D;
+    cursor: pointer;
+}
+
+.rating-css1 input:checked + label ~ label {
+    color: #838383;
+}
+
+.rating-css1 label:Active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+}
+
+.rating-css2 {
+
+}
+
+.rating-css2 div {
+    color: #FF9E3D;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    padding: 0px 0px;
+}
+
+.rating-css2 input {
+    display: none;
+
+}
+
+.rating-css2 input + label {
+    font-size: 25px;
+    text-shadow: 1px 1px 0 #FF9E3D;
+    cursor: pointer;
+}
+
+.rating-css2 input:checked + label ~ label {
+    color: #838383;
+}
+
+.rating-css2 label:Active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+}
+
+.boxgridline6_3 {
+    /*border: 2px solid black;*/
+    display: grid;
+    height: 18rem;
+    grid-column: 3 /5;
+    width: 500px;
+    height: 300px;
+    justify-content: center;
+
+}
+
 .boxgridline6_4 {
     border: 2px solid black;
     display: grid;
     height: 18rem;
-    grid-column: 2 /3;
+    grid-column: 1 /5;
 
 
 }

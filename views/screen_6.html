@@ -1,9 +1,12 @@
+<!--TODO: think of what to do with the graphs ?-->
+<!--TODO : the star dont work as i wanted they are depentad when click on one the other change -->
 <!DOCTYPE html>
 <html dir="rtl" lang="he">
 <head>
     <meta charset="UTF-8">
     <title>CourseGrade</title>
     <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="../static/script.js"></script>
 </head>
 <body>
@@ -31,7 +34,7 @@
     <div class="boxgridline6_1">
         <p>
             <label for="yeartaken">שנת לימוד:</label>
-            <select name="yeartaken" class="formScreen6SelectStyle">
+            <select name="yeartaken" id="yeartaken" class="formScreen6SelectStyle">
                 <option value="try1" disabled selected class="textInSelect">בחר שנה</option>
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
@@ -44,7 +47,7 @@
         </p>
         <p>
             <label for="semester"> סמסטר:</label>
-            <select name="semester" class="formScreen6SelectStyle">
+            <select name="semester" id="semester" class="formScreen6SelectStyle">
                 <option value="" disabled selected class="textInSelect">בחר סמסטר:</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -52,12 +55,50 @@
             </select>
         </p>
     </div>
-    <div class="boxgridline6_3"></div>
-        <div class="boxgridline6_3"></div>
-    <div class="boxgridline6_2"></div>
+    <div class="boxgridline6_2">
+        <div class="rating-css1">
+            <p>מדד העומס :</p>
+            <div class="star-icon">
+                <input type="radio" name="rating1" id="rating1">
+                <label for="rating1" class="fa fa-star"></label>
+                <input type="radio" name="rating1" id="rating2">
+                <label for="rating2" class="fa fa-star"></label>
+                <input type="radio" name="rating1" id="rating3">
+                <label for="rating3" class="fa fa-star"></label>
+                <input type="radio" name="rating1" id="rating4">
+                <label for="rating4" class="fa fa-star"></label>
+                <input type="radio" name="rating1" id="rating5">
+                <label for="rating5" class="fa fa-star"></label>
+                </input>
+            </div>
+        </div>
+
+        <div class="rating-css2">
+            <p>מדד הקושי :</p>
+            <div class="star-icon">
+                <input type="radio" name="rating1" id="rating12">
+                <label for="rating12" class="fa fa-star"></label>
+                <input type="radio" name="rating1" id="rating22">
+                <label for="rating22" class="fa fa-star"></label>
+                <input type="radio" name="rating1" id="rating32">
+                <label for="rating32" class="fa fa-star"></label>
+                <input type="radio" name="rating1" id="rating42">
+                <label for="rating42" class="fa fa-star"></label>
+                <input type="radio" name="rating1" id="rating52">
+                <label for="rating52" class="fa fa-star"></label>
+                </input>
+            </div>
+        </div>
+        <p> ממוצע: 85.21</p>
+        <p> סייטת תקן: 4.86</p>
+    </div>
+    <div class="boxgridline6_3">
+                <img src="../pics/graph.png" class="screen1Hat" alt="hat">
+    </div>
+    <div class="boxgridline6_4"></div>
 </main>
 <a href="screen_4.html">
-     <button type="submit" class="button" >חזור לחיפוש</button>
+    <button type="submit" class="button">חזור לחיפוש</button>
 </a>
 
 
