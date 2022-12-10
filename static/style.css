@@ -156,7 +156,7 @@ label {
     font-size: 25px;
 }
 
-input {
+.inputs-screen-2_3 {
 
     width: 100%;
     padding: 10px;
@@ -196,7 +196,7 @@ input {
     display: grid;
 }
 
-.button23 {
+.button2_3 {
     background-color: #FF9E3D;
     size: 30px;
     text-align: center;
@@ -212,7 +212,7 @@ input {
 }
 
 
-.button23:hover {
+.button2_3:hover {
     background: salmon;
     transition: 0.7s;
 
@@ -240,17 +240,18 @@ input {
 }
 
 .boxgridline6_1 {
-   border: 2px solid black;
+    border: 2px solid black;
     display: grid;
     height: 18rem;
     grid-column: 1 /2;
 
 }
+
 .boxgridline6_3 {
-   border: 2px solid black;
+    border: 2px solid black;
     display: grid;
     height: 18rem;
-      grid-column: 2 /5;
+    grid-column: 2 /5;
 
 
 }
@@ -265,7 +266,7 @@ input {
 
 }
 
-.formScreen6SelectStyle{
+.formScreen6SelectStyle {
     width: 7vw;
     padding: 10px;
     border: 2px solid #eee;
@@ -275,13 +276,14 @@ input {
 }
 
 .boxgridline6_4 {
-   border: 2px solid black;
+    border: 2px solid black;
     display: grid;
     height: 18rem;
-      grid-column: 2 /3;
+    grid-column: 2 /3;
 
 
 }
+
 .button5 {
     background-color: #FF9E3D;
     size: 30px;
@@ -301,4 +303,71 @@ input {
     background: salmon;
     transition: 1.5s;
 
+}
+
+.comment-box {
+    width: 50%;
+    border: 1px solid #ccc;
+    margin: 50px 0;
+    padding: 10px 20px;
+    font-family: 'poppins', sans-serif;
+    border-radius: 5px;
+    margin-left: 25%;
+    margin-top: 80px;
+    box-shadow: 0px 0px 10px 1px rgb(165, 165, 165);
+}
+
+.comment-box p {
+    text-align: right;
+    font-size: 28px;
+    color: #777;
+
+}
+
+.inputcomment {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 18px;
+    font-family: 'poppins', sans-serif;
+    border: 1px solid #ddd;
+    color: #777;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 18px;
+    font-family: 'poppins', sans-serif;
+    border: 1px solid #ddd;
+    color: #777;
+}
+
+.comment-form button {
+    margin: 10px 0;
+    border: none;
+    background-color: #d0d0d0;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 3px;
+    color: #444;
+    font-family: 'poppins', sans-serif;
+
+}
+
+.comment-form button:hover {
+    color: white;
+    background-color: #4444;
+}
+
+@media (max-width: 900px) {
+    .comment-box {
+        width: 80%;
+        margin: 15%;
+    }
 }
