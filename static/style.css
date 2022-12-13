@@ -263,7 +263,7 @@ label {
 
 .boxgridline6_2 {
     /*border: 2px solid black;*/
-    place-content: left;
+    place-content:start;
     display: grid;
     grid-column: 2 / 3;
     height: 18rem;
@@ -532,4 +532,42 @@ label {
     background: salmon;
     transition: 1.5s;
 
+}
+
+/*checking*/
+.Testimonials {
+  border: 2px solid #ccc;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0
+}
+
+.Testimonials::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.Testimonials img {
+  float: right;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.Testimonials span {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+@media (max-width: 500px) {
+    .Testimonials {
+        text-align: center;
+    }
+
+    .Testimonials img {
+        margin: auto;
+        float: none;
+        display: block;
+    }
 }

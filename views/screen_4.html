@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>CourseGrade</title>
     <link rel="stylesheet" href="../static/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body>
 <div class="nav-main-container">
@@ -35,7 +36,7 @@
         <div class="box">
             <p>
                 <label for="departmentNumber">מספר מחלקה:</label>
-                <select name="departmentNumber" class="formScreen4SelectStyle">
+                <select name="departmentNumber" id="departmentNumber" class="formScreen4SelectStyle">
                     <option value="try1" disabled selected class="textInSelect">בחר מספר מחלקה</option>
                     <option value="361">361-המחלקה להנדסת חשמל ומחשבים</option>
                     <option value="362">362-המחלקה להנדסה מכונות</option>
@@ -47,7 +48,7 @@
             </p>
             <p>
                 <label for="courseNumber">מספר קורס:</label>
-                <select name="courseNumber" class="formScreen4SelectStyle">
+                <select name="courseNumber" id="courseNumber" class="formScreen4SelectStyle">
 
                     <option value="" disabled selected class="textInSelect">בחר מספר קורס</option>
                     <option value="1041">מבוא להסתברות</option>
@@ -65,7 +66,7 @@
 
 
                 <label for="hardness">מדד קושי:</label>
-                <select name="hardness" class="formScreen4SelectStyleShort">
+                <select name="hardness" id="hardness" class="formScreen4SelectStyleShort">
                     <option value="" disabled selected class="textInSelect">בחר מדד קושי</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -78,7 +79,7 @@
             </p>
             <p>
                 <label for="load">מדד העומס:</label>
-                <select name="load" class="formScreen4SelectStyleShort">
+                <select name="load" id="load" class="formScreen4SelectStyleShort">
                     <option value="" disabled selected class="textInSelect">בחר מדד עומס</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -97,6 +98,19 @@
     </a>
 
 </div>
+    <div class="footer-basic">
+        <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">בית</a></li>
+                <li class="list-inline-item"><a href="#">אודות</a></li>
+                <li class="list-inline-item"><a href="#">חפש קורס</a></li>
+                <li class="list-inline-item"><a href="#">חפש מורה</a></li>
+            </ul>
+            <p class="copyright">CourseGrade  © 2022</p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<link rel="stylesheet" href="css/style.
