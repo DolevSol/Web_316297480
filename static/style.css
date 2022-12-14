@@ -106,6 +106,7 @@ body {
     width: 30vh;
     height: 30vh;
 }
+
 .screen6graph {
     width: 35vh;
     height: 35vh;
@@ -171,7 +172,14 @@ label {
     background-color: #FF9E3D;
 
 }
+.inputs-screen-2_3_dropdown {
 
+    width: 110%;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 100px;
+    background-color: #FF9E3D;
+}
 
 .subheader {
     font-size: 32px;
@@ -223,7 +231,6 @@ label {
     transition: 0.7s;
 
 }
-
 
 
 .header6 {
@@ -483,7 +490,7 @@ html ::-webkit-scrollbar-track {
     background-color: beige;
     color: #4b4c4d;
     position: sticky;
-    top:100% ;
+    top: 100%;
 
 }
 
@@ -627,70 +634,121 @@ html ::-webkit-scrollbar-track {
     transition: 1.5s;
 
 }
-.about-1{
-margin:30px;
-padding:5px;
+
+.about-1 {
+    margin: 30px;
+    padding: 5px;
 
 }
-.about-1 h1{
+
+.about-1 h1 {
     text-align: center;
     color: black;
     font-weight: bold;
 }
 
-.about-1 p{
+.about-1 p {
     text-align: center;
-    padding:3px;
+    padding: 3px;
     color: #fff;
 
 }
 
-.about-item{
+.about-item {
     margin-bottom: 20px;
-    mrgin-top:20px;
+    mrgin-top: 20px;
     background-color: white;
-    padding:30px;
+    padding: 30px;
 }
 
-.about-item i{
+.about-item i {
     font-size: 43px;
     margin: 0;
 }
-.about-item h3{
-    font-size:25px;
-    margin-bottom:10px;
+
+.about-item h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
 }
-.about-item hr{
+
+.about-item hr {
     width: 46px;
     height: 3px;
-    background-color: darkgreen ;
+    background-color: darkgreen;
     margin: 0 auto;
     border: none;
 
 }
-.about-item p{
-margin-top:20px;
+
+.about-item p {
+    margin-top: 20px;
 }
 
-.about-item:hover{
+.about-item:hover {
     background-color: #354f52;
 }
 
 .about-item:hover i,
 .about-item:hover h3,
-.about-item:hover p{
-    color:#fff;
+.about-item:hover p {
+    color: #fff;
 }
-.about-item:hover hr{
+
+.about-item:hover hr {
     background-color: #fff;
 
 }
-.about-item:hover i{
+
+.about-item:hover i {
     transform: translateY(-20px);
 }
 
 .about-item:hover i,
 .about-item:hover h3,
-.about-item:hover hr{
+.about-item:hover hr {
     transition: all 400ms ease-in-out;
+}
+
+
+.containerScreen7 {
+    margin: 20px 100px 20px 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    gap: 2em;
+    grid-auto-rows: 0.6fr;
+    align-content: center;
+
+
+}
+
+
+/*.formScreen7SelectStyle {*/
+/*    width: 10vw;*/
+/*    padding: 10px;*/
+/*    border: 2px solid #eee;*/
+/*    border-radius: 100px;*/
+/*    background-color: #FF9E3D;*/
+/*    border-color: #FF9E3D;*/
+/*}*/
+
+.boxgridRow7_1 {
+    /*border: 2px solid black;*/
+    display: grid;
+    grid-column: 1 /2;
+
+}
+
+.boxgridRow7_2 {
+    /*border: 2px solid black;*/
+    display: grid;
+    grid-column: 2 /5;
+
+}
+
+.formScreen7 {
+    /*background-color: white;*/
+    /*display: flex;*/
+    gap: 50px;
+    min-width: 300px;
+    flex-wrap: wrap;
 }
