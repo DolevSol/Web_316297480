@@ -7,6 +7,7 @@
     <title>CourseGrade</title>
     <link rel="stylesheet" href="../static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+     <script defer src="../static/script.js"></script>
 </head>
 <body>
 <div class="nav-main-container">
@@ -31,7 +32,14 @@
 </div>
 <div class="container">
     <div class="header">חיפוש קורסים:</div>
-    <div class="subheader"> אפשריות סינון מתקדמות:</div>
+    <div class="toggle-container">
+        <div class="subheader"> אפשריות סינון מתקדמות:</div>
+        <label class="switch">
+            <input type="checkbox" id="checkbox" value="false" onchange="disableCourse()">
+            <span class="slider"></span>
+        </label>
+
+    </div>
     <form class="formScreen4">
         <div class="box">
             <p>
@@ -66,7 +74,7 @@
 
 
                 <label for="hardness">מדד קושי:</label>
-                <select name="hardness" id="hardness" class="formScreen4SelectStyleShort">
+                <select name="hardness" id="hardness" disabled class="formScreen4SelectStyleShort">
                     <option value="" disabled selected class="textInSelect">בחר מדד קושי</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -79,7 +87,7 @@
             </p>
             <p>
                 <label for="load">מדד העומס:</label>
-                <select name="load" id="load" class="formScreen4SelectStyleShort">
+                <select name="load" id="load" disabled class="formScreen4SelectStyleShort">
                     <option value="" disabled selected class="textInSelect">בחר מדד עומס</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
