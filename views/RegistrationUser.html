@@ -1,3 +1,5 @@
+<!--TODO:adding field to the registeration-->
+<!--TODO: verefications-->
 <!DOCTYPE html>
 <html dir="rtl" lang="he">
 <head>
@@ -15,10 +17,10 @@
             </a>
             <ul>
 
-                <li><a href="screen_1.html">בית</a></li>
+                <li><a href="HomePage.html">בית</a></li>
                 <li><a href="about_us.html">אודות </a></li>
-                <li><a href="screen_4.html">חפש קורס</a></li>
-                <li><a href="screen_7.html">חפש מורה</a></li>
+                <li><a href="SearchCourse.html">חפש קורס</a></li>
+                <li><a href="TeacherSearch.html">חפש מורה</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -29,8 +31,8 @@
     </div>
 </div>
 <div class="container">
-    <div class="header">התחברות למערכת:</div>
-    <form class="formScreenTwoThree" action="screen_4.html">
+    <div class="header">צור חשבון:</div>
+    <form class="formScreenTwoThree" action="HomePage.html">
         <p>
             <label for="userName">שם משתמש:</label>
             <input type="text" class="inputs-screen-2_3" id="userName" name="userName" autocomplete="on" required>
@@ -38,7 +40,33 @@
         <p>
             <label for="password">סיסמא:</label>
             <input type="password" class="inputs-screen-2_3" id="password" name="password" autocomplete="on" required>
-                <button type="submit" class="button2_3">התחבר</button>
+        </p>
+        <label for="email">אימייל:</label>
+        <input type="email" class="inputs-screen-2_3" id="email" name="email" autocomplete="on" required pattern="\w+@post\.bgu\.ac\.il">
+        </p>
+        </p>
+        <label for="phone">מספר פלאפון:</label>
+        <input type="tel" class="inputs-screen-2_3" id="phone" name="phone" autocomplete="on" required>
+        </p>
+        <label for="yeartaken">שנת תחילת הלימודים:</label>
+        <select name="yeartaken" id="yeartaken" class="inputs-screen-2_3_dropdown">
+            <option value="try1" disabled selected class="textInSelect">בחר שנה</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+
+        </select>
+        </p>
+        <label for="phone">גיל:</label>
+        <input type="tel" class="inputs-screen-2_3" id="phone" name="phone" autocomplete="on">
+        </p>
+        <p>
+
+
+                <button type="submit" class="button2_3">צור חשבון</button>
 
         </p>
 
@@ -50,10 +78,10 @@
         <div class="social"><a href="https://www.instagram.com/bengurionuniversity/"><i class="icon ion-social-instagram"></i></a></i></a><a href="https://twitter.com/bengurionuni"><i class="icon ion-social-twitter"></i></a><a
                 href="https://www.facebook.com/bgu.uni/"><i class="icon ion-social-facebook"></i></a></div>
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="screen_1.html">בית</a></li>
+            <li class="list-inline-item"><a href="HomePage.html">בית</a></li>
             <li class="list-inline-item"><a href="about_us.html">אודות</a></li>
-            <li class="list-inline-item"><a href="screen_4.html">חפש קורס</a></li>
-            <li class="list-inline-item"><a href="screen_7.html">חפש מורה</a></li>
+            <li class="list-inline-item"><a href="SearchCourse.html">חפש קורס</a></li>
+            <li class="list-inline-item"><a href="Teacher_Reg.html">חפש מורה</a></li>
         </ul>
         <p class="copyright">CourseGrade © 2022</p>
     </footer>

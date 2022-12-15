@@ -1,5 +1,3 @@
-<!--TODO: adding feature that on click on course name we weill go to the next page - make name blue ? -->
-<!--TODO: improve layout-->
 <!DOCTYPE html>
 <html dir="rtl" lang="he">
 <head>
@@ -17,10 +15,10 @@
             </a>
             <ul>
 
-                <li><a href="screen_1.html">בית</a></li>
+                <li><a href="HomePage.html">בית</a></li>
                 <li><a href="about_us.html">אודות </a></li>
-                <li><a href="screen_4.html">חפש קורס</a></li>
-                <li><a href="screen_7.html">חפש מורה</a></li>
+                <li><a href="SearchCourse.html">חפש קורס</a></li>
+                <li><a href="TeacherSearch.html">חפש מורה</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -30,35 +28,32 @@
         </nav>
     </div>
 </div>
-<div class="header">תוצאות חיפוש:</div>
-<main class="containerScreen5">
-    <div class="boxgridline1">שם הקורס</div>
-    <div class="boxgridline1">מדד העומס</div>
-    <div class="boxgridline1">מדד הקושי</div>
-    <a href="screen_6.html" class="boxgrid">
-        <div class="boxgrid">בניית מערכות ממוחשבות מבוססות אינטרנט</div>
-    </a>
-    <div class="boxgrid">5</div>
-    <div class="boxgrid">5</div>
-    <div class="boxgrid"></div>
-    <div class="boxgrid"></div>
-    <div class="boxgrid"></div>
-    <div class="boxgrid"></div>
-    <div class="boxgrid"></div>
-    <div class="boxgrid"></div>
-    <a href="screen_4.html">
-        <button type="submit" class="button">חזור לחיפוש</button>
-    </a>
-</main>
+<div class="container">
+    <div class="header">התחברות למערכת:</div>
+    <form class="formScreenTwoThree" action="SearchCourse.html">
+        <p>
+            <label for="userName">שם משתמש:</label>
+            <input type="text" class="inputs-screen-2_3" id="userName" name="userName" autocomplete="on" required>
+        </p>
+        <p>
+            <label for="password">סיסמא:</label>
+            <input type="password" class="inputs-screen-2_3" id="password" name="password" autocomplete="on" required>
+                <button type="submit" class="button2_3">התחבר</button>
+
+        </p>
+
+    </form>
+
+</div>
 <div class="footer-basic">
     <footer>
         <div class="social"><a href="https://www.instagram.com/bengurionuniversity/"><i class="icon ion-social-instagram"></i></a></i></a><a href="https://twitter.com/bengurionuni"><i class="icon ion-social-twitter"></i></a><a
                 href="https://www.facebook.com/bgu.uni/"><i class="icon ion-social-facebook"></i></a></div>
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="screen_1.html">בית</a></li>
+            <li class="list-inline-item"><a href="HomePage.html">בית</a></li>
             <li class="list-inline-item"><a href="about_us.html">אודות</a></li>
-            <li class="list-inline-item"><a href="screen_4.html">חפש קורס</a></li>
-            <li class="list-inline-item"><a href="screen_7.html">חפש מורה</a></li>
+            <li class="list-inline-item"><a href="SearchCourse.html">חפש קורס</a></li>
+            <li class="list-inline-item"><a href="Teacher_Reg.html">חפש מורה</a></li>
         </ul>
         <p class="copyright">CourseGrade © 2022</p>
     </footer>
