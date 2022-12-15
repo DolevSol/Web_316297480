@@ -39,8 +39,19 @@ function selectElement(id, valueToSelect) {
 }
 function ShowTeacher() {
 
-    document.getElementById('about').style.display='block' ;
+    document.getElementById('recommend_result').style.display='block' ;
 
+}
+
+
+
+///////
+
+var trip = Array("טיול טרקטורונים", "קיר טיפוס", "שייט קיאקים", "שייט בסירת פדלים", "צניחה חופשית", "פיינטבול");
+
+function randomSong() {
+  var randomTrip = trip[Math.floor(Math.random() * trip.length)];
+  document.getElementById('randomTrip').value = randomTrip;
 }
 
 
