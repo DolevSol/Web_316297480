@@ -1,6 +1,6 @@
 const menu = document.querySelector('#mobile-menu');
 const menuLinks = document.querySelector('.navbar__menu');
-
+let newWindow;
 
 // Display Mobile Menu
 const mobileMenu = () => {
@@ -11,16 +11,11 @@ const mobileMenu = () => {
 menu.addEventListener('click', mobileMenu);
 
 
-// let commentWindow;
-let newWindow;
 function openNewWindow(html) {
     newWindow = window.open(html, 'newWindow', 'width=800 , height=800');
 
 }
-// function openAddComment() {
-//     commentWindow = window.open("comment.html", 'newWindow', 'width=600 , height=600');
-//
-// }
+
 
 function enableElement(id, enable) {
     document.getElementById(id).disabled = !enable;
@@ -55,57 +50,38 @@ function selectElement(id, valueToSelect) {
     }
 }
 
-function showItem(id ,display) {
+function showItem(id, display) {
 
     document.getElementById(id).style.display = display;
 
 }
 
-function showTeachers(id ,display) {
-    if (document.getElementById(id).value !="" ) {
+function showTeachers(id, display) {
+    if (document.getElementById(id).value != "") {
         document.getElementById(id).style.display = display;
-        return false ;
-    }
-   else {
-     return false ;
+        return false;
+    } else {
+        return false;
     }
 
 }
 
 function showItemes(id1, id2) {
-    showItem(id1,'block')
-    showItem(id2,'block')
+    showItem(id1, 'block')
+    showItem(id2, 'block')
 
 }
 
 
 function phonenumber(inputtxt) {
-  var phoneno = /^\d{10}$/;
-  if(inputtxt.value.match(phoneno)){
-      return true;
-        }
-      else
-        {
+    var phoneno = /^\d{10}$/;
+    if (inputtxt.value.match(phoneno)) {
+        return true;
+    } else {
         alert("your phone number is not valid");
         return false;
-        }
+    }
 }
-
-
-
-
-// function showTeacher(id_check,id_show) {
-//     if ( document.getElementById(id_check).value in ('361','362','363','364','365','366')) {
-//         showItem(id_show)
-//     } else {
-//         alert("חובת בחירת מחלקה")
-//     }
-//
-// }
-
-
-///////
-
 
 
 
