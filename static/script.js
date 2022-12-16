@@ -11,12 +11,16 @@ const mobileMenu = () => {
 menu.addEventListener('click', mobileMenu);
 
 
-let commentWindow;
-
-function openAddComment() {
-    commentWindow = window.open("comment.html", 'newWindow', 'width=600 , height=600');
+// let commentWindow;
+let newWindow;
+function openNewWindow(html) {
+    newWindow = window.open(html, 'newWindow', 'width=800 , height=800');
 
 }
+// function openAddComment() {
+//     commentWindow = window.open("comment.html", 'newWindow', 'width=600 , height=600');
+//
+// }
 
 function enableElement(id, enable) {
     document.getElementById(id).disabled = !enable;
