@@ -1,17 +1,14 @@
-
 const menu = document.querySelector('#mobile-menu');
 const menuLinks = document.querySelector('.navbar__menu');
 
 
 // Display Mobile Menu
 const mobileMenu = () => {
-  menu.classList.toggle('is-active');
-  menuLinks.classList.toggle('active');
+    menu.classList.toggle('is-active');
+    menuLinks.classList.toggle('active');
 };
 
 menu.addEventListener('click', mobileMenu);
-
-
 
 
 let commentWindow;
@@ -53,12 +50,27 @@ function selectElement(id, valueToSelect) {
         element.value = valueToSelect;
     }
 }
-function ShowTeacher(id) {
 
-    document.getElementById(id).style.display='block' ;
+function showItem(id) {
+
+    document.getElementById(id).style.display = 'block';
 
 }
 
+function showItemes(id1, id2) {
+    showItem(id1)
+    showItem(id2)
+
+}
+
+// function showTeacher(id_check,id_show) {
+//     if ( document.getElementById(id_check).value in ('361','362','363','364','365','366')) {
+//         showItem(id_show)
+//     } else {
+//         alert("חובת בחירת מחלקה")
+//     }
+//
+// }
 
 
 ///////
@@ -66,8 +78,8 @@ function ShowTeacher(id) {
 var trip = Array("טיול טרקטורונים", "קיר טיפוס", "שייט קיאקים", "שייט בסירת פדלים", "צניחה חופשית", "פיינטבול");
 
 function randomSong() {
-  var randomTrip = trip[Math.floor(Math.random() * trip.length)];
-  document.getElementById('randomTrip').value = randomTrip;
+    var randomTrip = trip[Math.floor(Math.random() * trip.length)];
+    document.getElementById('randomTrip').value = randomTrip;
 }
 
 

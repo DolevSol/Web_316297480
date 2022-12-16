@@ -34,13 +34,14 @@
     margin: 0 auto;
     /*padding: 0 50px;*/
 }
+
 #navbar__logo {
-  background-size: 100%;
-  display: flex;
-  align-items: normal;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 2rem;
+    background-size: 100%;
+    display: flex;
+    align-items: normal;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
 }
 
 .navbar__menu {
@@ -541,7 +542,7 @@ html ::-webkit-scrollbar-track {
 .comment-box {
     width: 600px;
     border: 1px solid #ccc;
-    margin: auto ;
+    margin: auto;
     padding: 10px 20px;
     font-family: 'poppins', sans-serif;
     border-radius: 5px;
@@ -560,7 +561,7 @@ html ::-webkit-scrollbar-track {
 }
 
 .inputcomment {
-    width: 500px ;
+    width: 500px;
     padding: 10px;
     margin: 5px 0;
     box-sizing: border-box;
@@ -572,7 +573,7 @@ html ::-webkit-scrollbar-track {
 }
 
 .comment-form textarea {
-    width: 500px ;
+    width: 500px;
     padding: 10px;
     margin: 5px 0;
     box-sizing: border-box;
@@ -986,7 +987,6 @@ html ::-webkit-scrollbar-track {
 }
 
 
-
 .switch {
     position: relative;
     display: inline-block;
@@ -994,6 +994,7 @@ html ::-webkit-scrollbar-track {
     height: 40px;
     margin: 0 10px;
 }
+
 .slider {
     position: absolute;
     cursor: pointer;
@@ -1021,9 +1022,11 @@ html ::-webkit-scrollbar-track {
     transition: 0.4s;
     border-radius: 30px;
 }
+
 input:checked + .slider {
     background-color: #FF9E3D;
 }
+
 input:checked + .slider:before {
     transform: translateX(40px);
 }

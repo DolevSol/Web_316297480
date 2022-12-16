@@ -32,7 +32,7 @@
                 <a href="TeacherSearch.html" class="navbar__links" id="teacher-page">חפש מורה</a>
             </li>
             <li class="navbar__item">
-                <a href="#" class="navbar__links" id="Recommendation-page">מומלצים</a>
+                <a href="Recommendation.html" class="navbar__links" id="Recommendation-page">מומלצים</a>
             </li>
         </ul>
     </div>
@@ -43,7 +43,8 @@
     <div class="boxgridline6_1">
         <p>
             <label for="yeartaken">שנת לימוד:</label>
-            <select name="yeartaken" id="yeartaken" class="formScreen6SelectStyle">
+            <select name="yeartaken" id="yeartaken" class="formScreen6SelectStyle"
+                    onchange="selectElement('semester','0')">
                 <option value="try1" disabled selected class="textInSelect">בחר שנה</option>
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
@@ -56,27 +57,28 @@
         </p>
         <p>
             <label for="semester"> סמסטר:</label>
-            <select name="semester" id="semester" class="formScreen6SelectStyle">
-                <option value="" disabled selected class="textInSelect">בחר סמסטר:</option>
+            <select name="semester" id="semester" class="formScreen6SelectStyle" disabled
+                    onchange="showItemes('ranking','distribution') ">
+                <option value="0" disabled selected class="textInSelect">בחר סמסטר:</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
 
             </select>
         </p>
     </div>
-    <div class="boxgridline6_2">
+    <div class="boxgridline6_2" id="ranking" style="display:none;">
         <div class="rating-css1">
             <p>מדד העומס :</p>
             <div class="star-icon">
-                <input type="radio" name="rating1" id="rating1">
+                <input type="radio" name="rating1" id="rating1" disabled>
                 <label for="rating1" class="fa fa-star"></label>
-                <input type="radio" name="rating1" id="rating2">
+                <input type="radio" name="rating2" id="rating2" disabled>
                 <label for="rating2" class="fa fa-star"></label>
-                <input type="radio" name="rating1" id="rating3">
+                <input type="radio" name="rating3" id="rating3" disabled>
                 <label for="rating3" class="fa fa-star"></label>
-                <input type="radio" name="rating1" id="rating4">
+                <input type="radio" name="rating4" id="rating4" disabled>
                 <label for="rating4" class="fa fa-star"></label>
-                <input type="radio" name="rating1" id="rating5">
+                <input type="radio" name="rating5" id="rating5" disabled>
                 <label for="rating5" class="fa fa-star"></label>
                 </input>
             </div>
@@ -85,23 +87,25 @@
         <div class="rating-css2">
             <p>מדד הקושי :</p>
             <div class="star-icon">
-                <input type="radio" name="rating1" id="rating12">
+                <input type="radio" name="rating12" id="rating12" disabled>
                 <label for="rating12" class="fa fa-star"></label>
-                <input type="radio" name="rating1" id="rating22">
+                <input type="radio" name="rating22" id="rating22" disabled>
                 <label for="rating22" class="fa fa-star"></label>
-                <input type="radio" name="rating1" id="rating32">
+                <input type="radio" name="rating32" id="rating32" disabled>
                 <label for="rating32" class="fa fa-star"></label>
-                <input type="radio" name="rating1" id="rating42">
+                <input type="radio" name="rating42" id="rating42" disabled>
                 <label for="rating42" class="fa fa-star"></label>
-                <input type="radio" name="rating1" id="rating52">
+                <input type="radio" name="rating52" id="rating52" disabled>
                 <label for="rating52" class="fa fa-star"></label>
                 </input>
             </div>
         </div>
+        <br>
+        <br>
         <p> ממוצע: 85.21</p>
         <p> סטיית תקן: 4.86</p>
     </div>
-    <div class="boxgridline6_3">
+    <div class="boxgridline6_3" id="distribution" style="display:none;">
         <img src="../pics/graph.png" class="screen6graph" alt="hat">
     </div>
     <div class="boxgridline6_4">
@@ -132,13 +136,16 @@
 
 <div class="footer-basic">
     <footer>
-        <div class="social"><a href="https://www.instagram.com/bengurionuniversity/"><i class="icon ion-social-instagram"></i></a></i></a><a href="https://twitter.com/bengurionuni"><i class="icon ion-social-twitter"></i></a><a
+        <div class="social"><a href="https://www.instagram.com/bengurionuniversity/"><i
+                class="icon ion-social-instagram"></i></a></i></a><a href="https://twitter.com/bengurionuni"><i
+                class="icon ion-social-twitter"></i></a><a
                 href="https://www.facebook.com/bgu.uni/"><i class="icon ion-social-facebook"></i></a></div>
         <ul class="list-inline">
             <li class="list-inline-item"><a href="HomePage.html">בית</a></li>
             <li class="list-inline-item"><a href="about_us.html">אודות</a></li>
             <li class="list-inline-item"><a href="SearchCourse.html">חפש קורס</a></li>
             <li class="list-inline-item"><a href="Teacher_Reg.html">חפש מורה</a></li>
+            <li class="list-inline-item"><a href="Recommendation.html">מומלצים </a></li>
         </ul>
         <p class="copyright">CourseGrade © 2022</p>
     </footer>
