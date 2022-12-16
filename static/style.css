@@ -25,14 +25,14 @@
 }
 
 .navbar__container {
-    /*display: flex;*/
+
     justify-content: space-between;
     height: 80px;
     z-index: 1;
     width: 100%;
-    /*max-width: 1300px;*/
+
     margin: 0 auto;
-    /*padding: 0 50px;*/
+
 }
 
 #navbar__logo {
@@ -247,7 +247,7 @@ form {
 }
 
 .formScreen4 {
-    /*background-color: white;*/
+
     display: flex;
     gap: 50px;
     min-width: 300px;
@@ -258,7 +258,7 @@ form {
     min-width: 450px;
     width: 75px;
     min-height: 100px;
-    /*background-color: purple;*/
+
 }
 
 .formScreen4SelectStyle {
@@ -383,7 +383,7 @@ label {
 }
 
 .boxgridline6_1 {
-    /*border: 2px solid black;*/
+
     display: grid;
     height: 18rem;
     grid-column: 1 /2;
@@ -392,7 +392,7 @@ label {
 
 
 .boxgridline6_2 {
-    /*border: 2px solid black;*/
+
     place-content: start;
     display: grid;
     grid-column: 2 / 3;
@@ -474,7 +474,7 @@ label {
 }
 
 .boxgridline6_3 {
-    /*border: 2px solid black;*/
+
     display: grid;
     height: 18rem;
     grid-column: 3 /5;
@@ -485,7 +485,7 @@ label {
 }
 
 .boxgridline6_4 {
-    /*border: 2px solid black;*/
+
     display: grid;
     grid-column: 1 /5;
 }
@@ -694,7 +694,7 @@ html ::-webkit-scrollbar-track {
 
 }
 
-/*checking*/
+
 .Testimonials {
     border: 2px solid #ccc;
     background-color: #eee;
@@ -845,32 +845,19 @@ html ::-webkit-scrollbar-track {
 }
 
 
-/*.formScreen7SelectStyle {*/
-/*    width: 10vw;*/
-/*    padding: 10px;*/
-/*    border: 2px solid #eee;*/
-/*    border-radius: 100px;*/
-/*    background-color: #FF9E3D;*/
-/*    border-color: #FF9E3D;*/
-/*}*/
-
 .boxgridRow7_1 {
-    /*border: 2px solid black;*/
     display: grid;
     grid-column: 1 /2;
 
 }
 
 .boxgridRow7_2 {
-    /*border: 2px solid black;*/
     display: grid;
     grid-column: 2 /5;
 
 }
 
 .formScreen7 {
-    /*background-color: white;*/
-    /*display: flex;*/
     gap: 50px;
     min-width: 300px;
     flex-wrap: wrap;
@@ -898,7 +885,6 @@ html ::-webkit-scrollbar-track {
 
 
 .main-title h3 .bg-text {
-    /*position: absolute;*/
     top: 50%;
     left: 50%;
     color: var(--color-grey-5);
@@ -977,10 +963,6 @@ html ::-webkit-scrollbar-track {
 }
 
 .toggle-container {
-    /*position: absolute;*/
-    /*top: 50%;*/
-    /*left: 50%;*/
-    /*transform: translate(-50%, -50%);*/
     text-align: center;
     display: inline-flex;
 
@@ -1037,7 +1019,6 @@ input:checked + .slider:before {
 .services {
     background: #d9d9d8;
     display: none;
-    /*display: flex;*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -1144,8 +1125,9 @@ input:checked + .slider:before {
 
 
 }
+
 .formTeacheRegSelectStyle {
-      width: 100%;
+    width: 100%;
     padding: 10px;
     border: 2px solid #eee;
     border-radius: 100px;
