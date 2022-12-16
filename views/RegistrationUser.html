@@ -37,10 +37,10 @@
         </ul>
     </div>
 </nav>
-
+<!-- phonenumber(document.reg_user.phone)-->
 <div class="container">
     <div class="header">צור חשבון</div>
-    <form class="formScreenTwoThree" action="HomePage.html">
+    <form class="formScreenTwoThree" name="reg_user" action="HomePage.html" onsubmit="return phonenumber(document.reg_user.phone)">
         <p>
             <label for="userName">שם משתמש:</label>
             <input type="text" class="inputs-screen-2_3" id="userName" name="userName" autocomplete="on" required>
@@ -69,8 +69,8 @@
 
         </select>
         </p>
-        <label for="phone">גיל:</label>
-        <input type="tel" class="inputs-screen-2_3" id="phone" name="phone" autocomplete="on">
+        <label for="age">גיל:</label>
+        <input type="number" min="5" class="inputs-screen-2_3" id="age" name="age"  >
         </p>
         <p>
 

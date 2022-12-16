@@ -59,8 +59,8 @@ function showItem(id ,display) {
 
 function showTeachers(id ,display) {
     if (document.getElementById(id).value !="" ) {
-            document.getElementById(id).style.display = display;
-            console.log('checkcheck1234')
+        document.getElementById(id).style.display = display;
+        return false ;
     }
    else {
      return false ;
@@ -74,10 +74,21 @@ function showItemes(id1, id2) {
 
 }
 
-$("#teacher_form").submit( function(e) {
-  loadAjax();
-  e.returnValue = false;
-});
+
+function phonenumber(inputtxt) {
+  var phoneno = /^\d{10}$/;
+  if(inputtxt.value.match(phoneno)){
+      return true;
+        }
+      else
+        {
+        alert("your phone number is not valid");
+        return false;
+        }
+}
+
+
+
 
 // function showTeacher(id_check,id_show) {
 //     if ( document.getElementById(id_check).value in ('361','362','363','364','365','366')) {
