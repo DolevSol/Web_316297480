@@ -291,8 +291,15 @@ label {
     border: 2px solid #eee;
     border-radius: 100px;
     background-color: #FF9E3D;
-
 }
+.inputs-screen-2_3:-webkit-autofill,
+.inputs-screen-2_3:-webkit-autofill:hover,
+.inputs-screen-2_3:-webkit-autofill:focus,
+.inputs-screen-2_3:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #FF9E3D inset !important;
+}
+
+
 
 .inputs-screen-2_3_dropdown {
 
