@@ -10,7 +10,35 @@
      <script defer src="../static/script.js"></script>
 </head>
 <body>
-<input type="button" name="answer" value="המלץ לי על פעילות" onclick="ShowTeacher()"/>
+<!-- Navbar Section -->
+<nav class="navbar">
+    <div class="navbar__container">
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span> <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="navbar__menu">
+            <li class="navbar__item">
+                <a href="HomePage.html" class="navbar__links" id="home-page">בית</a>
+            </li>
+            <li class="navbar__item">
+                <a href="about_us.html" class="navbar__links" id="about-page">אודות</a>
+            </li>
+            <li class="navbar__item">
+                <a href="SearchCourse.html" class="navbar__links" id="course-page">חפש קורס</a>
+            </li>
+            <li class="navbar__item">
+                <a href="TeacherSearch.html" class="navbar__links" id="teacher-page">חפש מורה</a>
+            </li>
+            <li class="navbar__item">
+                <a href="#" class="navbar__links" id="Recommendation-page">מומלצים</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<input type="button" name="answer" value="המלץ לי על פעילות" onclick="ShowTeacher('recommend_result')"/>
     </form>
     <div id="recommend_result"  style="display:none;" class="answer_list" >
     <button type="randomtrip" onclick="randomSong()">אני רוצה משהו אחר</button>

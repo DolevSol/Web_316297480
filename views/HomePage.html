@@ -1,35 +1,42 @@
 <!--TODO: linking bgu logo to bgu website-->
 <!DOCTYPE html>
-<html dir="rtl" lang="he">
+<html dir="rtl" lang="e">
 <head>
     <meta charset="UTF-8">
     <title>CourseGrade</title>
     <link rel="stylesheet" href="../static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <script defer src="../static/script.js"></script>
 </head>
 <body>
+<!-- Navbar Section -->
+<nav class="navbar">
+    <div class="navbar__container">
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span> <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
 
-<div class="nav-main-container">
-    <div class="nav-subcontainer">
-        <nav>
-            <a href="https://in.bgu.ac.il/" class="bgu-img-nav-link">
-                <img src="../pics/bgu-img-nav.png" class="bgu-img-nav">
-            </a>
-            <ul>
-
-                <li><a href="HomePage.html">בית</a></li>
-                <li><a href="about_us.html">אודות </a></li>
-                <li><a href="SearchCourse.html">חפש קורס</a></li>
-                <li><a href="TeacherSearch.html">חפש מורה</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
+        <ul class="navbar__menu">
+            <li class="navbar__item">
+                <a href="HomePage.html" class="navbar__links" id="home-page">בית</a>
+            </li>
+            <li class="navbar__item">
+                <a href="about_us.html" class="navbar__links" id="about-page">אודות</a>
+            </li>
+            <li class="navbar__item">
+                <a href="SearchCourse.html" class="navbar__links" id="course-page">חפש קורס</a>
+            </li>
+            <li class="navbar__item">
+                <a href="TeacherSearch.html" class="navbar__links" id="teacher-page">חפש מורה</a>
+            </li>
+            <li class="navbar__item">
+                <a href="#" class="navbar__links" id="Recommendation-page">מומלצים</a>
+            </li>
+        </ul>
     </div>
-</div>
+</nav>
+
 <div class="container">
     <div class="imgScreen1">
         <img src="../pics/studentHat.png" class="screen1Hat" alt="hat">
@@ -48,7 +55,9 @@
 </div>
 <div class="footer-basic">
     <footer>
-        <div class="social"><a href="https://www.instagram.com/bengurionuniversity/"><i class="icon ion-social-instagram"></i></a></i></a><a href="https://twitter.com/bengurionuni"><i class="icon ion-social-twitter"></i></a><a
+        <div class="social"><a href="https://www.instagram.com/bengurionuniversity/"><i
+                class="icon ion-social-instagram"></i></a></i></a><a href="https://twitter.com/bengurionuni"><i
+                class="icon ion-social-twitter"></i></a><a
                 href="https://www.facebook.com/bgu.uni/"><i class="icon ion-social-facebook"></i></a></div>
         <ul class="list-inline">
             <li class="list-inline-item"><a href="HomePage.html">בית</a></li>

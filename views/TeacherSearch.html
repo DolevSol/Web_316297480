@@ -11,27 +11,33 @@
     <script defer src="../static/script.js"></script>
 </head>
 <body>
-<div class="nav-main-container">
-    <div class="nav-subcontainer">
-        <nav>
-            <a href="https://in.bgu.ac.il/" class="bgu-img-nav-link">
-                <img src="../pics/bgu-img-nav.png" class="bgu-img-nav">
-            </a>
-            <ul>
+<!-- Navbar Section -->
+<nav class="navbar">
+    <div class="navbar__container">
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span> <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
 
-                <li><a href="HomePage.html">בית</a></li>
-                <li><a href="about_us.html">אודות </a></li>
-                <li><a href="SearchCourse.html">חפש קורס</a></li>
-                <li><a href="TeacherSearch.html">חפש מורה</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
+        <ul class="navbar__menu">
+            <li class="navbar__item">
+                <a href="HomePage.html" class="navbar__links" id="home-page">בית</a>
+            </li>
+            <li class="navbar__item">
+                <a href="about_us.html" class="navbar__links" id="about-page">אודות</a>
+            </li>
+            <li class="navbar__item">
+                <a href="SearchCourse.html" class="navbar__links" id="course-page">חפש קורס</a>
+            </li>
+            <li class="navbar__item">
+                <a href="TeacherSearch.html" class="navbar__links" id="teacher-page">חפש מורה</a>
+            </li>
+            <li class="navbar__item">
+                <a href="#" class="navbar__links" id="Recommendation-page">מומלצים</a>
+            </li>
+        </ul>
     </div>
-</div>
+</nav>
 
 
 <div class="header">חיפוש מתרגל</div>
@@ -41,8 +47,7 @@
             <div class="box">
                 <p>
                     <label for="departmentNumber2">מספר מחלקה:</label>
-                    <select name="departmentNumber2" id="departmentNumber2" class="formScreen4SelectStyle"
-                            onchange="selectElement('courseNumber2','11')" required>
+                    <select name="departmentNumber2" id="departmentNumber2" class="formScreen4SelectStyle" onchange="selectElement('courseNumber2','11')" required>
                         <option value="11" disabled selected class="textInSelect">בחר מספר מחלקה</option>
                         <option value="361">361-המחלקה להנדסת חשמל ומחשבים</option>
                         <option value="362">362-המחלקה להנדסה מכונות</option>
@@ -68,7 +73,7 @@
             </div>
 
 
-            <input type="button" class="button7" value="חפש מורה" onclick="ShowTeacher()"> </input>
+            <input type="button" class="button7" value="חפש מורה" onclick="ShowTeacher('about')">
             <a href="Teacher_Reg.html">
                 <input type="button" class="button7" value="הירשם כמורה" name="createAccount">
             </a>

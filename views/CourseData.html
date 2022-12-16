@@ -10,28 +10,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <script defer src="../static/script.js"></script>
 </head>
-<body>
-<div class="nav-main-container">
-    <div class="nav-subcontainer">
-        <nav>
-            <a href="https://in.bgu.ac.il/" class="bgu-img-nav-link">
-                <img src="../pics/bgu-img-nav.png" class="bgu-img-nav">
-            </a>
-            <ul>
+<!-- Navbar Section -->
+<nav class="navbar">
+    <div class="navbar__container">
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span> <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
 
-                <li><a href="HomePage.html">בית</a></li>
-                <li><a href="about_us.html">אודות </a></li>
-                <li><a href="SearchCourse.html">חפש קורס</a></li>
-                <li><a href="TeacherSearch.html">חפש מורה</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
+        <ul class="navbar__menu">
+            <li class="navbar__item">
+                <a href="HomePage.html" class="navbar__links" id="home-page">בית</a>
+            </li>
+            <li class="navbar__item">
+                <a href="about_us.html" class="navbar__links" id="about-page">אודות</a>
+            </li>
+            <li class="navbar__item">
+                <a href="SearchCourse.html" class="navbar__links" id="course-page">חפש קורס</a>
+            </li>
+            <li class="navbar__item">
+                <a href="TeacherSearch.html" class="navbar__links" id="teacher-page">חפש מורה</a>
+            </li>
+            <li class="navbar__item">
+                <a href="#" class="navbar__links" id="Recommendation-page">מומלצים</a>
+            </li>
+        </ul>
     </div>
-</div>
+</nav>
+
 <div class="header6">בניית מערכות ממוחשבות מבוססות אינטרנט</div>
 <main class="containerScreen6">
     <div class="boxgridline6_1">
