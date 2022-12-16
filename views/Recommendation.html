@@ -38,10 +38,10 @@
         </ul>
     </div>
 </nav>
-
-<label for="interest">בחר תחום עניין : </label>
-<select name="interest" id="interest" class="formScreen4SelectStyle"
-        onchange="showItem('recommend_result')">
+<div class="intrest_container">
+    <label for="interest">בחר תחום עניין : </label>
+<select name="interest" id="interest" class="select_recommendation"
+        onchange="showItem('services','flex')">
     <option value="" disabled selected class="textInSelect">בחר מרשימה</option>
     <option value="1">בינה מלאכותית</option>
     <option value="2">אנליטיקה</option>
@@ -51,13 +51,41 @@
     <option value="6">תכנון ופיקוח על היצור</option>
 </select>
 
-<!--<input type="button" name="answer" value="המלץ לי על פעילות" onclick="showItem('recommend_result')"/>-->
-</form>
-<div id="recommend_result" style="display:none;" class="answer_list">
-    <button type="randomtrip" onclick="randomSong()">המלץ לי קורס אחר</button>
-    <input name="randomSong" id="randomTrip">
 </div>
 
+<div class="services" id="services" >
+    <h1>הקורסים המומלצים שלנו</h1>
+    <div class="services__wrapper">
+        <div class="services__card">
+            <h2>מבוא לבינה מלאכותית</h2>
+
+            <div class="services__btn">
+                <button>פרטי קורס</button>
+            </div>
+        </div>
+        <div class="services__card">
+            <h2>לימוד מכונה</h2>
+
+            <div class="services__btn">
+                <button>פרטי קורס</button>
+            </div>
+        </div>
+        <div class="services__card">
+            <h2>עיבוד שפה טבעית</h2>
+
+            <div class="services__btn">
+                <button>פרטי קורס</button>
+            </div>
+        </div>
+        <div class="services__card">
+            <h2>למידה עמוקה</h2>
+
+            <div class="services__btn">
+                <button>פרטי קורס</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="footer-basic">
     <footer>
         <div class="social"><a href="https://www.instagram.com/bengurionuniversity/"><i

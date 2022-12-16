@@ -51,17 +51,33 @@ function selectElement(id, valueToSelect) {
     }
 }
 
-function showItem(id) {
+function showItem(id ,display) {
 
-    document.getElementById(id).style.display = 'block';
+    document.getElementById(id).style.display = display;
+
+}
+
+function showTeachers(id ,display) {
+    if (document.getElementById(id).value !="" ) {
+            document.getElementById(id).style.display = display;
+            console.log('checkcheck1234')
+    }
+   else {
+     return false ;
+    }
 
 }
 
 function showItemes(id1, id2) {
-    showItem(id1)
-    showItem(id2)
+    showItem(id1,'block')
+    showItem(id2,'block')
 
 }
+
+$("#teacher_form").submit( function(e) {
+  loadAjax();
+  e.returnValue = false;
+});
 
 // function showTeacher(id_check,id_show) {
 //     if ( document.getElementById(id_check).value in ('361','362','363','364','365','366')) {
@@ -75,12 +91,6 @@ function showItemes(id1, id2) {
 
 ///////
 
-var trip = Array("טיול טרקטורונים", "קיר טיפוס", "שייט קיאקים", "שייט בסירת פדלים", "צניחה חופשית", "פיינטבול");
-
-function randomSong() {
-    var randomTrip = trip[Math.floor(Math.random() * trip.length)];
-    document.getElementById('randomTrip').value = randomTrip;
-}
 
 
 

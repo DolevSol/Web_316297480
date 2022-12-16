@@ -898,7 +898,7 @@ html ::-webkit-scrollbar-track {
 
 
 .main-title h3 .bg-text {
-    position: absolute;
+    /*position: absolute;*/
     top: 50%;
     left: 50%;
     color: var(--color-grey-5);
@@ -1029,4 +1029,117 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(40px);
+}
+
+
+/*Recommended*/
+
+.services {
+  background: #d9d9d8;
+    display:none ;
+  /*display: flex;*/
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 10rem 0;
+}
+
+.services h1 {
+
+  background-image: linear-gradient(to right, #232526, #414345);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  margin-bottom: 5rem;
+  font-size: 2.5rem;
+}
+
+.services__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.services__card {
+  margin: 10px;
+  height: 425px;
+  width: 300px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  background-image:linear-gradient(to right, #f46b45, #eea849);
+  transition: 0.3s ease-in;
+}
+
+.services__card:nth-child(2) {
+  background-image:linear-gradient(to right, #f46b45, #eea849);
+}
+
+.services__card:nth-child(3) {
+  background-image:linear-gradient(to right, #f46b45, #eea849);
+}
+
+.services__card h2 {
+  text-align: center;
+}
+
+.services__btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.services__card button {
+  color: #fff;
+  padding: 14px 24px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: #131313;
+  font-size: 1rem;
+}
+
+.services__card button:hover {
+  cursor: pointer;
+}
+
+.services__card:hover {
+  transform: scale(1.075);
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1300px) {
+  .services__wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .services__wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.intrest_container {
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    margin-right: 2rem;
+}
+.select_recommendation {
+    width: 25%;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 100px;
+    background-color: #FF9E3D;
+    border-color: #FF9E3D;
+
+
 }

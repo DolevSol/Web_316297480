@@ -43,13 +43,14 @@
 <div class="header">חיפוש מורה</div>
 <div class="containerScreen7">
     <div class="boxgridRow7_1">
-        <form class="formScreen7">
+        <form class="formScreen7" id="teacher_form" onsubmit="return showTeachers('about','block'); return false;">
             <div class="box">
                 <p>
+
                     <label for="departmentNumber2">מספר מחלקה:</label>
                     <select name="departmentNumber2" id="departmentNumber2" class="formScreen4SelectStyle" required
-                            onchange="selectElement('courseNumber2','11')" >
-                        <option value="" disabled selected class="textInSelect">בחר מספר מחלקה</option>
+                            onchange="selectElement('courseNumber2','111')" >
+                        <option value="" disabled selected value>בחר מספר מחלקה</option>
                         <option value="361">361-המחלקה להנדסת חשמל ומחשבים</option>
                         <option value="362">362-המחלקה להנדסה מכונות</option>
                         <option value="363">363-המחלקה להנדסה כימית</option>
@@ -62,7 +63,7 @@
                     <label for="courseNumber2">מספר קורס:</label>
                     <select name="courseNumber2" id="courseNumber2" disabled class="formScreen4SelectStyle">
 
-                        <option value="11" disabled selected class="textInSelect">בחר מספר קורס</option>
+                        <option value="111" disabled selected class="textInSelect">בחר מספר קורס</option>
                         <option value="1041">מבוא להסתברות</option>
                         <option value="1061">מודלים של רגרסיה</option>
                         <option value="1081">האינטרנט של הדברים בתעשייה</option>
@@ -74,7 +75,7 @@
             </div>
 
 
-            <input type="button" class="button7" value="חפש מורה" onclick="showItem('about')">
+            <input type="submit" class="button7" value="חפש מורה">
             <a href="Teacher_Reg.html">
                 <input type="button" class="button7" value="הירשם כמורה" name="createAccount">
             </a>
