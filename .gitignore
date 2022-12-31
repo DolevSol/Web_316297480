@@ -4,4 +4,3 @@ bin
 .idea/
 pyvenv.cfg
 .DS_Store
-myapp

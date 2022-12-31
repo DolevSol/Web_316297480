@@ -1,0 +1,25 @@
+{
+  "name": "web_316297480",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DolevSol/Web_316297480.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DolevSol/Web_316297480/issues"
+  },
+  "homepage": "https://github.com/DolevSol/Web_316297480#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
