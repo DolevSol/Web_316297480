@@ -1,4 +1,4 @@
-const sql = require("mysql2");
+const sql = require('./db');
 
 const insertNewSignIn = (req,res)=> {
     //todo  לשנות את הנתיב לפי הנתיב שכתבתי בפרקויט
@@ -43,4 +43,29 @@ const showAll = (req,res)=> {
     })
 }
 
-    module.exports= {insertNewSingIN ,showAll}
+
+const findUser = (req,res) => {
+    //validate body exists
+    if(!req.body) {
+        res.status(400).send({message:"body cannot be empty"})
+        return ;
+    }
+    // pill data from body
+    const user = req.body.SearchName;
+
+    //run qurey
+    const Q3 = "SELECT * FROM customers WHERE name like ? " ;
+    sql.query(Q3, user + "%",(err,mysqlres) =>{
+    if (err) {
+        console.log("error: error:" ,err);
+        res.status(400).send({message:"could not search customer"})
+        return ;
+    }
+    console.log("found user:",{user:mysqlres});
+    res.send(mysqlres);
+    return;
+
+    })
+
+}
+    module.exports= {insertNewSingIN ,showAll, findUser}
