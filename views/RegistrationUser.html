@@ -38,7 +38,7 @@
 <!-- phonenumber(document.reg_user.phone)-->
 <div class="container">
     <div class="header">צור חשבון</div>
-    <form class="formScreenTwoThree" name="reg_user" action="HomePage.html"
+    <form class="formScreenTwoThree"  method="post" name="reg_user" action="/insertUserintoDB"
           onsubmit="return phonenumber(document.reg_user.phone)">
         <p>
             <label for="userName">שם משתמש:</label>
@@ -57,7 +57,7 @@
         <input type="tel" class="inputs-screen-2_3" id="phone" name="phone" autocomplete="on" required>
         </p>
         <label for="yeartaken">שנת תחילת הלימודים:</label>
-        <select name="yeartaken" id="yeartaken" class="inputs-screen-2_3_dropdown">
+        <select name="yeartaken" id="yeartaken" name="yeartaken" class="inputs-screen-2_3_dropdown">
             <option value="try1" disabled selected class="textInSelect">בחר שנה</option>
             <option value="2022">2022</option>
             <option value="2021">2021</option>

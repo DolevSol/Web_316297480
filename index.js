@@ -2,10 +2,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-const sql = require('./db');
-// const connection = require('./db');
+const sql = require('./database/db');
 const port = 8080;
-// const CRUD = require('./CRUD')
+const CRUD = require('./database/CRUD')
 
 app.use(express.static('static'));
 app.use(bodyParser.json());
@@ -57,14 +56,20 @@ app.get('/SearchTeacher', (req, res) => {
     res.sendFile(path.join(__dirname, 'views/TeacherSearch.html'))
 })
 
+
+
+app.post('/insertUserintoDB', CRUD.insertNewSignIn );
+
+
+
 app.listen(port, () => {
     console.log("server is running on port" + port)
 })
 
 // //showAll qurey route
 // app.get('/showAll', CRUD.showAll);
-//
-//
+
+
 // // search course
 // app.get('searchByNameForm', (req, res) => {
 //     res.sendFile(path.join(__dirname, "views/findUser.html"))
