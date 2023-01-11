@@ -1,0 +1,55 @@
+extends layout
+block content
+    .container
+      .header  צור חשבון מורה
+      form.formScreenTwoThree(name="reg_teacher", action="HomePage.pug", onsubmit="return phonenumber(document.reg_teacher.phone_teacher)")
+        p
+          label(for="userName") שם משתמש:
+          input#userName(type="text", class="inputs-screen-2_3", name="userName", autocomplete="on", required)
+        p
+          label(for="password") סיסמא:
+          input#password(type="password", class="inputs-screen-2_3", name="password", autocomplete="on", required)
+        label(for="email") אימייל:
+        input#email(type="email", class="inputs-screen-2_3", name="email", autocomplete="on", required, pattern="\w+@post\.bgu\.ac\.il")
+        label(for="phone_teacher") מספר פלאפון:
+        input(type="tel", class="inputs-screen-2_3", id="phone_teacher", name="phone_teacher", autocomplete="on", required)
+        label(for="yeartaken") שנות ניסיון:
+        select#yeartaken(name="yeartaken", class="inputs-screen-2_3_dropdown")
+          option.textInSelect(value="try1", disabled, selected) בחר שנה
+          option(value="1") 1
+          option(value="2") 2
+          option(value="3") 3
+          option(value="4") 4
+          option(value="5") 5
+          option(value="6") 6
+          option(value="7") 7
+          option(value="8") 8
+          option(value="9") 9
+          option(value="10") 10
+          option(value="11") 11
+          option(value="12") 12
+          option(value="13") 13
+        label(for="ageteac") גיל:
+        input#ageteac(type="number", min="20", class="inputs-screen-2_3", name="phone", autocomplete="on", required)
+        p
+          label(for="departmentNumber") מספר מחלקה:
+          select#departmentNumber.formTeacheRegSelectStyle(name="departmentNumber", required)
+            option.textInSelect(value="", disabled, selected) בחר מספר מחלקה
+            option(value="361") 361-המחלקה להנדסת חשמל ומחשבים
+            option(value="362") 362-המחלקה להנדסה מכונות
+            option(value="363") 363-המחלקה להנדסה כימית
+            option(value="364") 364-המחלקה להנדסת תעשייה וניהול
+            option(value="365") 365-המחלקה להנדסה חומרים
+            option(value="366") 366-המחלקה להנדסה גרעינית
+        p
+          label(for="courseNumber") מספר קורס:
+          select#courseNumber.formTeacheRegSelectStyle(name="courseNumber")
+            option.textInSelect(value="", disabled, selected) בחר מספר קורס
+            option(value="1041") מבוא להסתברות
+            option(value="1061") מודלים של רגרסיה
+            option(value="1081") האינטרנט של הדברים בתעשייה
+            option(value="1091") הנדסת איכות
+            option(value="1171") מערכות בינה עיסקית
+            option(value="1191") יסודות האלגוריתמים והסיבוכיות
+        p
+          button(type="submit", class="button2_3") צור חשבון

@@ -10,6 +10,10 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+// load view engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 // todo : בכל הפורמים חייב להיות כפתור עם תגיט אינפוט מסוג סבמיט
 //todo :  action in the form  should be the route to the page  __dirname + path to the relevant screen
 // todo : if we want to redirect the page to other page after singin we have to to it in the crud fuction
@@ -19,48 +23,53 @@ app.get('/', (req, res) => {
     res.redirect("/home")
 })
 app.get('/home', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/HomePage.html'))
+    res.render('Homepage')
+
 })
 
 app.get('/Login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/Login.html'))
+    res.render('Login')
+
 })
 app.get('/about_us', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/about_us.html'))
+    res.render('about_us')
+
 })
 app.get('/comment', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/comment.html'))
+    res.render('comment')
 })
 app.get('/CourseData', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/CourseData.html'))
+    res.render('CourseData')
+
 })
 app.get('/CourseResult', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/CourseResults.html'))
+    res.render('CourseResults')
+
 })
 app.get('/Recommendation', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/Recommendation.html'))
+    res.render('Recommendation')
 })
 app.get('/RegistrationUser', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/RegistrationUser.html'))
+    res.render('RegistrationUser')
 })
 app.get('/SearchCourse', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/SearchCourse.html'))
+    res.render('SearchCourse')
 })
 app.get('/SendEmail', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/SendEmail.html'))
+    res.render('SendEmail')
 })
 app.get('/RegistrationTeacher', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/Teacher_Reg.html'))
+    res.render('Teacher_Reg')
+
 })
 app.get('/SearchTeacher', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/TeacherSearch.html'))
+        res.render('TeacherSearch')
 })
 
 
+app.post('/insertUserintoDB', CRUD.insertNewSignIn);
 
-app.post('/insertUserintoDB', CRUD.insertNewSignIn );
-
-app.post('/checkLogin',CRUD.checkLogin)
+app.post('/checkLogin', CRUD.checkLogin)
 
 
 app.listen(port, () => {

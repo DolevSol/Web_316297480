@@ -28,7 +28,7 @@ const insertNewSignIn = (req, res) => {
         }
         // console.log("create student:", {id: mysqlres.});
         // res.send({massage: "you just signed in successifuly"});
-        res.sendFile(path.join(__dirname, '../views/HomePage.html'))
+        res.sendFile(path.join(__dirname, '../views/HomePage.pug'))
         return;
     })
 
@@ -58,7 +58,7 @@ const checkLogin = (req, res) => {
         }
         if (mysqlres.length > 0) {
             console.log("user exists:", {username: mysqlres[0]})
-            res.sendFile(path.join(__dirname, '../views/HomePage.html'));
+            res.sendFile(path.join(__dirname, '../views/HomePage.pug'));
         } else {
             // todo delete all the uncommand lines
             // console.log(mysqlres ,typeof (mysqlres))

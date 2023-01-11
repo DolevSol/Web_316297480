@@ -1,0 +1,35 @@
+extends layout
+block content
+    div(class="intrest_container")
+      label(for="interest") בחר תחום עניין :
+      select#interest(name="interest", class="select_recommendation", onchange="showItem('services','flex')")
+        option.textInSelect(value="", disabled, selected) בחר מרשימה
+        option(value="1") בינה מלאכותית
+        option(value="2") אנליטיקה
+        option(value="3") תכנות
+        option(value="4") ניהול מוצר
+        option(value="5") מערכות מידע
+        option(value="6") תכנון ופיקוח על היצור
+    #services.services
+      h1 הקורסים המומלצים שלנו
+      div(class="services__wrapper")
+        div(class="services__card")
+          h2 מבוא לבינה מלאכותית
+          div(class="services__btn")
+            a(href="/CourseData")
+              button פרטי קורס
+        div(class="services__card")
+          h2 לימוד מכונה
+          div(class="services__btn")
+            a(href="/CourseData")
+              button פרטי קורס
+        div(class="services__card")
+          h2 עיבוד שפה טבעית
+          div(class="services__btn")
+            a(href="/CourseData")
+              button פרטי קורס
+        div(class="services__card")
+          h2 למידה עמוקה
+          div(class="services__btn")
+            a(href="/CourseData")
+              button פרטי קורס
