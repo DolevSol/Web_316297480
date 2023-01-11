@@ -1,7 +1,7 @@
 const sql = require('./db');
+const path = require("path");
 
 const insertNewSignIn = (req, res) => {
-    //todo  לשנות את הנתיב לפי הנתיב שכתבתי בפרקויט
     //validate date
     if (!req.body) {
         res.status(400).send({message: "content cannot be empty"})
@@ -26,9 +26,47 @@ const insertNewSignIn = (req, res) => {
             res.status(400).send({message: "could not sign in"});
             return;
         }
-        console.log("create student:", {id: mysqlres.insertId});
-        res.send({massage: "you just signed in successifuly"});
+        // console.log("create student:", {id: mysqlres.});
+        // res.send({massage: "you just signed in successifuly"});
+        res.sendFile(path.join(__dirname, '../views/HomePage.html'))
         return;
+    })
+
+}
+
+
+const checkLogin = (req, res) => {
+    //validate date
+    if (!req.body) {
+        res.status(400).send({message: "content cannot be empty"})
+        return;
+    }
+    console.log(req.body)
+    // insert input data from body into json
+    const UserData = {
+        "username": req.body.userName1,
+        "password": req.body.password1
+    }
+
+    //run qurey
+    const Q2 = 'SELECT * FROM students WHERE username = ? AND password = ? ';
+    sql.query(Q2, [UserData.username, UserData.password], (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "could not Login"});
+            return;
+        }
+        if (mysqlres.length > 0) {
+            console.log("user exists:", {username: mysqlres[0]})
+            res.sendFile(path.join(__dirname, '../views/HomePage.html'));
+        } else {
+            // todo delete all the uncommand lines
+            // console.log(mysqlres ,typeof (mysqlres))
+            // console.log("user exists:", {username: mysqlres[0]})
+            // console.log("user does not exist or invalid password");
+            res.status(400).send({message: "invalid username or password"});
+        }
+
     })
 
 }
@@ -71,4 +109,4 @@ const insertNewSignIn = (req, res) => {
 //     })
 //
 // }
-module.exports = {insertNewSignIn}
+module.exports = {insertNewSignIn, checkLogin}

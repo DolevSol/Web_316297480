@@ -60,6 +60,7 @@ app.get('/SearchTeacher', (req, res) => {
 
 app.post('/insertUserintoDB', CRUD.insertNewSignIn );
 
+app.post('/checkLogin',CRUD.checkLogin)
 
 
 app.listen(port, () => {
