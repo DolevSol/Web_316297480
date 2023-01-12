@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const csv = require('csvtojson')
 const bodyParser = require('body-parser');
 const sql = require('./database/db');
 const port = 8080;
 const CRUD = require('./database/CRUD')
+const CreateDB = require('./database/CreateDB')
 
 app.use(express.static('static'));
 app.use(bodyParser.json());
@@ -17,6 +19,14 @@ app.set('view engine', 'pug');
 // todo : בכל הפורמים חייב להיות כפתור עם תגיט אינפוט מסוג סבמיט
 //todo :  action in the form  should be the route to the page  __dirname + path to the relevant screen
 // todo : if we want to redirect the page to other page after singin we have to to it in the crud fuction
+
+app.get('/CreateTable',[CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews]) ;
+
+// app.get('/CreateTable',CreateDB.InsertData) ;
+
+app.get('/ShowTable',  [CreateDB.ShowStudents, CreateDB.ShowDepartments, CreateDB.ShowCourses, CreateDB.ShowTeachers, CreateDB.ShowCourseInstances, CreateDB.Showreviews ]) ;
+
+app.get('/DropTable',[CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]) ;
 
 
 app.get('/', (req, res) => {
@@ -63,7 +73,7 @@ app.get('/RegistrationTeacher', (req, res) => {
 
 })
 app.get('/SearchTeacher', (req, res) => {
-        res.render('TeacherSearch')
+    res.render('TeacherSearch')
 })
 
 
