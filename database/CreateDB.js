@@ -85,20 +85,24 @@ const CreateReviews = (req, res, next) => {
 
 }
 const InsertStudents = (req, res, next) => {
-    var Q2 = "INSERT INTO items SET ?";
-    const csvFilePath = path.join(__dirname, "data.csv");
+    var Q1 = "INSERT INTO students SET ?";
+    const csvFilePath = path.join(__dirname, "/CSV/Students.csv");
     csv()
         .fromFile(csvFilePath)
         .then((jsonObj) => {
             console.log(jsonObj);
             jsonObj.forEach(element => {
                 var NewEntry = {
-                    "name": element.name,
-                    "email": element.email
+                    "username": element.username,
+                    "password": element.password,
+                    "email": element.email,
+                    "phone_number": element.phone_number,
+                    "start_year": element.start_year,
+                    "age": element.age
                 }
-                SQL.query(Q2, NewEntry, (err, mysqlres) => {
+                SQL.query(Q1, NewEntry, (err, mysqlres) => {
                     if (err) {
-                        console.log("error in inserting data", err);
+                        console.log("error in insertingStudents data", err);
                     }
                     console.log("created row sucssefuly ");
                 });
@@ -109,20 +113,20 @@ const InsertStudents = (req, res, next) => {
 
 };
 const InsertDepartments = (req, res, next) => {
-    var Q2 = "INSERT INTO items SET ?";
-    const csvFilePath = path.join(__dirname, "data.csv");
+    var Q2 = "INSERT INTO departments SET ?";
+    const csvFilePath = path.join(__dirname, "/CSV/Departments.csv");
     csv()
         .fromFile(csvFilePath)
         .then((jsonObj) => {
             console.log(jsonObj);
             jsonObj.forEach(element => {
                 var NewEntry = {
-                    "name": element.name,
-                    "email": element.email
+                    "department_id": element.department_id,
+                    "department_name": element.department_name
                 }
                 SQL.query(Q2, NewEntry, (err, mysqlres) => {
                     if (err) {
-                        console.log("error in inserting data", err);
+                        console.log("error in inserting Departments data", err);
                     }
                     console.log("created row sucssefuly ");
                 });
@@ -133,20 +137,21 @@ const InsertDepartments = (req, res, next) => {
 
 };
 const InsertCourses = (req, res, next) => {
-    var Q2 = "INSERT INTO items SET ?";
-    const csvFilePath = path.join(__dirname, "data.csv");
+    var Q3 = "INSERT INTO courses SET ?";
+    const csvFilePath = path.join(__dirname, "/CSV/Courses.csv");
     csv()
         .fromFile(csvFilePath)
         .then((jsonObj) => {
             console.log(jsonObj);
             jsonObj.forEach(element => {
                 var NewEntry = {
-                    "name": element.name,
-                    "email": element.email
+                    "course_id": element.course_id,
+                    "course_name": element.course_name,
+                    "department_id": element.department_id
                 }
-                SQL.query(Q2, NewEntry, (err, mysqlres) => {
+                SQL.query(Q3, NewEntry, (err, mysqlres) => {
                     if (err) {
-                        console.log("error in inserting data", err);
+                        console.log("error in inserting Courses data", err);
                     }
                     console.log("created row sucssefuly ");
                 });
@@ -158,20 +163,26 @@ const InsertCourses = (req, res, next) => {
 };
 
 const InsertTeachers = (req, res, next) => {
-    var Q2 = "INSERT INTO items SET ?";
-    const csvFilePath = path.join(__dirname, "data.csv");
+    var Q4 = "INSERT INTO teachers SET ?";
+    const csvFilePath = path.join(__dirname, "/CSV/Teachers.csv");
     csv()
         .fromFile(csvFilePath)
         .then((jsonObj) => {
             console.log(jsonObj);
             jsonObj.forEach(element => {
                 var NewEntry = {
-                    "name": element.name,
-                    "email": element.email
+                    "username": element.username,
+                    "password": element.password,
+                    "email": element.email,
+                    "phone_number": element.phone_number,
+                    "start_year": element.start_year,
+                    "age": element.age,
+                    "department_id": element.department_id,
+                    "course_id": element.course_id
                 }
-                SQL.query(Q2, NewEntry, (err, mysqlres) => {
+                SQL.query(Q4, NewEntry, (err, mysqlres) => {
                     if (err) {
-                        console.log("error in inserting data", err);
+                        console.log("error in inserting Teachers data", err);
                     }
                     console.log("created row sucssefuly ");
                 });
@@ -182,20 +193,25 @@ const InsertTeachers = (req, res, next) => {
 
 };
 const InsertCourseInstances = (req, res, next) => {
-    var Q2 = "INSERT INTO items SET ?";
-    const csvFilePath = path.join(__dirname, "data.csv");
+    var Q5 = "INSERT INTO course_instances SET ?";
+    const csvFilePath = path.join(__dirname, "/CSV/CourseInstances.csv");
     csv()
         .fromFile(csvFilePath)
         .then((jsonObj) => {
             console.log(jsonObj);
             jsonObj.forEach(element => {
                 var NewEntry = {
-                    "name": element.name,
-                    "email": element.email
+                    "course_id": element.course_id,
+                    "year_taken": element.year_taken,
+                    "semester": element.semester,
+                    "load_rating": element.load_rating,
+                    "difficulty_rating": element.difficulty_rating,
+                    "average_score": element.average_score,
+                    "standard_deviation": element.standard_deviation
                 }
-                SQL.query(Q2, NewEntry, (err, mysqlres) => {
+                SQL.query(Q5, NewEntry, (err, mysqlres) => {
                     if (err) {
-                        console.log("error in inserting data", err);
+                        console.log("error in inserting CourseInstances data", err);
                     }
                     console.log("created row sucssefuly ");
                 });
@@ -208,20 +224,26 @@ const InsertCourseInstances = (req, res, next) => {
 
 
 const Insertreviews = (req, res) => {
-    var Q2 = "INSERT INTO items SET ?";
-    const csvFilePath = path.join(__dirname, "data.csv");
+    var Q6 = "INSERT INTO reviews SET ?";
+    const csvFilePath = path.join(__dirname, "/CSV/reviews.csv");
     csv()
         .fromFile(csvFilePath)
         .then((jsonObj) => {
             console.log(jsonObj);
             jsonObj.forEach(element => {
                 var NewEntry = {
-                    "name": element.name,
-                    "email": element.email
+                    "review_id": element.review_id,
+                    "review_date": element.review_date,
+                    "username": element.username,
+                    "course_id": element.course_id,
+                    "title": element.title,
+                    "description": element.description,
+                    "load_rating": element.load_rating,
+                    "difficulty_rating": element.difficulty_rating
                 }
-                SQL.query(Q2, NewEntry, (err, mysqlres) => {
+                SQL.query(Q6, NewEntry, (err, mysqlres) => {
                     if (err) {
-                        console.log("error in inserting data", err);
+                        console.log("error in inserting reviews data", err);
                     }
                     console.log("created row sucssefuly ");
                 });
@@ -233,7 +255,7 @@ const Insertreviews = (req, res) => {
 };
 
 
-const ShowStudents = (req, res, next) => {
+const ShowStudents = (req, res) => {
     var Q1 = "SELECT * FROM students";
     SQL.query(Q1, (err, mySQLres) => {
         if (err) {
@@ -241,12 +263,14 @@ const ShowStudents = (req, res, next) => {
             res.send("error in showing students table ");
             return;
         }
-
+        console.log("showing table");
+        res.send(mySQLres);
+        return;
     })
-    next()
+
 };
 
-const ShowDepartments = (req, res, next) => {
+const ShowDepartments = (req, res) => {
     var Q2 = "SELECT * FROM departments ";
     SQL.query(Q2, (err, mySQLres) => {
         if (err) {
@@ -254,12 +278,14 @@ const ShowDepartments = (req, res, next) => {
             res.send("error in showing departments table ");
             return;
         }
-
+        console.log("showing table");
+        res.send(mySQLres);
+        return;
     })
-    next()
+
 };
 
-const ShowCourses = (req, res, next) => {
+const ShowCourses = (req, res) => {
     var Q3 = "SELECT * FROM courses";
     SQL.query(Q3, (err, mySQLres) => {
         if (err) {
@@ -267,12 +293,15 @@ const ShowCourses = (req, res, next) => {
             res.send("error in showing courses table ");
             return;
         }
-
+        console.log("showing table");
+        res.send(mySQLres);
+        return;
     })
+
 };
 
 
-const ShowTeachers = (req, res, next) => {
+const ShowTeachers = (req, res) => {
     var Q4 = "SELECT * FROM teachers";
     SQL.query(Q4, (err, mySQLres) => {
         if (err) {
@@ -280,23 +309,27 @@ const ShowTeachers = (req, res, next) => {
             res.send("error in showing teachers table ");
             return;
         }
-
+        console.log("showing table");
+        res.send(mySQLres);
+        return;
     })
-    next()
+
 };
 
 
-const ShowCourseInstances = (req, res, next) => {
+const ShowCourseInstances = (req, res) => {
     var Q5 = "SELECT * FROM course_instances";
-    SQL.query(Q5, (err, mySQLres) => {
+    SQL.query(Q5, (err, mysqlres) => {
         if (err) {
             console.log("error in showing course_instances table ", err);
             res.send("error in showing course_instances table ");
             return;
         }
-
+        console.log("showing table");
+        res.send(mysqlres);
+        return;
     })
-    next()
+
 };
 
 const Showreviews = (req, res) => {
@@ -308,7 +341,7 @@ const Showreviews = (req, res) => {
             return;
         }
         console.log("showing table");
-        res.send("/InsertData");
+        res.send(mySQLres);
         return;
     })
 };
@@ -396,16 +429,22 @@ module.exports = {
     CreateTeachers,
     CreateCourseInstances,
     CreateReviews,
-    DropStudents,
-    DropDepartments,
-    DropCourses,
-    DropTeachers,
-    DropCourseInstances,
-    DropReviews,
+    InsertStudents,
+    InsertDepartments,
+    InsertCourses,
+    InsertTeachers,
+    InsertCourseInstances,
+    Insertreviews,
     ShowStudents,
     ShowDepartments,
     ShowCourses,
     ShowTeachers,
     ShowCourseInstances,
-    Showreviews
+    Showreviews,
+    DropStudents,
+    DropDepartments,
+    DropCourses,
+    DropTeachers,
+    DropCourseInstances,
+    DropReviews
 };

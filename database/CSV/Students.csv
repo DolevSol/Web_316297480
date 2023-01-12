@@ -1,0 +1,11 @@
+username,password,email,phone_number,start_year,age
+Amir,abc123,amir@post.bgu.ac.il,0541234567,2018,25
+Aviv,abc901,aviv@post.bgu.ac.il,0540123456,2018,25
+Gal,stu901,gal@post.bgu.ac.il,0547890123,2018,25
+Itai,ghi789,itai@post.bgu.ac.il,0543456789,2020,23
+Michal,pqr678,michal@post.bgu.ac.il,0546789456789,2020,23
+Noa,jkl012,noa@post.bgu.ac.il,05445645678,2018,25
+Shira,def456,shira@post.bgu.ac.il,05423445678,2019,24
+Tal,yz0167,tal@post.bgu.ac.il,0549012345,2020,23
+Tamar,vwx234,tamar@post.bgu.ac.il,054890456789,2019,24
+Uri,mno345,uri@post.bgu.ac.il,054567456789,2019,24

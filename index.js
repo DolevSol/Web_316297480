@@ -20,13 +20,20 @@ app.set('view engine', 'pug');
 //todo :  action in the form  should be the route to the page  __dirname + path to the relevant screen
 // todo : if we want to redirect the page to other page after singin we have to to it in the crud fuction
 
-app.get('/CreateTable',[CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews]) ;
+app.get('/CreateTable', [CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews]);
 
-// app.get('/CreateTable',CreateDB.InsertData) ;
+app.get('/InsertTable', [CreateDB.InsertStudents, CreateDB.InsertDepartments, CreateDB.InsertCourses, CreateDB.InsertTeachers, CreateDB.InsertCourseInstances, CreateDB.Insertreviews]);
 
-app.get('/ShowTable',  [CreateDB.ShowStudents, CreateDB.ShowDepartments, CreateDB.ShowCourses, CreateDB.ShowTeachers, CreateDB.ShowCourseInstances, CreateDB.Showreviews ]) ;
 
-app.get('/DropTable',[CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]) ;
+app.get('/ShowTable/ShowStudents', CreateDB.ShowStudents);
+app.get('/ShowTable/ShowDepartments', CreateDB.ShowDepartments);
+app.get('/ShowTable/ShowCourses', CreateDB.ShowCourses);
+app.get('/ShowTable/ShowTeachers', CreateDB.ShowTeachers);
+app.get('/ShowTable/ShowCourseInstances', CreateDB.ShowCourseInstances);
+app.get('/ShowTable/Showreviews', CreateDB.Showreviews);
+
+
+app.get('/DropTable', [CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
 
 
 app.get('/', (req, res) => {
