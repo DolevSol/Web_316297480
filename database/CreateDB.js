@@ -84,9 +84,130 @@ const CreateReviews = (req, res, next) => {
     })
 
 }
+const InsertStudents = (req, res, next) => {
+    var Q2 = "INSERT INTO items SET ?";
+    const csvFilePath = path.join(__dirname, "data.csv");
+    csv()
+        .fromFile(csvFilePath)
+        .then((jsonObj) => {
+            console.log(jsonObj);
+            jsonObj.forEach(element => {
+                var NewEntry = {
+                    "name": element.name,
+                    "email": element.email
+                }
+                SQL.query(Q2, NewEntry, (err, mysqlres) => {
+                    if (err) {
+                        console.log("error in inserting data", err);
+                    }
+                    console.log("created row sucssefuly ");
+                });
+            });
+        });
+
+    next()
+
+};
+const InsertDepartments = (req, res, next) => {
+    var Q2 = "INSERT INTO items SET ?";
+    const csvFilePath = path.join(__dirname, "data.csv");
+    csv()
+        .fromFile(csvFilePath)
+        .then((jsonObj) => {
+            console.log(jsonObj);
+            jsonObj.forEach(element => {
+                var NewEntry = {
+                    "name": element.name,
+                    "email": element.email
+                }
+                SQL.query(Q2, NewEntry, (err, mysqlres) => {
+                    if (err) {
+                        console.log("error in inserting data", err);
+                    }
+                    console.log("created row sucssefuly ");
+                });
+            });
+        });
+
+    next()
+
+};
+const InsertCourses = (req, res, next) => {
+    var Q2 = "INSERT INTO items SET ?";
+    const csvFilePath = path.join(__dirname, "data.csv");
+    csv()
+        .fromFile(csvFilePath)
+        .then((jsonObj) => {
+            console.log(jsonObj);
+            jsonObj.forEach(element => {
+                var NewEntry = {
+                    "name": element.name,
+                    "email": element.email
+                }
+                SQL.query(Q2, NewEntry, (err, mysqlres) => {
+                    if (err) {
+                        console.log("error in inserting data", err);
+                    }
+                    console.log("created row sucssefuly ");
+                });
+            });
+        });
+
+    next()
+
+};
+
+const InsertTeachers = (req, res, next) => {
+    var Q2 = "INSERT INTO items SET ?";
+    const csvFilePath = path.join(__dirname, "data.csv");
+    csv()
+        .fromFile(csvFilePath)
+        .then((jsonObj) => {
+            console.log(jsonObj);
+            jsonObj.forEach(element => {
+                var NewEntry = {
+                    "name": element.name,
+                    "email": element.email
+                }
+                SQL.query(Q2, NewEntry, (err, mysqlres) => {
+                    if (err) {
+                        console.log("error in inserting data", err);
+                    }
+                    console.log("created row sucssefuly ");
+                });
+            });
+        });
+
+    next()
+
+};
+const InsertCourseInstances = (req, res, next) => {
+    var Q2 = "INSERT INTO items SET ?";
+    const csvFilePath = path.join(__dirname, "data.csv");
+    csv()
+        .fromFile(csvFilePath)
+        .then((jsonObj) => {
+            console.log(jsonObj);
+            jsonObj.forEach(element => {
+                var NewEntry = {
+                    "name": element.name,
+                    "email": element.email
+                }
+                SQL.query(Q2, NewEntry, (err, mysqlres) => {
+                    if (err) {
+                        console.log("error in inserting data", err);
+                    }
+                    console.log("created row sucssefuly ");
+                });
+            });
+        });
+
+    next()
+
+};
 
 
-const InsertData = (req, res) => {
+const Insertreviews = (req, res) => {
     var Q2 = "INSERT INTO items SET ?";
     const csvFilePath = path.join(__dirname, "data.csv");
     csv()
@@ -135,7 +256,7 @@ const ShowDepartments = (req, res, next) => {
         }
 
     })
-        next()
+    next()
 };
 
 const ShowCourses = (req, res, next) => {
@@ -161,9 +282,8 @@ const ShowTeachers = (req, res, next) => {
         }
 
     })
-        next()
+    next()
 };
-
 
 
 const ShowCourseInstances = (req, res, next) => {
@@ -176,7 +296,7 @@ const ShowCourseInstances = (req, res, next) => {
         }
 
     })
-        next()
+    next()
 };
 
 const Showreviews = (req, res) => {
@@ -230,7 +350,7 @@ const DropCourses = (req, res, next) => {
         }
 
     })
-        next()
+    next()
 }
 const DropTeachers = (req, res, next) => {
     var Q4 = "drop table teachers;";
@@ -242,7 +362,7 @@ const DropTeachers = (req, res, next) => {
         }
 
     })
-        next()
+    next()
 }
 const DropCourseInstances = (req, res, next) => {
     var Q5 = "drop table course_instances;";
@@ -254,7 +374,7 @@ const DropCourseInstances = (req, res, next) => {
         }
 
     })
-        next()
+    next()
 }
 const DropReviews = (req, res, next) => {
     var Q6 = "drop table reviews ";
@@ -276,7 +396,6 @@ module.exports = {
     CreateTeachers,
     CreateCourseInstances,
     CreateReviews,
-    InsertData,
     DropStudents,
     DropDepartments,
     DropCourses,
