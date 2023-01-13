@@ -12,7 +12,7 @@ block content
             .box
                 p
                     label(for="departmentNumber") מספר מחלקה:
-                    select#departmentNumber.formScreen4SelectStyle(name="departmentNumber", required, onchange="selectElement('courseNumber','11'); DynamicDropdown('departmentNumber', 'courseNumber');")
+                    select#departmentNumber.formScreen4SelectStyle(name="departmentNumber", required, onchange="selectElement('courseNumber','11');DependentDropdown('departmentNumber','courseNumber');")
                         option.textInSelect(value="", disabled, selected) בחר מספר מחלקה
                         each department in departments
                             option(value=department.department_id) #{department.department_id} - #{department.department_name}
