@@ -83,9 +83,23 @@ function phonenumber(inputtxt) {
     }
 }
 
+function DynamicDropdown(parentElement, childElement) {
 
+    const parentSelect = document.getElementById(parentElement);
+    const childSelect = document.getElementById(childElement);
 
-
-
-
-
+    parentSelect.addEventListener('change', function () {
+        const departmentId = this.value;
+        fetch(`/SearchCourse/${departmentId}`)
+            .then(res => res.json())
+            .then(courses => {
+                childSelect.innerHTML = '<option value="111">בחר קורס</option>';
+                courses.forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course.course_id;
+                    option.text = course.course_name;
+                    childSelect.appendChild(option);
+                });
+            });
+    });
+}

@@ -17,10 +17,10 @@ const insertNewSignIn = (req, res) => {
         "start_year": req.body.yeartaken,
         "age": req.body.age
     }
-
+    console.log(NewSignUp)
     //run qurey
-    const Q1 = 'INSERT INTO students SET?';
-    sql.query(Q1, NewSignUp, (err, mysqlres) => {
+    const qurey = 'INSERT INTO students SET?';
+    sql.query(qurey, NewSignUp, (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
             res.status(400).send({message: "could not sign in"});
@@ -28,7 +28,7 @@ const insertNewSignIn = (req, res) => {
         }
         // console.log("create student:", {id: mysqlres.});
         // res.send({massage: "you just signed in successifuly"});
-        res.sendFile(path.join(__dirname, '../views/HomePage.pug'))
+        res.render(path.join(__dirname, '../views/HomePage.pug'))
         return;
     })
 
@@ -47,10 +47,10 @@ const checkLogin = (req, res) => {
         "username": req.body.userName1,
         "password": req.body.password1
     }
-
+    console.log(NewSignUp)
     //run qurey
-    const Q2 = 'SELECT * FROM students WHERE username = ? AND password = ? ';
-    sql.query(Q2, [UserData.username, UserData.password], (err, mysqlres) => {
+    const qurey = 'SELECT * FROM students WHERE username = ? AND password = ? ';
+    sql.query(qurey, [UserData.username, UserData.password], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
             res.status(400).send({message: "could not Login"});
@@ -58,15 +58,63 @@ const checkLogin = (req, res) => {
         }
         if (mysqlres.length > 0) {
             console.log("user exists:", {username: mysqlres[0]})
-            res.sendFile(path.join(__dirname, '../views/HomePage.pug'));
+            res.render(path.join(__dirname, '../views/HomePage.pug'));
         } else {
-            // todo delete all the uncommand lines
-            // console.log(mysqlres ,typeof (mysqlres))
-            // console.log("user exists:", {username: mysqlres[0]})
-            // console.log("user does not exist or invalid password");
+
             res.status(400).send({message: "invalid username or password"});
         }
 
+    })
+
+}
+
+// function that happen when i render course search
+const renderdepartment = (req, res) => {
+
+    const qurey = 'SELECT * FROM departments ';
+    sql.query(qurey, (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "Problem with department table "});
+            return;
+        }
+
+        res.render('SearchCourse', {departments: mysqlres});
+    })
+
+}
+
+
+const insertNewTeacher = (req, res) => {
+    //validate date
+    if (!req.body) {
+        res.status(400).send({message: "content cannot be empty"})
+        return;
+    }
+
+    // insert input data from body into json
+    const NewSignUp = {
+        "username": req.body.userName,
+        "password": req.body.password,
+        "email": req.body.email,
+        "phone_number": req.body.phone_teacher,
+        "start_year": req.body.yeartaken,
+        "age": req.body.age,
+        "department_id": req.body.departmentNumber,
+        "course_id": req.body.courseNumber
+    }
+    console.log(NewSignUp)
+    //run qurey
+    const qurey = 'INSERT INTO teachers SET?';
+    sql.query(qurey, NewSignUp, (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "could not sign in"});
+            return;
+        }
+
+        res.render(path.join(__dirname, '../views/Teacher_Reg.pug'))
+        return;
     })
 
 }
@@ -109,4 +157,4 @@ const checkLogin = (req, res) => {
 //     })
 //
 // }
-module.exports = {insertNewSignIn, checkLogin}
+module.exports = {insertNewSignIn, checkLogin, insertNewTeacher, renderdepartment}
