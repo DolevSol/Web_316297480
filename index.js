@@ -20,12 +20,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 // load view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
+// todo :  try to understand how to do serial programing
+//
 
 // Create Insert Show Drop Routes
 app.get('/CreateTable', [CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews]);
 app.get('/InsertTable', [CreateDB.InsertStudents, CreateDB.InsertDepartments, CreateDB.InsertCourses, CreateDB.InsertTeachers, CreateDB.InsertCourseInstances, CreateDB.Insertreviews]);
-app.get('/DropTable', [CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
+app.get('/CreateTable/CreateAggCourses',CreateDB.CreateAggCourses)
+app.get('/DropTable', [ CreateDB.DropCoursesScore, CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
 app.get('/ShowTable/ShowStudents', CreateDB.ShowStudents);
 app.get('/ShowTable/ShowDepartments', CreateDB.ShowDepartments);
 app.get('/ShowTable/ShowCourses', CreateDB.ShowCourses);
@@ -53,9 +55,7 @@ app.get('/comment', (req, res) => {
 app.get('/CourseData', (req, res) => {
     res.render('CourseData')
 })
-app.get('/CourseResult', (req, res) => {
-    res.render('CourseResults')
-})
+app.get('/CourseResult', CRUD.getCourseResult)
 app.get('/Recommendation', (req, res) => {
     res.render('Recommendation')
 })

@@ -1,5 +1,6 @@
 const sql = require('./db');
 const path = require("path");
+const {filters} = require("pug");
 
 const insertNewSignIn = (req, res) => {
     //validate date
@@ -109,7 +110,7 @@ const insertNewTeacher = (req, res) => {
     sql.query(qurey, NewSignUp, (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
-            res.status(400).send({message: "could not sign in"});
+            res.status(400).send({message: "could not show result"});
             return;
         }
 
@@ -119,6 +120,49 @@ const insertNewTeacher = (req, res) => {
 
 }
 
+
+const getCourseResult = (req, res) => {
+    //validate date
+    const courseSearchParams = {
+        "department_id": req.query.departmentNumber,
+        "course_id": req.query.courseNumber,
+        "difficulty_rating": req.query.hardness,
+        "load_rating": req.query.load
+    }
+    console.log(courseSearchParams);
+
+    let qurey = 'SELECT course_name, load_rating,difficulty_rating FROM Courses_score WHERE department_id  = ? '
+    let filters = [courseSearchParams.department_id];
+
+    // if (courseSearchParams.course_id !=='111') {
+    //    qurey += 'AND WHEN course_id = ?'
+    //     filters.push(courseSearchParams.course_id)
+    //     console.log("i been here ! " + courseSearchParams.course_id);
+    // }
+    if (courseSearchParams.difficulty_rating) {
+        qurey += 'AND difficulty_rating >= ? '
+        filters.push(courseSearchParams.difficulty_rating)
+    }
+    if (courseSearchParams.load_rating) {
+        qurey += ' AND load_rating >= ? '
+        filters.push(courseSearchParams.load_rating)
+    }
+
+    //run qurey
+    console.log(qurey);
+    sql.query(qurey, filters, (err, mysqlres) => {
+        console.log(filters)
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "could not sign in"});
+            return;
+        }
+
+        res.render(path.join(__dirname, '../views/CourseResults.pug'), {courseResultDatas: mysqlres})
+        return;
+    })
+
+}
 // const showAll = (req, res) => {
 //     const Q2 = 'SELECT * FROM customers';
 //     sql.query(Q2, (err, mysqlres) => {
@@ -157,4 +201,4 @@ const insertNewTeacher = (req, res) => {
 //     })
 //
 // }
-module.exports = {insertNewSignIn, checkLogin, insertNewTeacher, renderdepartment}
+module.exports = {insertNewSignIn, checkLogin, insertNewTeacher, renderdepartment, getCourseResult}

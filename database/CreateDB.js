@@ -69,7 +69,7 @@ const CreateCourseInstances = (req, res, next) => {
     })
     next()
 }
-const CreateReviews = (req, res, next) => {
+const CreateReviews = (req, res) => {
     const Q6 = "CREATE TABLE reviews (review_id INT AUTO_INCREMENT PRIMARY KEY, review_date DATE, username VARCHAR(255) NOT NULL, course_id INT NOT NULL, title VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, load_rating FLOAT NOT NULL, difficulty_rating FLOAT NOT NULL, FOREIGN KEY (username) REFERENCES students(username), FOREIGN KEY (course_id) REFERENCES courses(course_id));"
 
     SQL.query(Q6, (err, mySQLres) => {
@@ -78,8 +78,25 @@ const CreateReviews = (req, res, next) => {
             res.status(400).send({message: "error in creating reviews table"});
             return;
         }
-        console.log("TABLES : students, departments, teachers, course_instances, reviews been Created");
-        res.send("TABLES : students, departments, teachers, course_instances, reviews been Created");
+
+
+    })
+    console.log("TABLES : students, departments, teachers, course_instances, reviews been Created");
+    res.send("TABLES : students, departments, teachers, course_instances, reviews been Created");
+    return;
+}
+
+const CreateAggCourses = (req, res) => {
+    const Q7 = "CREATE TABLE  IF NOT EXISTS Courses_score as (SELECT d.department_id , ci.course_id, c.course_name, ROUND(AVG(ci.load_rating),2) AS load_rating, ROUND(AVG(ci.difficulty_rating),2) AS difficulty_rating FROM course_instances as ci join courses as c on ci.course_id = c.course_id join departments as d on c.department_id =d.department_id GROUP BY d.department_id ,ci.course_id, c.course_name )"
+
+    SQL.query(Q7, (err, mySQLres) => {
+        if (err) {
+            console.log("error ", err);
+            res.status(400).send({message: "error in creating reviews table"});
+            return;
+        }
+        console.log("data inserted and Courses_score has been Created");
+        res.send("data inserted and Courses_score has been Created");
         return;
     })
 
@@ -250,7 +267,9 @@ const Insertreviews = (req, res) => {
             });
         });
 
+    console.log("data inserted");
     res.send("data inserted");
+    return;
 
 };
 
@@ -355,8 +374,8 @@ const DropStudents = (req, res) => {
             res.status(400).send({message: "error om dropping Students table" + err});
             return;
         }
-        console.log("TABLES : students, departments, teachers, course_instances, reviews been dropped");
-        res.send("TABLES : students, departments, teachers, course_instances, reviews been dropped");
+        console.log("TABLES : students, departments, teachers, course_instances, reviews and CoursesScore been dropped");
+        res.send("TABLES : students, departments, teachers, course_instances, reviews and CoursesScore been dropped");
         return;
     })
 
@@ -421,7 +440,18 @@ const DropReviews = (req, res, next) => {
     })
     next()
 }
+const DropCoursesScore = (req, res, next) => {
+    var Q6 = "drop table Courses_score ";
+    SQL.query(Q6, (err, mySQLres) => {
+        if (err) {
+            console.log("error in droping table ", err);
+            res.status(400).send({message: "error om dropping Reviews table" + err});
+            return;
+        }
 
+    })
+    next()
+}
 module.exports = {
     CreateStudents,
     CreateDepartments,
@@ -429,6 +459,7 @@ module.exports = {
     CreateTeachers,
     CreateCourseInstances,
     CreateReviews,
+    CreateAggCourses,
     InsertStudents,
     InsertDepartments,
     InsertCourses,
@@ -446,5 +477,6 @@ module.exports = {
     DropCourses,
     DropTeachers,
     DropCourseInstances,
-    DropReviews
+    DropReviews,
+    DropCoursesScore
 };

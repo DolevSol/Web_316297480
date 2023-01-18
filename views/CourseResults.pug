@@ -5,15 +5,11 @@ block content
       .boxgridline1 שם הקורס
       .boxgridline1 מדד העומס
       .boxgridline1 מדד הקושי
-      a.boxgrid(href="http://localhost:8080/CourseData")
-        .boxgrid בניית מערכות ממוחשבות מבוססות אינטרנט
-      .boxgrid 5
-      .boxgrid 5
-      .boxgrid
-      .boxgrid
-      .boxgrid
-      .boxgrid
-      .boxgrid
-      .boxgrid
+      each courseResultData in courseResultDatas
+        a.boxgrid(href=`http://localhost:8080/CourseData/${courseResultData.course_id}`)
+          .boxgrid #{courseResultData.course_name}
+        .boxgrid #{courseResultData.load_rating}
+        .boxgrid #{courseResultData.difficulty_rating}
+
       a(href="http://localhost:8080/CourseResults")
         button.button(type="submit") חזור לחיפוש

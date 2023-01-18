@@ -8,11 +8,11 @@ block content
                 input#checkbox(type="checkbox", value="false", onchange="disableCourse()")
                 span.slider
         // todo: link when i know how to do linking in action
-        form.formScreen4(action="/CourseData")
+        form.formScreen4(action="/CourseResult" method="get")
             .box
                 p
                     label(for="departmentNumber") מספר מחלקה:
-                    select#departmentNumber.formScreen4SelectStyle(name="departmentNumber", required, onchange="selectElement('courseNumber','11');DependentDropdown('departmentNumber','courseNumber');")
+                    select#departmentNumber.formScreen4SelectStyle(name="departmentNumber", required, onchange="selectElement('courseNumber','0');DependentDropdown('departmentNumber','courseNumber');")
                         option.textInSelect(value="", disabled, selected) בחר מספר מחלקה
                         each department in departments
                             option(value=department.department_id) #{department.department_id} - #{department.department_name}
@@ -20,7 +20,7 @@ block content
                 p
                     label(for="courseNumber") מספר קורס:
                     select#courseNumber.formScreen4SelectStyle(name="courseNumber", disabled)
-                        option.textInSelect(value="11", disabled, selected) בחר מספר קורס
+                        option.textInSelect(value="0", disabled, selected) בחר מספר קורס
 
             .box
                 p
