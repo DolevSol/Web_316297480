@@ -53,24 +53,13 @@ block content
         #distribution(class="boxgridline6_3", style="display:none;")
           img.screen6graph(src="../pics/graph.png", alt="hat")
         div(class="boxgridline6_4")
-          .Testimonials
-            img(src="../pics/profile.jpeg", alt="Avatar", style="width:90px")
-            p
-              span איתי נחום
-              | הקורס מעולה !!
-            p(class="text_in_comment") הקורס הכי רלוונטי שיש כרגע בתואר !
-          .Testimonials
-            img(src="../pics/profile.jpeg", alt="Avatar", style="width:90px")
-            p
-              span קורל לוי
-              | קורס עם הרבה קוד
-            p(class="text_in_comment") הקורס מומלץ למי שאוהב לכתוב המון קוד ורוצה לחזק את הבנה שלו בצד לקוח שרת
-          .Testimonials
-            img(src="../pics/profile.jpeg", alt="Avatar", style="width:90px")
-            p
-              span איתן ליבוביץ
-              | מרצה מעולה !
-            p(class="text_in_comment") המון חומר תכלסי שאפשר להפיק ממנו הרבה !
+          each reviewOfCourse in reviewsOfCourse
+            .Testimonials
+              img(src="../pics/profile.jpeg", alt="Avatar", style="width:90px")
+              p
+                span #{reviewOfCourse.username}
+                | #{reviewOfCourse.title}
+              p(class="text_in_comment") #{reviewOfCourse.description}
       button.button6(onclick="openNewWindow('/comment')", type="submit") הוסף תגובה
       a(href="/SearchCourse")
         button.button6(type="submit") חזור לחיפוש

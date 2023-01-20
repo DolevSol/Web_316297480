@@ -95,15 +95,15 @@ app.get('/SearchCourse/:departmentId', (req, res) => {
 
 app.get('/CourseData/:CourseId', (req, res) => {
     const CourseId = req.params.CourseId;
-    const qurey = 'SELECT * FROM courses where course_id = ? ';
-    sql.query(qurey, [CourseId], (err, mysqlres) => {
+    const queries = ['SELECT * FROM courses where course_id = ? ', 'SELECT * FROM reviews where course_id = ? ']
+    sql.query(queries.join(';'), [CourseId,CourseId], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
             res.status(400).send({message: "Problem with courses table "});
             return;
         }
-        //todo : check how it work
-        res.render('CourseData', {ChosenCourse: mysqlres[0]})
+
+        res.render('CourseData', {ChosenCourse: mysqlres[0][0] ,reviewsOfCourse : mysqlres[1]  })
     })
 
 
