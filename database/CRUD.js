@@ -131,7 +131,7 @@ const getCourseResult = (req, res) => {
     }
     console.log(courseSearchParams);
 
-    let qurey = 'SELECT course_name, load_rating,difficulty_rating FROM Courses_score WHERE department_id  = ? '
+    let qurey = 'SELECT course_id,course_name, load_rating,difficulty_rating FROM Courses_score WHERE department_id  = ? '
     let filters = [courseSearchParams.department_id];
 
     // if (courseSearchParams.course_id !=='111') {

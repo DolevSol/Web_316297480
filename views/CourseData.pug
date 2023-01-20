@@ -1,6 +1,6 @@
 extends layout
 block content
-      .header6 בניית מערכות ממוחשבות מבוססות אינטרנט
+      .header6 #{ChosenCourse.course_name}
       main.containerScreen6
         div(class="boxgridline6_1")
           p
@@ -51,22 +51,22 @@ block content
           p  ממוצע: 85.21
           p  סטיית תקן: 4.86
         #distribution(class="boxgridline6_3", style="display:none;")
-          img.screen6graph(src="pics/graph.png", alt="hat")
+          img.screen6graph(src="../pics/graph.png", alt="hat")
         div(class="boxgridline6_4")
           .Testimonials
-            img(src="pics/profile.jpeg", alt="Avatar", style="width:90px")
+            img(src="../pics/profile.jpeg", alt="Avatar", style="width:90px")
             p
               span איתי נחום
               | הקורס מעולה !!
             p(class="text_in_comment") הקורס הכי רלוונטי שיש כרגע בתואר !
           .Testimonials
-            img(src="pics/profile.jpeg", alt="Avatar", style="width:90px")
+            img(src="../pics/profile.jpeg", alt="Avatar", style="width:90px")
             p
               span קורל לוי
               | קורס עם הרבה קוד
             p(class="text_in_comment") הקורס מומלץ למי שאוהב לכתוב המון קוד ורוצה לחזק את הבנה שלו בצד לקוח שרת
           .Testimonials
-            img(src="pics/profile.jpeg", alt="Avatar", style="width:90px")
+            img(src="../pics/profile.jpeg", alt="Avatar", style="width:90px")
             p
               span איתן ליבוביץ
               | מרצה מעולה !

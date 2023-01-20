@@ -26,8 +26,8 @@ app.set('view engine', 'pug');
 // Create Insert Show Drop Routes
 app.get('/CreateTable', [CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews]);
 app.get('/InsertTable', [CreateDB.InsertStudents, CreateDB.InsertDepartments, CreateDB.InsertCourses, CreateDB.InsertTeachers, CreateDB.InsertCourseInstances, CreateDB.Insertreviews]);
-app.get('/CreateTable/CreateAggCourses',CreateDB.CreateAggCourses)
-app.get('/DropTable', [ CreateDB.DropCoursesScore, CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
+app.get('/CreateTable/CreateAggCourses', CreateDB.CreateAggCourses)
+app.get('/DropTable', [CreateDB.DropCoursesScore, CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
 app.get('/ShowTable/ShowStudents', CreateDB.ShowStudents);
 app.get('/ShowTable/ShowDepartments', CreateDB.ShowDepartments);
 app.get('/ShowTable/ShowCourses', CreateDB.ShowCourses);
@@ -78,7 +78,7 @@ app.get('/SearchTeacher', (req, res) => {
 
 app.get('/SearchCourse/:departmentId', (req, res) => {
     const departmentId = req.params.departmentId;
-    const qurey = 'SELECT * FROM courses where department_id= ? ';
+    const qurey = 'SELECT * FROM courses where department_id = ? ';
     sql.query(qurey, [departmentId], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
@@ -87,6 +87,23 @@ app.get('/SearchCourse/:departmentId', (req, res) => {
         }
         //todo : check how it work
         res.json(mysqlres);
+    })
+
+
+});
+
+
+app.get('/CourseData/:CourseId', (req, res) => {
+    const CourseId = req.params.CourseId;
+    const qurey = 'SELECT * FROM courses where course_id = ? ';
+    sql.query(qurey, [CourseId], (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "Problem with courses table "});
+            return;
+        }
+        //todo : check how it work
+        res.render('CourseData', {ChosenCourse: mysqlres[0]})
     })
 
 
@@ -101,18 +118,5 @@ app.post('/insertNewTeacher', CRUD.insertNewTeacher);
 app.listen(port, () => {
     console.log("server is running on port" + port)
 })
-
-// //showAll qurey route
-// app.get('/showAll', CRUD.showAll);
-
-
-// // search course
-// app.get('searchByNameForm', (req, res) => {
-//     res.sendFile(path.join(__dirname, "views/findUser.html"))
-//
-// });
-// // dins users by name
-// app.get('/findCustomer', CRUD.findUser)
-//
 
 
