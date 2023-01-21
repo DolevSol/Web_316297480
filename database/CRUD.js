@@ -86,6 +86,22 @@ const renderdepartment = (req, res) => {
 }
 
 
+
+const renderTeacherSearch = (req, res) => {
+
+    const qurey = 'SELECT * FROM departments ';
+    sql.query(qurey, (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "Problem with department table "});
+            return;
+        }
+
+        res.render('TeacherSearch', {departments2: mysqlres});
+    })
+
+}
+
 const insertNewTeacher = (req, res) => {
     //validate date
     if (!req.body) {
@@ -163,42 +179,5 @@ const getCourseResult = (req, res) => {
     })
 
 }
-// const showAll = (req, res) => {
-//     const Q2 = 'SELECT * FROM customers';
-//     sql.query(Q2, (err, mysqlres) => {
-//         if (err) {
-//             res.status(400).send({message: "could get all customers"});
-//             return;
-//         }
-//         console.log("Got all customers");
-//         res.send(mysqlres);
-//         return;
-//     })
-// }
-//
-//
-// const findUser = (req, res) => {
-//     //validate body exists
-//     if (!req.body) {
-//         res.status(400).send({message: "body cannot be empty"})
-//         return;
-//     }
-//     // pill data from body
-//     const user = req.body.SearchName;
-//
-//     //run qurey
-//     const Q3 = "SELECT * FROM customers WHERE name like ? ";
-//     sql.query(Q3, user + "%", (err, mysqlres) => {
-//         if (err) {
-//             console.log("error: error:", err);
-//             res.status(400).send({message: "could not search customer"})
-//             return;
-//         }
-//         console.log("found user:", {user: mysqlres});
-//         res.send(mysqlres);
-//         return;
-//
-//     })
-//
-// }
-module.exports = {insertNewSignIn, checkLogin, insertNewTeacher, renderdepartment, getCourseResult}
+
+module.exports = {insertNewSignIn, checkLogin, insertNewTeacher, renderdepartment, getCourseResult ,renderTeacherSearch}

@@ -84,30 +84,13 @@ function phonenumber(inputtxt) {
 }
 
 
-// const parentSelect = document.getElementById('departmentNumber');
-// const childSelect = document.getElementById('courseNumber');
-//
-// parentSelect.addEventListener('change', function () {
-//     const departmentId = this.value;
-//     fetch(`/SearchCourse/${departmentId}`)
-//         .then(res => res.json())
-//         .then(courses => {
-//             childSelect.innerHTML = '<option value="111">בחר קורס</option>';
-//             courses.forEach(course => {
-//                 const option = document.createElement('option');
-//                 option.value = course.course_id;
-//                 option.text = course.course_name;
-//                 childSelect.appendChild(option);
-//             });
-//         });
-// });
-
-
 function DependentDropdown(parentId, childId) {
+    const screen = window.location.pathname.split('/')[1]
+    console.log(screen)
     const parentSelect = document.getElementById(parentId);
     const childSelect = document.getElementById(childId);
     const departmentId = parentSelect.value;
-    fetch(`/SearchCourse/${departmentId}`)
+    fetch(`/${screen}/${departmentId}`)
         .then(res => res.json())
         .then(courses => {
             childSelect.innerHTML = '<option value="111">בחר קורס</option>';
@@ -117,5 +100,30 @@ function DependentDropdown(parentId, childId) {
                 option.text = course.course_name;
                 childSelect.appendChild(option);
             });
+        });
+}
+
+
+
+
+function DependentCourseData(yearId, semesterId, avg, sd) {
+    console.log(" i entered this function")
+    const yearSelect = document.getElementById(yearId);
+    const semesterSelect = document.getElementById(semesterId);
+    const avgForCourseElement = document.getElementById(avg);
+    const sdForCourseElement = document.getElementById(sd);
+    const year = yearSelect.value;
+    const semester = semesterSelect.value
+    const course_id = window.location.pathname.split('/')[2]
+    console.log(course_id)
+    console.log(year)
+    console.log(semester)
+    fetch(`/CourseData/${course_id}/${year}/${semester}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            // todo remove [0]
+            avgForCourseElement.innerHTML =" " + data[0].average_score
+            sdForCourseElement.innerHTML =" " + data[0].standard_deviation
         });
 }

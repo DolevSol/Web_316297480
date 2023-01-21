@@ -1,65 +1,67 @@
 extends layout
 block content
-      .header6 #{ChosenCourse.course_name}
-      main.containerScreen6
+    .header6 #{ChosenCourse.course_name}
+    main.containerScreen6
         div(class="boxgridline6_1")
-          p
-            label(for="yeartaken") שנת לימוד:
-            select#yeartaken.formScreen6SelectStyle(name="yeartaken", onchange="selectElement('semester','0')")
-              option.textInSelect(value="try1", disabled, selected) בחר שנה
-              option(value="2022") 2022
-              option(value="2021") 2021
-              option(value="2020") 2020
-              option(value="2019") 2019
-              option(value="2018") 2018
-              option(value="2017") 2017
-          p
-            label(for="semester")  סמסטר:
-            select#semester.formScreen6SelectStyle(name="semester", disabled, onchange="showItemes('ranking','distribution') ")
-              option.textInSelect(value="0", disabled, selected) בחר סמסטר:
-              option(value="1") 1
-              option(value="2") 2
+            p
+                label(for="yeartaken") שנת לימוד:
+                select#yeartaken.formScreen6SelectStyle(name="yeartaken", onchange="selectElement('semester','0')")
+                    option.textInSelect(value="try1", disabled, selected) בחר שנה
+                    option(value="2022") 2022
+                    option(value="2021") 2021
+                    option(value="2020") 2020
+
+            p
+                label(for="semester")  סמסטר:
+                select#semester.formScreen6SelectStyle(name="semester", disabled, onchange="showItemes('ranking','distribution');DependentCourseData('yeartaken', 'semester', 'avgForCourse', 'sdForCourse')")
+                    option.textInSelect(value="0", disabled, selected) בחר סמסטר:
+                    option(value="1") 1
+                    option(value="2") 2
         #ranking(class="boxgridline6_2", style="display:none;")
-          .rating-css1
-            p מדד העומס :
-            .star-icon
-              input#rating1(type="radio", name="rating1", disabled)
-              label.fa.fa-star(for="rating1")
-              input#rating2(type="radio", name="rating2", disabled)
-              label.fa.fa-star(for="rating2")
-              input#rating3(type="radio", name="rating3", disabled)
-              label.fa.fa-star(for="rating3")
-              input#rating4(type="radio", name="rating4", disabled)
-              label.fa.fa-star(for="rating4")
-              input#rating5(type="radio", name="rating5", disabled)
-              label.fa.fa-star(for="rating5")
-          .rating-css2
-            p מדד הקושי :
-            .star-icon
-              input#rating12(type="radio", name="rating12", disabled)
-              label.fa.fa-star(for="rating12")
-              input#rating22(type="radio", name="rating22", disabled)
-              label.fa.fa-star(for="rating22")
-              input#rating32(type="radio", name="rating32", disabled)
-              label.fa.fa-star(for="rating32")
-              input#rating42(type="radio", name="rating42", disabled)
-              label.fa.fa-star(for="rating42")
-              input#rating52(type="radio", name="rating52", disabled)
-              label.fa.fa-star(for="rating52")
-          br
-          br
-          p  ממוצע: 85.21
-          p  סטיית תקן: 4.86
+            .rating-css1
+                p מדד העומס :
+                .star-icon
+                    input#rating1(type="radio", name="rating1", disabled)
+                    label.fa.fa-star(for="rating1")
+                    input#rating2(type="radio", name="rating2", disabled)
+                    label.fa.fa-star(for="rating2")
+                    input#rating3(type="radio", name="rating3", disabled)
+                    label.fa.fa-star(for="rating3")
+                    input#rating4(type="radio", name="rating4", disabled)
+                    label.fa.fa-star(for="rating4")
+                    input#rating5(type="radio", name="rating5", disabled)
+                    label.fa.fa-star(for="rating5")
+            .rating-css2
+                p מדד הקושי :
+                .star-icon
+                    input#rating12(type="radio", name="rating12", disabled)
+                    label.fa.fa-star(for="rating12")
+                    input#rating22(type="radio", name="rating22", disabled)
+                    label.fa.fa-star(for="rating22")
+                    input#rating32(type="radio", name="rating32", disabled)
+                    label.fa.fa-star(for="rating32")
+                    input#rating42(type="radio", name="rating42", disabled)
+                    label.fa.fa-star(for="rating42")
+                    input#rating52(type="radio", name="rating52", disabled)
+                    label.fa.fa-star(for="rating52")
+            br
+            br
+            p
+                span ממוצע:
+                span#avgForCourse
+            p
+                span סטיית תקן:
+                span#sdForCourse
         #distribution(class="boxgridline6_3", style="display:none;")
-          img.screen6graph(src="../pics/graph.png", alt="hat")
+            img.screen6graph(src="../pics/graph.png", alt="hat")
         div(class="boxgridline6_4")
-          each reviewOfCourse in reviewsOfCourse
-            .Testimonials
-              img(src="../pics/profile.jpeg", alt="Avatar", style="width:90px")
-              p
-                span #{reviewOfCourse.username}
-                | #{reviewOfCourse.title}
-              p(class="text_in_comment") #{reviewOfCourse.description}
-      button.button6(onclick="openNewWindow('/comment')", type="submit") הוסף תגובה
-      a(href="/SearchCourse")
+            each reviewOfCourse in reviewsOfCourse
+                .Testimonials
+                    img(src="../pics/profile.jpeg", alt="Avatar", style="width:90px")
+                    p
+                        span #{reviewOfCourse.username}
+                        | #{reviewOfCourse.title}
+                    p(class="text_in_comment") #{reviewOfCourse.description}
+    button.button6(onclick="openNewWindow('/comment')", type="submit") הוסף תגובה
+    a(href="/SearchCourse")
         button.button6(type="submit") חזור לחיפוש

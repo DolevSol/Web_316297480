@@ -71,12 +71,26 @@ app.get('/RegistrationTeacher', (req, res) => {
     res.render('Teacher_Reg')
 
 })
-app.get('/SearchTeacher', (req, res) => {
-    res.render('TeacherSearch')
-})
+app.get('/SearchTeacher', CRUD.renderTeacherSearch);
 
 
 app.get('/SearchCourse/:departmentId', (req, res) => {
+    const departmentId = req.params.departmentId;
+    const qurey = 'SELECT * FROM courses where department_id = ? ';
+    sql.query(qurey, [departmentId], (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "Problem with courses table "});
+            return;
+        }
+        //todo : check how it work
+        res.json(mysqlres);
+    })
+
+
+});
+
+app.get('/SearchTeacher/:departmentId', (req, res) => {
     const departmentId = req.params.departmentId;
     const qurey = 'SELECT * FROM courses where department_id = ? ';
     sql.query(qurey, [departmentId], (err, mysqlres) => {
@@ -96,14 +110,32 @@ app.get('/SearchCourse/:departmentId', (req, res) => {
 app.get('/CourseData/:CourseId', (req, res) => {
     const CourseId = req.params.CourseId;
     const queries = ['SELECT * FROM courses where course_id = ? ', 'SELECT * FROM reviews where course_id = ? ']
-    sql.query(queries.join(';'), [CourseId,CourseId], (err, mysqlres) => {
+    sql.query(queries.join(';'), [CourseId, CourseId], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
             res.status(400).send({message: "Problem with courses table "});
             return;
         }
 
-        res.render('CourseData', {ChosenCourse: mysqlres[0][0] ,reviewsOfCourse : mysqlres[1]  })
+        res.render('CourseData', {ChosenCourse: mysqlres[0][0], reviewsOfCourse: mysqlres[1]})
+    })
+
+
+});
+
+
+app.get('/CourseData/:course_id/:year/:semester', (req, res) => {
+    const year = req.params.year;
+    const semester = req.params.semester;
+    const course_id = req.params.course_id;
+    const qurey = 'SELECT * FROM course_instances where year_taken = ? AND semester = ? AND course_id = ?  ';
+    sql.query(qurey, [year, semester,course_id], (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "Problem with courses table "});
+            return;
+        }
+        res.json(mysqlres);
     })
 
 
