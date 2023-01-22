@@ -6,10 +6,10 @@ block content
       .boxgridline1 מדד העומס
       .boxgridline1 מדד הקושי
       each courseResultData in courseResultDatas
-        a.boxgrid(href=`http://localhost:8080/CourseData/${courseResultData.course_id}`)
+        a.boxgrid(href=`http://localhost:3000/CourseData/${courseResultData.course_id}`)
           .boxgrid #{courseResultData.course_name}
         .boxgrid #{courseResultData.load_rating}
         .boxgrid #{courseResultData.difficulty_rating}
 
-      a(href="http://localhost:8080/CourseResults")
+      a(href="http://localhost:3000/CourseResults")
         button.button(type="submit") חזור לחיפוש

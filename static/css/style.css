@@ -262,7 +262,7 @@ form {
 }
 
 .formScreen4SelectStyle {
-    width: 58%;
+    width: 68%;
     padding: 10px;
     border: 2px solid #eee;
     border-radius: 100px;
@@ -1134,7 +1134,7 @@ input:checked + .slider:before {
 }
 
 .formTeacheRegSelectStyle {
-    width: 100%;
+    width: 120%;
     padding: 10px;
     border: 2px solid #eee;
     border-radius: 100px;

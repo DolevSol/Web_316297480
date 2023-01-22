@@ -1,15 +1,10 @@
-// todo : בכל הפורמים חייב להיות כפתור עם תגיט אינפוט מסוג סבמיט
-//todo :  action in the form  should be the route to the page  __dirname + path to the relevant screen
-// todo : if we want to redirect the page to other page after singin we have to to it in the crud fuction
-
-
 const express = require('express');
 const app = express();
 const path = require('path');
 const csv = require('csvtojson')
 const bodyParser = require('body-parser');
 const sql = require('./database/db');
-const port = 8080;
+const port = 3000;
 const CRUD = require('./database/CRUD')
 const CreateDB = require('./database/CreateDB')
 
@@ -20,8 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // load view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-// todo :  try to understand how to do serial programing
-//
+
 
 // Create Insert Show Drop Routes
 app.get('/CreateTable', [CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews]);
@@ -69,7 +63,7 @@ app.get('/SendEmail', (req, res) => {
 })
 app.get('/RegistrationTeacher', CRUD.renderTeacherReg)
 
-app.get('/SearchTeacher',CRUD.renderTeacherSearch)
+app.get('/SearchTeacher', CRUD.renderTeacherSearch)
 
 app.get('/SearchTeacher/DependentTeacherData/:departmentValue', (req, res) => {
     const departmentId = req.params.departmentValue;
@@ -89,7 +83,7 @@ app.get('/SearchTeacher/DependentTeacherData/:departmentValue', (req, res) => {
 
 app.get('/SearchTeacher/DependentTeacherData/:departmentValue/:courseValue', (req, res) => {
     const departmentId = req.params.departmentValue;
-    const courseId =req.params.courseValue
+    const courseId = req.params.courseValue
     const query = "SELECT t.username username, t.phone_number phone_number , t.experience experience, d.department_name department_name , c.course_name course_name FROM teachers t JOIN courses c ON t.course_id = c.course_id JOIN departments d ON d.department_id = t.department_id WHERE t.department_id = ? AND t.course_id = ?"
     sql.query(query, [departmentId, courseId], (err, mysqlres) => {
         if (err) {
@@ -176,7 +170,7 @@ app.get('/CourseData/:course_id/:year/:semester', (req, res) => {
     const semester = req.params.semester;
     const course_id = req.params.course_id;
     const qurey = 'SELECT * FROM course_instances where year_taken = ? AND semester = ? AND course_id = ?  ';
-    sql.query(qurey, [year, semester,course_id], (err, mysqlres) => {
+    sql.query(qurey, [year, semester, course_id], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
             res.status(400).send({message: "Problem with courses table "});
@@ -192,7 +186,6 @@ app.get('/CourseData/:course_id/:year/:semester', (req, res) => {
 app.post('/insertUserintoDB', CRUD.insertNewSignIn);
 app.post('/insertNewTeacher', CRUD.insertNewTeacher);
 app.post('/checkLogin', CRUD.checkLogin);
-
 
 
 app.listen(port, () => {
