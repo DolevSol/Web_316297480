@@ -128,12 +128,20 @@ function DependentCourseData(yearId, semesterId, avg, sd) {
 
 
 function DependentTeacherData(department, course, privateTeacherRow) {
-    console.log("Hello")
+
     const departmentSelect = document.getElementById(department);
     const courseSelect = document.getElementById(course);
     const departmentValue = departmentSelect.value;
     const courseValue = courseSelect.value
-    fetch(`/SearchTeacher/${departmentValue}/${courseValue}`)
+    let url
+     console.log(courseValue)
+    if ( courseValue !== '111') {
+       url =  `/SearchTeacher/DependentTeacherData/${departmentValue}/${courseValue}`
+    }
+    else {
+          url =  `/SearchTeacher/DependentTeacherData/${departmentValue}`
+    }
+    fetch(url)
         .then(res => res.json())
         .then(datas => {
             console.log(datas)
