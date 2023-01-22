@@ -176,7 +176,7 @@ function DependentTeacherData(department, course, privateTeacherRow) {
                 aboutItem.appendChild(course);
 
                 const experience = document.createElement("p");
-                experience.innerHTML = `<span>שנת התחלה :</span><span id="privateTeacherExperience"> ${data.start_year}</span>`;
+                experience.innerHTML = `<span>שנות ניסיון  :</span><span id="privateTeacherExperience"> ${data.experience}</span>`;
                 aboutItem.appendChild(experience);
 
                 const phone = document.createElement("p");

@@ -102,6 +102,21 @@ const renderTeacherSearch = (req, res) => {
 
 }
 
+const renderTeacherReg = (req, res) => {
+
+    const qurey = 'SELECT * FROM departments ';
+    sql.query(qurey, (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "Problem with department table "});
+            return;
+        }
+
+        res.render('Teacher_Reg', {departments3: mysqlres});
+    })
+
+}
+
 const insertNewTeacher = (req, res) => {
     //validate date
     if (!req.body) {
@@ -115,13 +130,14 @@ const insertNewTeacher = (req, res) => {
         "password": req.body.password,
         "email": req.body.email,
         "phone_number": req.body.phone_teacher,
-        "start_year": req.body.yeartaken,
-        "age": req.body.age,
-        "department_id": req.body.departmentNumber,
-        "course_id": req.body.courseNumber
+        "experience": req.body.yeartaken,
+        "age": req.body.ageteac,
+        "department_id": req.body.departmentNumber3,
+        "course_id": req.body.courseNumber3
     }
     console.log(NewSignUp)
     //run qurey
+
     const qurey = 'INSERT INTO teachers SET?';
     sql.query(qurey, NewSignUp, (err, mysqlres) => {
         if (err) {
@@ -130,7 +146,7 @@ const insertNewTeacher = (req, res) => {
             return;
         }
 
-        res.render(path.join(__dirname, '../views/Teacher_Reg.pug'))
+        res.redirect('/SearchTeacher')
         return;
     })
 
@@ -180,4 +196,4 @@ const getCourseResult = (req, res) => {
 
 }
 
-module.exports = {insertNewSignIn, checkLogin, insertNewTeacher, renderdepartment, getCourseResult ,renderTeacherSearch}
+module.exports = {insertNewSignIn, checkLogin, insertNewTeacher, renderdepartment, getCourseResult ,renderTeacherSearch, renderTeacherReg}

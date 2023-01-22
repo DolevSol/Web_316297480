@@ -44,7 +44,7 @@ const CreateCourses = (req, res, next) => {
     next()
 }
 const CreateTeachers = (req, res, next) => {
-    const Q4 = "CREATE TABLE teachers (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, start_year INT NOT NULL, age INT NOT NULL, department_id INT NOT NULL, course_id INT NOT NULL, FOREIGN KEY (department_id) REFERENCES departments(department_id), FOREIGN KEY (course_id) REFERENCES courses(course_id));"
+    const Q4 = "CREATE TABLE teachers (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, experience INT NOT NULL, age INT NOT NULL, department_id INT NOT NULL, course_id INT NOT NULL, FOREIGN KEY (department_id) REFERENCES departments(department_id), FOREIGN KEY (course_id) REFERENCES courses(course_id));"
 
     SQL.query(Q4, (err, mySQLres) => {
         if (err) {
@@ -192,7 +192,7 @@ const InsertTeachers = (req, res, next) => {
                     "password": element.password,
                     "email": element.email,
                     "phone_number": element.phone_number,
-                    "start_year": element.start_year,
+                    "experience": element.experience,
                     "age": element.age,
                     "department_id": element.department_id,
                     "course_id": element.course_id
