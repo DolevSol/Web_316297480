@@ -149,12 +149,12 @@ const getCourseResult = (req, res) => {
 
     let qurey = 'SELECT course_id,course_name, load_rating,difficulty_rating FROM Courses_score WHERE department_id  = ? '
     let filters = [courseSearchParams.department_id];
-
-    // if (courseSearchParams.course_id !=='111') {
-    //    qurey += 'AND WHEN course_id = ?'
-    //     filters.push(courseSearchParams.course_id)
-    //     console.log("i been here ! " + courseSearchParams.course_id);
-    // }
+    console.log(parseInt(courseSearchParams.course_id))
+    if (!isNaN(courseSearchParams.course_id) && courseSearchParams.course_id !=='111' && courseSearchParams.course_id !== 0) {
+       qurey += 'AND  course_id = ?'
+        filters.push(courseSearchParams.course_id)
+        console.log("i been here ! " + courseSearchParams.course_id);
+    }
     if (courseSearchParams.difficulty_rating) {
         qurey += 'AND difficulty_rating >= ? '
         filters.push(courseSearchParams.difficulty_rating)

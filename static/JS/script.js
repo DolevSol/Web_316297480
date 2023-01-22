@@ -86,7 +86,6 @@ function phonenumber(inputtxt) {
 
 function DependentDropdown(parentId, childId) {
     const screen = window.location.pathname.split('/')[1]
-    console.log(screen)
     const parentSelect = document.getElementById(parentId);
     const childSelect = document.getElementById(childId);
     const departmentId = parentSelect.value;
@@ -99,6 +98,8 @@ function DependentDropdown(parentId, childId) {
                 option.value = course.course_id;
                 option.text = course.course_name;
                 childSelect.appendChild(option);
+
+
             });
         });
 }
@@ -107,7 +108,6 @@ function DependentDropdown(parentId, childId) {
 
 
 function DependentCourseData(yearId, semesterId, avg, sd) {
-    console.log(" i entered this function")
     const yearSelect = document.getElementById(yearId);
     const semesterSelect = document.getElementById(semesterId);
     const avgForCourseElement = document.getElementById(avg);
@@ -122,8 +122,23 @@ function DependentCourseData(yearId, semesterId, avg, sd) {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            // todo remove [0]
+
             avgForCourseElement.innerHTML =" " + data[0].average_score
             sdForCourseElement.innerHTML =" " + data[0].standard_deviation
         });
 }
+
+//
+// function DependentTeacherData(department , course) {
+//     const departmentSelect = document.getElementById(department);
+//     const courseSelect = document.getElementById(course);
+//     const departmentValue = departmentSelect.value;
+//     const courseValue = courseSelect.value
+//     fetch(`/SearchTeacher/${departmentValue}/${courseValue}`)
+//         .then(res => res.json())
+//         .then(data => {
+//             console.log(data)
+//             avgForCourseElement.innerHTML =" " + data[0].average_score
+//             sdForCourseElement.innerHTML =" " + data[0].standard_deviation
+//         });
+// }
