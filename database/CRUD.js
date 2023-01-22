@@ -48,7 +48,7 @@ const checkLogin = (req, res) => {
         "username": req.body.userName1,
         "password": req.body.password1
     }
-    console.log(NewSignUp)
+    console.log(UserData)
     //run qurey
     const qurey = 'SELECT * FROM students WHERE username = ? AND password = ? ';
     sql.query(qurey, [UserData.username, UserData.password], (err, mysqlres) => {
