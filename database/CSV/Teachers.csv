@@ -4,3 +4,4 @@ username,password,email,phone_number,start_year,age,department_id,course_id
 מורה3,password3,teacher3@epost.bgu.ac.il,0500234567,2012,37,364,3
 מורה4,password4,teacher4@post.bgu.ac.il,0521634567,2013,38,364,4
 מורה5,password5,teacher5@post.bgu.ac.il,0531434567,2014,39,364,5
+מורה6,password6,teacher6@post.bgu.ac.il,0531434567,2017,42,364,1

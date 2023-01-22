@@ -105,8 +105,6 @@ function DependentDropdown(parentId, childId) {
 }
 
 
-
-
 function DependentCourseData(yearId, semesterId, avg, sd) {
     const yearSelect = document.getElementById(yearId);
     const semesterSelect = document.getElementById(semesterId);
@@ -123,22 +121,63 @@ function DependentCourseData(yearId, semesterId, avg, sd) {
         .then(data => {
             console.log(data)
 
-            avgForCourseElement.innerHTML =" " + data[0].average_score
-            sdForCourseElement.innerHTML =" " + data[0].standard_deviation
+            avgForCourseElement.innerHTML = " " + data[0].average_score
+            sdForCourseElement.innerHTML = " " + data[0].standard_deviation
         });
 }
 
-//
-// function DependentTeacherData(department , course) {
-//     const departmentSelect = document.getElementById(department);
-//     const courseSelect = document.getElementById(course);
-//     const departmentValue = departmentSelect.value;
-//     const courseValue = courseSelect.value
-//     fetch(`/SearchTeacher/${departmentValue}/${courseValue}`)
-//         .then(res => res.json())
-//         .then(data => {
-//             console.log(data)
-//             avgForCourseElement.innerHTML =" " + data[0].average_score
-//             sdForCourseElement.innerHTML =" " + data[0].standard_deviation
-//         });
-// }
+
+function DependentTeacherData(department, course, privateTeacherRow) {
+    console.log("Hello")
+    const departmentSelect = document.getElementById(department);
+    const courseSelect = document.getElementById(course);
+    const departmentValue = departmentSelect.value;
+    const courseValue = courseSelect.value
+    fetch(`/SearchTeacher/${departmentValue}/${courseValue}`)
+        .then(res => res.json())
+        .then(datas => {
+            console.log(datas)
+            document.getElementById(privateTeacherRow).innerHTML = "";
+            datas.forEach(data => {
+
+                const newElement = document.createElement("div");
+                newElement.classList.add("col-md-4");
+                newElement.setAttribute("onclick", "openNewWindow('/SendEmail')");
+
+                const aboutItem = document.createElement("div");
+                aboutItem.classList.add("about-item", "text-center");
+
+                const icon = document.createElement("i");
+                icon.classList.add("fas", "fa-chalkboard-teacher");
+                aboutItem.appendChild(icon);
+
+                const h3 = document.createElement("h3");
+                h3.setAttribute("id", "privateTeacherUsername");
+                h3.innerHTML = " " + data.username;
+                aboutItem.appendChild(h3);
+
+                const hr = document.createElement("hr");
+                aboutItem.appendChild(hr);
+
+                const department = document.createElement("p");
+                department.innerHTML = `<span>מחלקה :</span><span id="privateTeacherDepartment"> ${data.department_name}</span>`;
+                aboutItem.appendChild(department);
+
+                const course = document.createElement("p");
+                course.innerHTML = `<span>קורס : </span><span id="privateTeacherCourse"> ${data.course_name}</span>`;
+                aboutItem.appendChild(course);
+
+                const experience = document.createElement("p");
+                experience.innerHTML = `<span>שנת התחלה :</span><span id="privateTeacherExperience"> ${data.start_year}</span>`;
+                aboutItem.appendChild(experience);
+
+                const phone = document.createElement("p");
+                phone.innerHTML = `<span>מספר פלאפון :</span><span id="privateTeacherPhone"> ${data.phone_number}</span>`;
+                aboutItem.appendChild(phone);
+
+                newElement.appendChild(aboutItem);
+                document.getElementById(privateTeacherRow).appendChild(newElement);
+
+            });
+        })
+}

@@ -3,7 +3,7 @@ block content
     .header חיפוש מורה
     .containerScreen7
       div(class="boxgridRow7_1")
-        form.formScreen7(id="teacher_form", onsubmit="return showTeachers('about','block'); return false;")
+        form.formScreen7(id="teacher_form", onsubmit="DependentTeacherData('departmentNumber2', 'courseNumber2','privateTeacherRow');showTeachers('about','block'); return false;")
           .box
             p
               label(for="departmentNumber2") מספר מחלקה:
@@ -24,60 +24,7 @@ block content
           #about
             .content-box-lg
               .guide-container
-                .row
-                  .col-md-4(onclick="openNewWindow('/SendEmail')")
-                    .about-item.text-center
-                      i.fas.fa-chalkboard-teacher
-                      h3 אנה זק
-                      hr
-                      p  מחלקה:מתמטיקה
-                      p  בעל/ת ידע בקורסים: אינפי, אלגברה 1 ,מערכות ספרתיות,תורת הגרפיים
-                      p  שנות ניסיון: 12
-                      p  טלפון ליצירת קשר: 0525381648
-                  .col-md-4(onclick="openNewWindow('/SendEmail')")
-                    .about-item.text-center
-                      i.fas.fa-chalkboard-teacher
-                      h3 קובי אפללו
-                      hr
-                      p  מחלקה:ניהול
-                      p  בעל/ת ידע בקורסים: מימון, חשבונאות,תורת המשחקים
-                      p  שנות ניסיון: 3
-                      p  טלפון ליצירת קשר: 054532168
-                  .col-md-4(onclick="openNewWindow('/SendEmail')")
-                    .about-item.text-center
-                      i.fas.fa-chalkboard-teacher
-                      h3 חיים איפרגן
-                      hr
-                      p  מחלקה:ביולוגיה
-                      p  בעל/ת ידע בקורסים: ביולוגיה חישובית, ביולוגיה של התא,פיזיקה 2
-                      p  שנות ניסיון: 5
-                      p  טלפון ליצירת קשר: 054-555168
-                  .col-md-4(onclick="openNewWindow('/SendEmail')")
-                    .about-item.text-center
-                      i.fas.fa-chalkboard-teacher
-                      h3 גפן גרינברג
-                      hr
-                      p  מחלקה:היסטוריה
-                      p
-                        | בעל/ת ידע בקורסים:נושאים גדולים במחלחמת העולם השנייה, היסטוריה לא
-                        | להיסטריונים,האפדיולוגיה של העת החדשה
-                      p  שנות ניסיון: 3
-                      p  טלפון ליצירת קשר: 052-55468
-                  .col-md-4(onclick="openNewWindow('/SendEmail')")
-                    .about-item.text-center
-                      i.fas.fa-chalkboard-teacher
-                      h3 שרית חדד
-                      hr
-                      p  מחלקה:כימיה
-                      p  בעל/ת ידע בקורסים: כימיה חישובית, כימיה פיזיקלית
-                      p  שנות ניסיון: 7
-                      p  טלפון ליצירת קשר: 050-5345168
-                  .col-md-4(onclick="openNewWindow('/SendEmail')")
-                    .about-item.text-center
-                      i.fas.fa-chalkboard-teacher
-                      h3 עידן חביב
-                      hr
-                      p  מחלקה:ביולוגיה ימית
-                      p  בעל/ת ידע בקורסים: יצורים במעמקים, בעלי חיים חסרי חוליות,אנטומיה
-                      p  שנות ניסיון:1
-                      p  טלפון ליצירת קשר: 054-953128
+                .row#privateTeacherRow
+
+
+

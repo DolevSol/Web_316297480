@@ -71,24 +71,25 @@ app.get('/RegistrationTeacher', (req, res) => {
     res.render('Teacher_Reg')
 
 })
-app.get('/SearchTeacher', CRUD.renderTeacherSearch);
+app.get('/SearchTeacher',CRUD.renderTeacherSearch)
 
-
-app.get('/SearchCourse/:departmentId', (req, res) => {
-    const departmentId = req.params.departmentId;
-    const qurey = 'SELECT * FROM courses where department_id = ? ';
-    sql.query(qurey, [departmentId], (err, mysqlres) => {
+app.get('/SearchTeacher/:departmentValue/:courseValue', (req, res) => {
+    const departmentId = req.params.departmentValue;
+    const courseId =req.params.courseValue
+    const query = "SELECT t.username username, t.phone_number phone_number , t.start_year start_year, d.department_name department_name , c.course_name course_name FROM teachers t JOIN courses c ON t.course_id = c.course_id JOIN departments d ON d.department_id = t.department_id WHERE t.department_id = ? AND t.course_id = ?"
+    sql.query(query, [departmentId, courseId], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
             res.status(400).send({message: "Problem with courses table "});
             return;
         }
-        //todo : check how it work
+
         res.json(mysqlres);
     })
 
 
 });
+
 
 app.get('/SearchTeacher/:departmentId', (req, res) => {
     const departmentId = req.params.departmentId;
@@ -99,7 +100,23 @@ app.get('/SearchTeacher/:departmentId', (req, res) => {
             res.status(400).send({message: "Problem with courses table "});
             return;
         }
-        //todo : check how it work
+
+        res.json(mysqlres);
+    })
+
+
+});
+
+app.get('/SearchCourse/:departmentId', (req, res) => {
+    const departmentId = req.params.departmentId;
+    const qurey = 'SELECT * FROM courses where department_id = ? ';
+    sql.query(qurey, [departmentId], (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "Problem with courses table "});
+            return;
+        }
+
         res.json(mysqlres);
     })
 
