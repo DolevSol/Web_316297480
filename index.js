@@ -18,16 +18,18 @@ app.set('view engine', 'pug');
 
 
 // Create Insert Show Drop Routes
-app.get('/CreateTable', [CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews]);
-app.get('/InsertTable', [CreateDB.InsertStudents, CreateDB.InsertDepartments, CreateDB.InsertCourses, CreateDB.InsertTeachers, CreateDB.InsertCourseInstances, CreateDB.Insertreviews]);
+app.get('/CreateTable', [CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews,CreateDB.CreateRecommendation]);
+app.get('/InsertTable', [CreateDB.InsertStudents, CreateDB.InsertDepartments, CreateDB.InsertCourses, CreateDB.InsertTeachers, CreateDB.InsertCourseInstances, CreateDB.Insertreviews,CreateDB.InsertRecommendation]);
 app.get('/CreateTable/CreateAggCourses', CreateDB.CreateAggCourses)
-app.get('/DropTable', [CreateDB.DropCoursesScore, CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
+app.get('/DropTable', [CreateDB.DropRecommendation,CreateDB.DropCoursesScore, CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
 app.get('/ShowTable/ShowStudents', CreateDB.ShowStudents);
 app.get('/ShowTable/ShowDepartments', CreateDB.ShowDepartments);
 app.get('/ShowTable/ShowCourses', CreateDB.ShowCourses);
 app.get('/ShowTable/ShowTeachers', CreateDB.ShowTeachers);
 app.get('/ShowTable/ShowCourseInstances', CreateDB.ShowCourseInstances);
 app.get('/ShowTable/Showreviews', CreateDB.Showreviews);
+app.get('/ShowTable/ShowCourseScore', CreateDB.ShowCourseScore);
+app.get('/ShowTable/ShowRecommendations', CreateDB.ShowRecommendations);
 
 
 //Basic Routes for pages
@@ -50,9 +52,7 @@ app.get('/CourseData', (req, res) => {
     res.render('CourseData')
 })
 app.get('/CourseResult', CRUD.getCourseResult)
-app.get('/Recommendation', (req, res) => {
-    res.render('Recommendation')
-})
+app.get('/Recommendation', CRUD.renderRecommendations )
 app.get('/RegistrationUser', (req, res) => {
     res.render('RegistrationUser')
 })

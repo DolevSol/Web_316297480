@@ -116,6 +116,21 @@ const renderTeacherReg = (req, res) => {
     })
 
 }
+const renderRecommendations = (req, res) => {
+
+    const qurey = 'SELECT * FROM recommendations ';
+    sql.query(qurey, (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "Problem with department table "});
+            return;
+        }
+
+        res.render('Recommendation', {Recommendations: mysqlres});
+    })
+
+}
+
 
 const insertNewTeacher = (req, res) => {
     //validate date
@@ -196,4 +211,11 @@ const getCourseResult = (req, res) => {
 
 }
 
-module.exports = {insertNewSignIn, checkLogin, insertNewTeacher, renderdepartment, getCourseResult ,renderTeacherSearch, renderTeacherReg}
+
+const analytics = [{course1: "בסיסי נתונים"}, {course2: "בינה עסקית"}, {course3: "Nosql"}, {course4: "נתוני עתק"}]
+const ai = [{course1: "מבוא לבינה מלאכותית"}, {course2: "לימוד מכונה"}, {course3: "עיבוד שפה טבעית"}, {course4: "למידה עמוקה"}]
+const programing = [{course1: "גאווה"}, {course2: "פיתוח תוכנה מונחה עצמים"}, {course3: "אלגוריתמים"}, {course4: "פיתוח אתרים"}]
+const informationsystem = [{course1: "יסודות מערכות מידע"}, {course2: "ניתוח ועיצוב מערכות מידע "}, {course3: "Erp"}, {course4: "Crm"}]
+const tapi = [{course1: "תפ״י 1"}, {course2: "תפ״י 2"}, {course3: "חקב״צ 1"}, {course4: "חקב״צ 1"}]
+
+module.exports = {insertNewSignIn, checkLogin, insertNewTeacher, renderdepartment, getCourseResult ,renderTeacherSearch, renderTeacherReg,renderRecommendations}

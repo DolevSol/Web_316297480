@@ -69,7 +69,7 @@ const CreateCourseInstances = (req, res, next) => {
     })
     next()
 }
-const CreateReviews = (req, res) => {
+const CreateReviews = (req, res, next) => {
     const Q6 = "CREATE TABLE reviews (review_id INT AUTO_INCREMENT PRIMARY KEY, review_date DATE, username VARCHAR(255) NOT NULL, course_id INT NOT NULL, title VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, load_rating FLOAT NOT NULL, difficulty_rating FLOAT NOT NULL, FOREIGN KEY (username) REFERENCES students(username), FOREIGN KEY (course_id) REFERENCES courses(course_id));"
 
     SQL.query(Q6, (err, mySQLres) => {
@@ -81,10 +81,24 @@ const CreateReviews = (req, res) => {
 
 
     })
-    console.log("TABLES : students, departments, teachers, course_instances, reviews been Created");
-    res.send("TABLES : students, departments, teachers, course_instances, reviews been Created");
+    next()
+}
+const CreateRecommendation = (req, res) => {
+    const Q6 = "CREATE TABLE recommendations (id INT PRIMARY KEY AUTO_INCREMENT,subject VARCHAR(255),course1 VARCHAR(255),course2 VARCHAR(255),course3 VARCHAR(255),course4 VARCHAR(255));"
+    SQL.query(Q6, (err, mySQLres) => {
+        if (err) {
+            console.log("error ", err);
+            res.status(400).send({message: "error in creating Recommendation table"});
+            return;
+        }
+
+
+    })
+    console.log("TABLES : students, departments, teachers, course_instances, reviews ,Recommendation been Created");
+    res.send("TABLES : students, departments, teachers, course_instances, reviews, Recommendation been Created");
     return;
 }
+
 
 const CreateAggCourses = (req, res) => {
     const Q7 = "CREATE TABLE  IF NOT EXISTS Courses_score as (SELECT d.department_id , ci.course_id, c.course_name, ROUND(AVG(ci.load_rating),2) AS load_rating, ROUND(AVG(ci.difficulty_rating),2) AS difficulty_rating FROM course_instances as ci join courses as c on ci.course_id = c.course_id join departments as d on c.department_id =d.department_id GROUP BY d.department_id ,ci.course_id, c.course_name )"
@@ -240,7 +254,7 @@ const InsertCourseInstances = (req, res, next) => {
 };
 
 
-const Insertreviews = (req, res) => {
+const Insertreviews = (req, res, next) => {
     var Q6 = "INSERT INTO reviews SET ?";
     const csvFilePath = path.join(__dirname, "/CSV/reviews.csv");
     csv()
@@ -267,12 +281,42 @@ const Insertreviews = (req, res) => {
             });
         });
 
+    next()
+
+};
+
+
+const InsertRecommendation = (req, res) => {
+    var Q7 = "INSERT INTO recommendations SET ?";
+    const csvFilePath = path.join(__dirname, "/CSV/recommendations.csv");
+    csv()
+        .fromFile(csvFilePath)
+        .then((jsonObj) => {
+            console.log(jsonObj);
+            jsonObj.forEach(element => {
+                var NewEntry = {
+                    "id": element.id,
+                    "subject": element.subject,
+                    "course1": element.course1,
+                    "course2": element.course2,
+                    "course3": element.course3,
+                    "course4": element.course4
+
+                }
+                SQL.query(Q7, NewEntry, (err, mysqlres) => {
+                    if (err) {
+                        console.log("error in inserting Recommendation data", err);
+                    }
+                    console.log("created row sucssefuly ");
+                });
+            });
+        });
+
     console.log("data inserted");
     res.send("data inserted");
     return;
 
 };
-
 
 const ShowStudents = (req, res) => {
     var Q1 = "SELECT * FROM students";
@@ -365,6 +409,33 @@ const Showreviews = (req, res) => {
     })
 };
 
+const ShowCourseScore = (req, res) => {
+    var Q7 = "SELECT * FROM reviews";
+    SQL.query(Q7, (err, mySQLres) => {
+        if (err) {
+            console.log("error in showing CourseScore table ", err);
+            res.send("error in showing CourseScore table ");
+            return;
+        }
+        console.log("showing table");
+        res.send(mySQLres);
+        return;
+    })
+};
+
+const ShowRecommendations = (req, res) => {
+    var Q8 = "SELECT * FROM recommendations";
+    SQL.query(Q8, (err, mySQLres) => {
+        if (err) {
+            console.log("error in showing Recommendations table ", err);
+            res.send("error in showing Recommendations table ");
+            return;
+        }
+        console.log("showing table");
+        res.send(mySQLres);
+        return;
+    })
+};
 
 const DropStudents = (req, res) => {
     var Q1 = "DROP TABLE Students";
@@ -452,6 +523,21 @@ const DropCoursesScore = (req, res, next) => {
     })
     next()
 }
+
+const DropRecommendation = (req, res, next) => {
+    var Q6 = "drop table recommendations ";
+    SQL.query(Q6, (err, mySQLres) => {
+        if (err) {
+            console.log("error in droping table ", err);
+            res.status(400).send({message: "error om dropping Reviews table" + err});
+            return;
+        }
+
+    })
+    next()
+}
+
+
 module.exports = {
     CreateStudents,
     CreateDepartments,
@@ -459,6 +545,7 @@ module.exports = {
     CreateTeachers,
     CreateCourseInstances,
     CreateReviews,
+    CreateRecommendation,
     CreateAggCourses,
     InsertStudents,
     InsertDepartments,
@@ -466,17 +553,21 @@ module.exports = {
     InsertTeachers,
     InsertCourseInstances,
     Insertreviews,
+    InsertRecommendation,
     ShowStudents,
     ShowDepartments,
     ShowCourses,
     ShowTeachers,
     ShowCourseInstances,
     Showreviews,
+    ShowCourseScore,
+    ShowRecommendations,
     DropStudents,
     DropDepartments,
     DropCourses,
     DropTeachers,
     DropCourseInstances,
     DropReviews,
-    DropCoursesScore
+    DropCoursesScore,
+    DropRecommendation
 };
