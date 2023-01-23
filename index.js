@@ -182,6 +182,24 @@ app.get('/CourseData/:course_id/:year/:semester', (req, res) => {
 
 });
 
+
+
+app.get('/Recommendation/:recommendationValue', (req, res) => {
+    const recommendation = req.params.recommendationValue;
+    const qurey = 'SELECT * FROM recommendations where id = ? ';
+    sql.query(qurey, [recommendation], (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "Problem with recommendations table "});
+            return;
+        }
+        res.json(mysqlres);
+    })
+
+
+});
+
+
 //routes for functionality and form processing
 app.post('/insertUserintoDB', CRUD.insertNewSignIn);
 app.post('/insertNewTeacher', CRUD.insertNewTeacher);

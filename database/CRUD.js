@@ -86,7 +86,6 @@ const renderdepartment = (req, res) => {
 }
 
 
-
 const renderTeacherSearch = (req, res) => {
 
     const qurey = 'SELECT * FROM departments ';
@@ -181,8 +180,8 @@ const getCourseResult = (req, res) => {
     let qurey = 'SELECT course_id,course_name, load_rating,difficulty_rating FROM Courses_score WHERE department_id  = ? '
     let filters = [courseSearchParams.department_id];
     console.log(parseInt(courseSearchParams.course_id))
-    if (!isNaN(courseSearchParams.course_id) && courseSearchParams.course_id !=='111' && courseSearchParams.course_id !== 0) {
-       qurey += 'AND  course_id = ?'
+    if (!isNaN(courseSearchParams.course_id) && courseSearchParams.course_id !== '111' && courseSearchParams.course_id !== 0) {
+        qurey += 'AND  course_id = ?'
         filters.push(courseSearchParams.course_id)
         console.log("i been here ! " + courseSearchParams.course_id);
     }
@@ -212,10 +211,13 @@ const getCourseResult = (req, res) => {
 }
 
 
-const analytics = [{course1: "בסיסי נתונים"}, {course2: "בינה עסקית"}, {course3: "Nosql"}, {course4: "נתוני עתק"}]
-const ai = [{course1: "מבוא לבינה מלאכותית"}, {course2: "לימוד מכונה"}, {course3: "עיבוד שפה טבעית"}, {course4: "למידה עמוקה"}]
-const programing = [{course1: "גאווה"}, {course2: "פיתוח תוכנה מונחה עצמים"}, {course3: "אלגוריתמים"}, {course4: "פיתוח אתרים"}]
-const informationsystem = [{course1: "יסודות מערכות מידע"}, {course2: "ניתוח ועיצוב מערכות מידע "}, {course3: "Erp"}, {course4: "Crm"}]
-const tapi = [{course1: "תפ״י 1"}, {course2: "תפ״י 2"}, {course3: "חקב״צ 1"}, {course4: "חקב״צ 1"}]
-
-module.exports = {insertNewSignIn, checkLogin, insertNewTeacher, renderdepartment, getCourseResult ,renderTeacherSearch, renderTeacherReg,renderRecommendations}
+module.exports = {
+    insertNewSignIn,
+    checkLogin,
+    insertNewTeacher,
+    renderdepartment,
+    getCourseResult,
+    renderTeacherSearch,
+    renderTeacherReg,
+    renderRecommendations
+}

@@ -134,12 +134,11 @@ function DependentTeacherData(department, course, privateTeacherRow) {
     const departmentValue = departmentSelect.value;
     const courseValue = courseSelect.value
     let url
-     console.log(courseValue)
-    if ( courseValue !== '111') {
-       url =  `/SearchTeacher/DependentTeacherData/${departmentValue}/${courseValue}`
-    }
-    else {
-          url =  `/SearchTeacher/DependentTeacherData/${departmentValue}`
+    console.log(courseValue)
+    if (courseValue !== '111') {
+        url = `/SearchTeacher/DependentTeacherData/${departmentValue}/${courseValue}`
+    } else {
+        url = `/SearchTeacher/DependentTeacherData/${departmentValue}`
     }
     fetch(url)
         .then(res => res.json())
@@ -188,4 +187,24 @@ function DependentTeacherData(department, course, privateTeacherRow) {
 
             });
         })
+}
+
+
+function DependentRecommendation(Recommendation, recommendation1, recommendation2, recommendation3, recommendation4) {
+    const recommendationSelect = document.getElementById(Recommendation);
+    const course1 = document.getElementById(recommendation1);
+    const course2 = document.getElementById(recommendation2);
+    const course3 = document.getElementById(recommendation3);
+    const course4 = document.getElementById(recommendation4);
+    const recommendationValue = recommendationSelect.value;
+    fetch(`/Recommendation/${recommendationValue}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            course1.innerHTML = " " + data[0].course1
+            course2.innerHTML = " " + data[0].course2
+            course3.innerHTML = " " + data[0].course3
+            course4.innerHTML = " " + data[0].course4
+        });
+
 }
