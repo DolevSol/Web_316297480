@@ -175,8 +175,8 @@ app.get('/CourseData/:course_id/:year/:semester', (req, res) => {
     const year = req.params.year;
     const semester = req.params.semester;
     const course_id = req.params.course_id;
-    const qurey = 'SELECT * FROM course_instances where year_taken = ? AND semester = ? AND course_id = ?  ';
-    sql.query(qurey, [year, semester, course_id], (err, mysqlres) => {
+    const queries = ['SELECT * FROM course_instances where year_taken = ? AND semester = ? AND course_id = ?  ','SELECT * FROM Courses_score WHERE course_id = ? '];
+    sql.query(queries.join(';'), [year, semester, course_id, course_id ], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
             res.status(400).send({message: "Problem with courses table "});

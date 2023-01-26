@@ -20,30 +20,25 @@ block content
         #ranking(class="boxgridline6_2", style="display:none;")
             .rating-css1
                 p מדד העומס :
-                .star-icon
-                    input#rating1(type="radio", name="rating1", disabled)
-                    label.fa.fa-star(for="rating1")
-                    input#rating2(type="radio", name="rating2", disabled)
-                    label.fa.fa-star(for="rating2")
-                    input#rating3(type="radio", name="rating3", disabled)
-                    label.fa.fa-star(for="rating3")
-                    input#rating4(type="radio", name="rating4", disabled)
-                    label.fa.fa-star(for="rating4")
-                    input#rating5(type="radio", name="rating5", disabled)
-                    label.fa.fa-star(for="rating5")
-            .rating-css2
+                div.about-stats
+                    h4.stats-title
+                    div.progress-bars
+                        div.progress-bar
+                            p.prog-title
+                            div.progress-con
+                                p.prog-text(id="ratingLoad")
+                                div.progress
+                                    span.load
                 p מדד הקושי :
-                .star-icon
-                    input#rating12(type="radio", name="rating12", disabled)
-                    label.fa.fa-star(for="rating12")
-                    input#rating22(type="radio", name="rating22", disabled)
-                    label.fa.fa-star(for="rating22")
-                    input#rating32(type="radio", name="rating32", disabled)
-                    label.fa.fa-star(for="rating32")
-                    input#rating42(type="radio", name="rating42", disabled)
-                    label.fa.fa-star(for="rating42")
-                    input#rating52(type="radio", name="rating52", disabled)
-                    label.fa.fa-star(for="rating52")
+                div.about-stats
+                    h4.stats-title
+                    div.progress-bars
+                        div.progress-bar
+                            p.prog-title
+                            div.progress-con
+                                p.prog-text(id="ratingDiff")
+                                div.progress
+                                    span.diff
             br
             br
             p
@@ -63,6 +58,6 @@ block content
                         | #{reviewOfCourse.title}
                     p(class="text_in_comment") #{reviewOfCourse.description}
     a(href='/comment')
-         button.button6(type="submit") הוסף תגובה
+        button.button6(type="submit") הוסף תגובה
     a(href="/SearchCourse")
         button.button6(type="submit") חזור לחיפוש

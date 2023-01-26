@@ -110,19 +110,30 @@ function DependentCourseData(yearId, semesterId, avg, sd) {
     const semesterSelect = document.getElementById(semesterId);
     const avgForCourseElement = document.getElementById(avg);
     const sdForCourseElement = document.getElementById(sd);
+    const loadPElement = document.getElementById('ratingLoad');
+    const diffPElement = document.getElementById('ratingDiff');
+
     const year = yearSelect.value;
     const semester = semesterSelect.value
     const course_id = window.location.pathname.split('/')[2]
-    console.log(course_id)
-    console.log(year)
-    console.log(semester)
+    let load = document.querySelector(".about-stats .progress-bars .progress-bar .progress-con .progress .load");
+    let diff = document.querySelector(".about-stats .progress-bars .progress-bar .progress-con .progress .diff");
     fetch(`/CourseData/${course_id}/${year}/${semester}`)
         .then(res => res.json())
         .then(data => {
             console.log(data)
-
-            avgForCourseElement.innerHTML = " " + data[0].average_score
-            sdForCourseElement.innerHTML = " " + data[0].standard_deviation
+            avgForCourseElement.innerHTML = " " + data[0][0].average_score
+            sdForCourseElement.innerHTML = " " + data[0][0].standard_deviation
+            loadPElement.innerHTML = " " + data[1][0].load_rating
+            diffPElement.innerHTML = " " + data[1][0].difficulty_rating
+            console.log(data[1][0].load_rating)
+            console.log(data[1][0].difficulty_rating)
+            console.log(String(data[1][0].load_rating * 20.0));
+            console.log(String(data[1][0].difficulty_rating * 20.0));
+            let widthValue1 = String(data[1][0].load_rating * 20.0);
+            let widthValue2 = String(data[1][0].difficulty_rating * 20.0);
+            load.style.setProperty("--width-value-1", widthValue1+'%');
+            diff.style.setProperty("--width-value-2", widthValue2+'%');
         });
 }
 
