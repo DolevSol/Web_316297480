@@ -57,7 +57,16 @@ const CreateTeachers = (req, res, next) => {
     next()
 }
 const CreateCourseInstances = (req, res, next) => {
-    const Q5 = "CREATE TABLE course_instances (course_id INT NOT NULL, year_taken YEAR NOT NULL, semester VARCHAR(1) NOT NULL, load_rating FLOAT NOT NULL, difficulty_rating FLOAT NOT NULL, average_score FLOAT NOT NULL, standard_deviation FLOAT NOT NULL, FOREIGN KEY (course_id) REFERENCES courses(course_id), PRIMARY KEY (course_id, year_taken, semester));"
+    const Q5 = "CREATE TABLE course_instances (\n" +
+        "  course_id INT NOT NULL,\n" +
+        "  year_taken YEAR NOT NULL,\n" +
+        "  semester VARCHAR(1) NOT NULL,\n" +
+        "  average_score FLOAT NOT NULL,\n" +
+        "  standard_deviation FLOAT NOT NULL ,\n" +
+        "  FOREIGN KEY (course_id) REFERENCES courses(course_id) ,\n" +
+        "  PRIMARY KEY (course_id ,year_taken ,semester) \n" +
+        "\n" +
+        ");"
 
     SQL.query(Q5, (err, mySQLres) => {
         if (err) {
@@ -101,7 +110,7 @@ const CreateRecommendation = (req, res) => {
 
 
 const CreateAggCourses = (req, res) => {
-    const Q7 = "CREATE TABLE  IF NOT EXISTS Courses_score as (SELECT d.department_id , ci.course_id, c.course_name, ROUND(AVG(ci.load_rating),2) AS load_rating, ROUND(AVG(ci.difficulty_rating),2) AS difficulty_rating FROM course_instances as ci join courses as c on ci.course_id = c.course_id join departments as d on c.department_id =d.department_id GROUP BY d.department_id ,ci.course_id, c.course_name )"
+    const Q7 = "CREATE TABLE  IF NOT EXISTS Courses_score as (SELECT d.department_id , ci.course_id, c.course_name, ROUND(AVG(r.load_rating),2) AS load_rating, ROUND(AVG(r.difficulty_rating),2) AS difficulty_rating FROM course_instances as ci join courses as c on ci.course_id = c.course_id join departments as d on c.department_id =d.department_id join reviews as r on r.course_id=c.course_id GROUP BY d.department_id ,ci.course_id, c.course_name );"
 
     SQL.query(Q7, (err, mySQLres) => {
         if (err) {
@@ -235,8 +244,6 @@ const InsertCourseInstances = (req, res, next) => {
                     "course_id": element.course_id,
                     "year_taken": element.year_taken,
                     "semester": element.semester,
-                    "load_rating": element.load_rating,
-                    "difficulty_rating": element.difficulty_rating,
                     "average_score": element.average_score,
                     "standard_deviation": element.standard_deviation
                 }
