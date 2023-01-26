@@ -7,10 +7,13 @@ const sql = require('./database/db');
 const port = 3000;
 const CRUD = require('./database/CRUD')
 const CreateDB = require('./database/CreateDB')
+const cookieParser = require('cookie-parser')
 
 app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser()) ;
+
 
 // load view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +35,7 @@ app.get('/ShowTable/ShowCourseScore', CreateDB.ShowCourseScore);
 app.get('/ShowTable/ShowRecommendations', CreateDB.ShowRecommendations);
 
 
+
 //Basic Routes for pages
 app.get('/', (req, res) => {
     res.redirect("/home")
@@ -45,9 +49,10 @@ app.get('/Login', (req, res) => {
 app.get('/about_us', (req, res) => {
     res.render('about_us')
 })
-app.get('/comment', (req, res) => {
+app.get('/comment',(req,res) => {
     res.render('comment')
 })
+app.post('/CreateReview',CRUD.createComment)
 app.get('/CourseData', (req, res) => {
     res.render('CourseData')
 })
@@ -150,6 +155,7 @@ app.get('/SearchCourse/:departmentId', (req, res) => {
 
 app.get('/CourseData/:CourseId', (req, res) => {
     const CourseId = req.params.CourseId;
+    res.cookie(`course_id`,CourseId);
     const queries = ['SELECT * FROM courses where course_id = ? ', 'SELECT * FROM reviews where course_id = ? ']
     sql.query(queries.join(';'), [CourseId, CourseId], (err, mysqlres) => {
         if (err) {
@@ -158,7 +164,7 @@ app.get('/CourseData/:CourseId', (req, res) => {
             return;
         }
 
-        res.render('CourseData', {ChosenCourse: mysqlres[0][0], reviewsOfCourse: mysqlres[1]})
+        res.render('CourseData', {ChosenCourse: mysqlres[0][0], reviewsOfCourses: mysqlres[1]})
     })
 
 

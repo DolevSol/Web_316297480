@@ -55,13 +55,14 @@ block content
         #distribution(class="boxgridline6_3", style="display:none;")
             img.screen6graph(src="../pics/graph.png", alt="hat")
         div(class="boxgridline6_4")
-            each reviewOfCourse in reviewsOfCourse
+            each reviewOfCourse in reviewsOfCourses
                 .Testimonials
                     img(src="../pics/profile.jpeg", alt="Avatar", style="width:90px")
                     p
                         span #{reviewOfCourse.username}
                         | #{reviewOfCourse.title}
                     p(class="text_in_comment") #{reviewOfCourse.description}
-    button.button6(onclick="openNewWindow('/comment')", type="submit") הוסף תגובה
+    a(href='/comment')
+         button.button6(type="submit") הוסף תגובה
     a(href="/SearchCourse")
         button.button6(type="submit") חזור לחיפוש

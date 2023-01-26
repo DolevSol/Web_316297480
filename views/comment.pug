@@ -1,15 +1,18 @@
-doctype html
-html(dir="rtl", lang="he")
-  head
-    meta(charset="UTF-8")
-    title CourseGrade
-    link(rel="stylesheet", href="css/style.css")
-  body.commentScreen
-    .comment-box
-      p הוסף תגובה
-      form.comment-form
-        input.inputcomment(type="text", placeholder="כותרת", required)
-        input.inputcomment(type="number", min="1", max="5", placeholder="מדד עומס")
-        input.inputcomment(type="number", min="1", max="5", placeholder="מדד הקושי")
-        textarea(rows="10", placeholder="תוכן")
-        button(type="submit")  שלח
+extends layout
+block content
+  doctype html
+  html(dir="rtl", lang="he")
+    head
+      meta(charset="UTF-8")
+      title CourseGrade
+      link(rel="stylesheet", href="css/style.css")
+    body.commentScreen
+      .comment-box
+        p הוסף תגובה
+        form.comment-form(id='fromId', method='post', action='/CreateReview')
+          input.inputcomment(type="text",name="title" placeholder="כותרת", required)
+          input.inputcomment(type="number",name="load_rating" ,  min="1", max="5", placeholder="מדד עומס")
+          input.inputcomment(type="number",,name="difficulty_rating" , min="1", max="5", placeholder="מדד הקושי")
+          textarea(rows="10",name='description', placeholder="תוכן")
+          button(type="submit")  שלח
+

@@ -58,7 +58,8 @@ const checkLogin = (req, res) => {
             return;
         }
         if (mysqlres.length > 0) {
-            console.log("user exists:", {username: mysqlres[0]})
+            console.log("user exists:", {username: mysqlres[0].username})
+            res.cookie(`username`, mysqlres[0].username);
             res.render(path.join(__dirname, '../views/HomePage.pug'));
         } else {
 
@@ -210,6 +211,46 @@ const getCourseResult = (req, res) => {
 
 }
 
+const createComment = (req, res) => {
+    //validate date
+    if (!req.body) {
+        res.status(400).send({message: "content cannot be empty"})
+        return;
+    }
+    const today = new Date();
+    const dateOnly = today.toISOString().split('T')[0]
+    let courseId = req.cookies.course_id
+    console.log(dateOnly)
+    // insert input data from body into json
+    const NewReview = {
+        // "review_id": req.body.review_id,
+        "review_date": dateOnly,
+        "username": req.cookies.username,
+        "course_id": courseId,
+        "title": req.body.title,
+        "description": req.body.description,
+        "load_rating": req.body.load_rating,
+        "difficulty_rating": req.body.difficulty_rating
+    }
+
+
+    console.log(NewReview)
+    //run qurey
+    const qurey = 'INSERT INTO reviews SET?';
+    sql.query(qurey, NewReview, (err, mysqlres) => {
+        if (err) {
+            console.log("error: error: ", err);
+            res.status(400).send({message: "could not sign in"});
+            return;
+        }
+        // console.log("create student:", {id: mysqlres.});
+        // res.send({massage: "you just signed in successifuly"});
+        res.redirect('/CourseData/'+ courseId)
+        return;
+    })
+
+}
+
 
 module.exports = {
     insertNewSignIn,
@@ -219,5 +260,6 @@ module.exports = {
     getCourseResult,
     renderTeacherSearch,
     renderTeacherReg,
-    renderRecommendations
+    renderRecommendations,
+    createComment
 }

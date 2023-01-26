@@ -549,7 +549,7 @@ html ::-webkit-scrollbar-track {
 .comment-box {
     width: 600px;
     border: 1px solid #ccc;
-    margin: auto;
+    margin: 50px 600px 10px 200px;
     padding: 10px 20px;
     font-family: 'poppins', sans-serif;
     border-radius: 5px;
