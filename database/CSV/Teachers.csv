@@ -1,7 +1,11 @@
 username,password,email,phone_number,experience,age,department_id,course_id
 מורה1,password1,teacher1@post.bgu.ac.il,0541290567,5,35,364,1
+מורה10,password10,teacher10@post.bgu.ac.il,0531437761,4,39,202,5
 מורה2,password2,teacher2@post.bgu.ac.il,05412864567,4,36,364,2
 מורה3,password3,teacher3@epost.bgu.ac.il,0500234567,2,37,364,3
 מורה4,password4,teacher4@post.bgu.ac.il,0521634567,7,38,364,4
 מורה5,password5,teacher5@post.bgu.ac.il,0531434567,3,39,364,5
-מורה6,password6,teacher6@post.bgu.ac.il,0531434567,8,42,364,1
+מורה6,password6,teacher6@post.bgu.ac.il,0521290569,8,35,364,8
+מורה7,password7,teacher7@post.bgu.ac.il,05012864588,2,36,202,7
+מורה8,password8,teacher8@epost.bgu.ac.il,0520334564,3,37,202,7
+מורה9,password9,teacher9@post.bgu.ac.il,0541123462,5,38,202,6

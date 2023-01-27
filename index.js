@@ -24,6 +24,7 @@ app.set('view engine', 'pug');
 app.get('/CreateTable', [CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews,CreateDB.CreateRecommendation]);
 app.get('/InsertTable', [CreateDB.InsertStudents, CreateDB.InsertDepartments, CreateDB.InsertCourses, CreateDB.InsertTeachers, CreateDB.InsertCourseInstances, CreateDB.Insertreviews,CreateDB.InsertRecommendation]);
 app.get('/CreateTable/CreateAggCourses', CreateDB.CreateAggCourses)
+app.get('/CreateTriggerCourseScore', CreateDB.CreateTriggerCourseScore)
 app.get('/DropTable', [CreateDB.DropRecommendation,CreateDB.DropCoursesScore, CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
 app.get('/ShowTable/ShowStudents', CreateDB.ShowStudents);
 app.get('/ShowTable/ShowDepartments', CreateDB.ShowDepartments);

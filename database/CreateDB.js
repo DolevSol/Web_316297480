@@ -110,7 +110,16 @@ const CreateRecommendation = (req, res) => {
 
 
 const CreateAggCourses = (req, res) => {
-    const Q7 = "CREATE TABLE  IF NOT EXISTS Courses_score as (SELECT d.department_id , ci.course_id, c.course_name, ROUND(AVG(r.load_rating),2) AS load_rating, ROUND(AVG(r.difficulty_rating),2) AS difficulty_rating FROM course_instances as ci join courses as c on ci.course_id = c.course_id join departments as d on c.department_id =d.department_id join reviews as r on r.course_id=c.course_id GROUP BY d.department_id ,ci.course_id, c.course_name );"
+    const Q7 = " CREATE TABLE IF NOT EXISTS Courses_score AS (\n" +
+        "    SELECT d.department_id, ci.course_id, c.course_name, \n" +
+        "           ROUND(AVG(COALESCE(r.load_rating, 0)), 2) AS load_rating, \n" +
+        "           ROUND(AVG(COALESCE(r.difficulty_rating, 0)), 2) AS difficulty_rating \n" +
+        "    FROM course_instances AS ci \n" +
+        "    JOIN courses AS c ON ci.course_id = c.course_id \n" +
+        "    JOIN departments AS d ON c.department_id =d.department_id \n" +
+        "    LEFT JOIN reviews AS r ON r.course_id=c.course_id\n" +
+        "    GROUP BY d.department_id, ci.course_id, c.course_name\n" +
+        ");"
 
     SQL.query(Q7, (err, mySQLres) => {
         if (err) {
@@ -124,6 +133,24 @@ const CreateAggCourses = (req, res) => {
     })
 
 }
+
+const CreateTriggerCourseScore = (req, res) => {
+    const Q8 = "CREATE TRIGGER update_courses_score AFTER INSERT ON reviews FOR EACH ROW BEGIN UPDATE courses_score SET load_rating = (SELECT ROUND(AVG(r.load_rating), 2) FROM reviews r WHERE r.course_id = new.course_id), difficulty_rating = (SELECT ROUND(AVG(r.difficulty_rating), 2) FROM reviews r WHERE r.course_id = new.course_id) WHERE course_id = new.course_id; END ;"
+
+
+    SQL.query(Q8, (err, mySQLres) => {
+        if (err) {
+            console.log("error ", err);
+            res.status(400).send({message: "error in creating trigger "});
+            return;
+        }
+        console.log("trigger has been Created");
+        res.send("trigger has been Created");
+        return;
+    })
+
+}
+
 const InsertStudents = (req, res, next) => {
     var Q1 = "INSERT INTO students SET ?";
     const csvFilePath = path.join(__dirname, "/CSV/Students.csv");
@@ -579,5 +606,6 @@ module.exports = {
     DropCourseInstances,
     DropReviews,
     DropCoursesScore,
-    DropRecommendation
+    DropRecommendation,
+    CreateTriggerCourseScore
 };
