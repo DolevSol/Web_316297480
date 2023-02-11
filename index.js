@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
     res.redirect("/home")
 })
 app.get('/home', (req, res) => {
-    res.render('Homepage')
+    res.render('Homepage' , {username : req.cookies.username})
 })
 app.get('/Login', (req, res) => {
     res.render('Login')
