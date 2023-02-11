@@ -81,6 +81,10 @@ app.get('/SearchCourse', CRUD.renderdepartment);
 app.get('/SendEmail', (req, res) => {
     res.render('SendEmail')
 })
+app.get('/coomingSoon', (req, res) => {
+    res.render('coomingSoon')
+})
+
 app.get('/RegistrationTeacher', CRUD.renderTeacherReg)
 
 app.get('/SearchTeacher', CRUD.renderTeacherSearch)

@@ -5,14 +5,14 @@ block content
       form.formScreenTwoThree(method="post", name="reg_user", action="/insertUserintoDB", onsubmit="return phonenumber(document.reg_user.phone)")
         p
           label(for="userName") שם משתמש:
-          input#userName(type="text", class="inputs-screen-2_3", name="userName", autocomplete="on", required)
+          input#userName(type="text", class="inputs-screen-2_3", name="userName", autocomplete="on", required minlength="3",title=" Please enter at least 3 chars ")
         p
           label(for="password") סיסמא:
-          input#password(type="password", class="inputs-screen-2_3", name="password", autocomplete="on", required)
+          input#password(type="password", class="inputs-screen-2_3", name="password", autocomplete="on", required  minlength="6",title=" Please enter at least 6 digits ")
         label(for="email") אימייל:
-        input#email(type="email", class="inputs-screen-2_3", name="email", autocomplete="on", required)
+        input#email(type="email", class="inputs-screen-2_3", name="email", autocomplete="on", required pattern=".+@post\.bgu\.ac\.il$" ,title=" Please enter a valid BGU email address")
         label(for="phone") מספר פלאפון:
-        input#phone(type="tel", class="inputs-screen-2_3", name="phone", autocomplete="on", required)
+        input#phone(type="tel", class="inputs-screen-2_3", name="phone", autocomplete="on", required pattern="^05[0-9]{8}$" title="Please enter a valid Israeli mobile phone number")
         label(for="yeartaken") שנת תחילת הלימודים:
         select#yeartaken( name="yeartaken", class="inputs-screen-2_3_dropdown")
           option.textInSelect(value="try1", disabled, selected) בחר שנה

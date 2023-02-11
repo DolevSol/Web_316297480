@@ -8,11 +8,11 @@ block content
         //, onsubmit="return phonenumber(document.reg_user.phone)"
         p
           label(for="password") סיסמא:
-          input#password(type="password", class="inputs-screen-2_3", name="password", autocomplete="on", )
+          input#password(type="password", class="inputs-screen-2_3", name="password", autocomplete="on", minlength="6",title=" Please enter at least 6 digits ")
         label(for="email") אימייל:
-        input#email(type="email", class="inputs-screen-2_3", name="email", autocomplete="on", )
+        input#email(type="email", class="inputs-screen-2_3", name="email", autocomplete="on", pattern=".+@post\.bgu\.ac\.il$" ,title=" Please enter a valid BGU email address")
         label(for="phone") מספר פלאפון:
-        input#phone(type="tel", class="inputs-screen-2_3", name="phone", autocomplete="on", )
+        input#phone(type="tel", class="inputs-screen-2_3", name="phone", autocomplete="on",pattern="^05[0-9]{8}$", title="Please enter a valid Israeli mobile phone number" )
         label(for="yeartaken") שנת תחילת הלימודים:
         select#yeartaken( name="yeartaken", class="inputs-screen-2_3_dropdown")
           option.textInSelect(value="try1", disabled, selected) בחר שנה
