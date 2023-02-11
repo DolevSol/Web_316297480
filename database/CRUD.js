@@ -28,8 +28,6 @@ const insertNewSignIn = (req, res) => {
             res.status(400).send({message: "could not sign in"});
             return;
         }
-        // console.log("create student:", {id: mysqlres.});
-        // res.send({massage: "you just signed in successifuly"});
         res.cookie(`username`, NewSignUp.username)
         res.redirect('/SearchCourse')
         return;
@@ -124,7 +122,7 @@ const renderRecommendations = (req, res) => {
     sql.query(qurey, (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
-            res.status(400).send({message: "Problem with department table "});
+            res.status(400).send({message: "Problem with recommendations table "});
             return;
         }
 
@@ -159,7 +157,7 @@ const insertNewTeacher = (req, res) => {
     sql.query(qurey, NewSignUp, (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
-            res.status(400).send({message: "could not show result"});
+            res.status(400).send({message: "error in creating new teacher"});
             return;
         }
 
@@ -203,7 +201,7 @@ const getCourseResult = (req, res) => {
         console.log(filters)
         if (err) {
             console.log("error: error: ", err);
-            res.status(400).send({message: "could not sign in"});
+            res.status(400).send({message: "could not get course result "});
             return;
         }
 
@@ -228,7 +226,6 @@ const createComment = (req, res) => {
     console.log(dateOnly)
     // insert input data from body into json
     const NewReview = {
-        // "review_id": req.body.review_id,
         "review_date": dateOnly,
         "username": req.cookies.username,
         "course_id": courseId,
@@ -245,11 +242,10 @@ const createComment = (req, res) => {
     sql.query(qurey, NewReview, (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
-            res.status(400).send({message: "could not sign in"});
+            res.status(400).send({message: "could not create comment "});
             return;
         }
-        // console.log("create student:", {id: mysqlres.});
-        // res.send({massage: "you just signed in successifuly"});
+
         res.redirect('/CourseData/' + courseId)
         return;
     })
@@ -289,7 +285,7 @@ const updateUser = (req, res) => {
         res.render('SearchCourse', {userLogIn: req.cookies.username})
     } else {
         let qurey = 'UPDATE students SET'
-        if (!(updateData.password ==='')) {
+        if (!(updateData.password === '')) {
             if (filters.length === 0) {
                 qurey += ' password = ?'
                 filters.push(updateData.password)
@@ -319,7 +315,7 @@ const updateUser = (req, res) => {
             }
         }
 
-        if (!isNaN(updateData.start_year )) {
+        if (!isNaN(updateData.start_year)) {
             if (filters.length === 0) {
                 qurey += ' start_year = ?'
                 filters.push(updateData.start_year)
@@ -346,7 +342,7 @@ const updateUser = (req, res) => {
                 console.log(filters)
                 if (err) {
                     console.log("error: ", err);
-                    res.status(400).send({message: "could not update data "});
+                    res.status(400).send({message: "could not update user data "});
                     return;
                 }
 

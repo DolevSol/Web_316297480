@@ -58,8 +58,8 @@ app.get('/updateUser', (req, res) => {
     res.render("updateUser", {userLogIn: req.cookies.username})
 })
 app.post('/updateUserintoDB', CRUD.updateUser);
-app.get('/deleteUserConfirm', (req,res)=> {
-    res.render('deleteConfirm' , {userLogIn: req.cookies.username})
+app.get('/deleteUserConfirm', (req, res) => {
+    res.render('deleteConfirm', {userLogIn: req.cookies.username})
 })
 app.post('/deleteUser', CRUD.deleteUser)
 
@@ -95,7 +95,7 @@ app.get('/SearchTeacher/DependentTeacherData/:departmentValue', (req, res) => {
     sql.query(query, [departmentId], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
-            res.status(400).send({message: "Problem with courses table "});
+            res.status(400).send({message: "Problem with showing teacher result  "});
             return;
         }
 
@@ -112,7 +112,7 @@ app.get('/SearchTeacher/DependentTeacherData/:departmentValue/:courseValue', (re
     sql.query(query, [departmentId, courseId], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
-            res.status(400).send({message: "Problem with courses table "});
+            res.status(400).send({message: "Problem with showing teacher result "});
             return;
         }
 
@@ -129,7 +129,7 @@ app.get('/RegistrationTeacher/:departmentId', (req, res) => {
     sql.query(qurey, [departmentId], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
-            res.status(400).send({message: "Problem with courses table "});
+            res.status(400).send({message: "Problem with reg teacher  "});
             return;
         }
 
@@ -145,7 +145,7 @@ app.get('/SearchTeacher/:departmentId', (req, res) => {
     sql.query(qurey, [departmentId], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
-            res.status(400).send({message: "Problem with courses table "});
+            res.status(400).send({message: "Problem with showing teacher result "});
             return;
         }
 
@@ -202,7 +202,7 @@ app.get('/CourseData/:course_id/:year/:semester', (req, res) => {
     sql.query(queries.join(';'), [year, semester, course_id, course_id], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
-            res.status(400).send({message: "Problem with courses table "});
+            res.status(400).send({message: "Problem with Courses_score table "});
             return;
         }
         res.json(mysqlres);

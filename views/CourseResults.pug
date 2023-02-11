@@ -2,14 +2,14 @@ extends layout
 block content
     .header תוצאות חיפוש:
     main.containerScreen5
-      .boxgridline1 שם הקורס
-      .boxgridline1 מדד העומס
-      .boxgridline1 מדד הקושי
-      each courseResultData in courseResultDatas
-        a.boxgrid(href=`http://localhost:3000/CourseData/${courseResultData.course_id}`)
-          .boxgrid #{courseResultData.course_name}
-        .boxgrid #{courseResultData.load_rating}
-        .boxgrid #{courseResultData.difficulty_rating}
+        .boxgridline1 שם הקורס
+        .boxgridline1 מדד העומס
+        .boxgridline1 מדד הקושי
+        each courseResultData in courseResultDatas
+            a.boxgrid(href=`http://localhost:3000/CourseData/${courseResultData.course_id}`)
+                .boxgrid #{courseResultData.course_name}
+            .boxgrid #{courseResultData.load_rating}
+            .boxgrid #{courseResultData.difficulty_rating}
 
-      a(href="/SearchCourse")
-        button.button(type="submit") חזור לחיפוש
+        a(href="/SearchCourse")
+            button.button(type="submit") חזור לחיפוש

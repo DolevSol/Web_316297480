@@ -23,9 +23,6 @@ function toggleMenu() {
 }
 
 
-
-
-
 function enableElement(id, enable) {
     document.getElementById(id).disabled = !enable;
 }
@@ -141,8 +138,8 @@ function DependentCourseData(yearId, semesterId, avg, sd) {
             console.log(String(data[1][0].difficulty_rating * 20.0));
             let widthValue1 = String(data[1][0].load_rating * 20.0);
             let widthValue2 = String(data[1][0].difficulty_rating * 20.0);
-            load.style.setProperty("--width-value-1", widthValue1+'%');
-            diff.style.setProperty("--width-value-2", widthValue2+'%');
+            load.style.setProperty("--width-value-1", widthValue1 + '%');
+            diff.style.setProperty("--width-value-2", widthValue2 + '%');
         });
 }
 

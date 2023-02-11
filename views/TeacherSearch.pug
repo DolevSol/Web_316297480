@@ -2,29 +2,29 @@ extends layout
 block content
     .header חיפוש מורה
     .containerScreen7
-      div(class="boxgridRow7_1")
-        form.formScreen7(id="teacher_form", onsubmit="DependentTeacherData('departmentNumber2', 'courseNumber2','privateTeacherRow');showTeachers('about','block'); return false;")
-          .box
-            p
-              label(for="departmentNumber2") מספר מחלקה:
-              select#departmentNumber2.formScreen4SelectStyle(name="departmentNumber2", required, onchange="selectElement('courseNumber2','111');DependentDropdown('departmentNumber2','courseNumber2');")
-                option.textInSelect(value="", disabled, selected) בחר מספר מחלקה
-                each department2 in departments2
-                 option(value=department2.department_id) #{department2.department_id} - #{department2.department_name}
-            p
-              label(for="courseNumber2") מספר קורס:
-              select#courseNumber2.formScreen4SelectStyle(name="courseNumber2", disabled)
-                option.textInSelect(value="111", disabled, selected) בחר מספר קורס
-          input.button7(type="submit", value="חפש מורה")
-          a(href="http://localhost:3000/RegistrationTeacher")
-            input.button7(type="button", value="הירשם כמורה", name="createAccount")
-      div(class="boxgridRow7_2")
-        section#about(style="display:none;")
-          .about1
-          #about
-            .content-box-lg
-              .guide-container
-                .row#privateTeacherRow
+        div(class="boxgridRow7_1")
+            form.formScreen7(id="teacher_form", onsubmit="DependentTeacherData('departmentNumber2', 'courseNumber2','privateTeacherRow');showTeachers('about','block'); return false;")
+                .box
+                    p
+                        label(for="departmentNumber2") מספר מחלקה:
+                        select#departmentNumber2.formScreen4SelectStyle(name="departmentNumber2", required, onchange="selectElement('courseNumber2','111');DependentDropdown('departmentNumber2','courseNumber2');")
+                            option.textInSelect(value="", disabled, selected) בחר מספר מחלקה
+                            each department2 in departments2
+                                option(value=department2.department_id) #{department2.department_id} - #{department2.department_name}
+                    p
+                        label(for="courseNumber2") מספר קורס:
+                        select#courseNumber2.formScreen4SelectStyle(name="courseNumber2", disabled)
+                            option.textInSelect(value="111", disabled, selected) בחר מספר קורס
+                input.button7(type="submit", value="חפש מורה")
+                a(href="http://localhost:3000/RegistrationTeacher")
+                    input.button7(type="button", value="הירשם כמורה", name="createAccount")
+        div(class="boxgridRow7_2")
+            section#about(style="display:none;")
+                .about1
+                #about
+                    .content-box-lg
+                        .guide-container
+                            .row#privateTeacherRow
 
 
 

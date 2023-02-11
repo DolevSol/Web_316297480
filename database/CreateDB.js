@@ -124,7 +124,7 @@ const CreateAggCourses = (req, res) => {
     SQL.query(Q7, (err, mySQLres) => {
         if (err) {
             console.log("error ", err);
-            res.status(400).send({message: "error in creating reviews table"});
+            res.status(400).send({message: "error in creating courses score table"});
             return;
         }
         console.log("data inserted and Courses_score has been Created");
@@ -169,7 +169,7 @@ const InsertStudents = (req, res, next) => {
                 }
                 SQL.query(Q1, NewEntry, (err, mysqlres) => {
                     if (err) {
-                        console.log("error in insertingStudents data", err);
+                        console.log("error in inserting Students data", err);
                     }
                     console.log("created row sucssefuly ");
                 });
@@ -476,7 +476,7 @@ const DropStudents = (req, res) => {
     var Q1 = "DROP TABLE Students";
     SQL.query(Q1, (err, mySQLres) => {
         if (err) {
-            console.log("error in droping table ", err);
+            console.log("error in dropping table ", err);
             res.status(400).send({message: "error om dropping Students table" + err});
             return;
         }
@@ -490,7 +490,7 @@ const DropDepartments = (req, res, next) => {
     var Q2 = "drop table departments;";
     SQL.query(Q2, (err, mySQLres) => {
         if (err) {
-            console.log("error in droping table ", err);
+            console.log("error in dropping table ", err);
             res.status(400).send({message: "error om dropping Departments table" + err});
             return;
         }
@@ -502,7 +502,7 @@ const DropCourses = (req, res, next) => {
     var Q3 = "drop table courses;";
     SQL.query(Q3, (err, mySQLres) => {
         if (err) {
-            console.log("error in droping table ", err);
+            console.log("error in dropping table ", err);
             res.status(400).send({message: "error om dropping Courses table" + err});
             return;
         }
@@ -514,7 +514,7 @@ const DropTeachers = (req, res, next) => {
     var Q4 = "drop table teachers;";
     SQL.query(Q4, (err, mySQLres) => {
         if (err) {
-            console.log("error in droping table ", err);
+            console.log("error in dropping table ", err);
             res.status(400).send({message: "error om dropping Teachers table" + err});
             return;
         }
@@ -526,7 +526,7 @@ const DropCourseInstances = (req, res, next) => {
     var Q5 = "drop table course_instances;";
     SQL.query(Q5, (err, mySQLres) => {
         if (err) {
-            console.log("error in droping table ", err);
+            console.log("error in dropping table ", err);
             res.status(400).send({message: "error om dropping CourseInstances table" + err});
             return;
         }
@@ -538,7 +538,7 @@ const DropReviews = (req, res, next) => {
     var Q6 = "drop table reviews ";
     SQL.query(Q6, (err, mySQLres) => {
         if (err) {
-            console.log("error in droping table ", err);
+            console.log("error in dropping table ", err);
             res.status(400).send({message: "error om dropping Reviews table" + err});
             return;
         }
@@ -550,7 +550,7 @@ const DropCoursesScore = (req, res, next) => {
     var Q6 = "drop table Courses_score ";
     SQL.query(Q6, (err, mySQLres) => {
         if (err) {
-            console.log("error in droping table ", err);
+            console.log("error in dropping table ", err);
             res.status(400).send({message: "error om dropping Reviews table" + err});
             return;
         }
@@ -563,7 +563,7 @@ const DropRecommendation = (req, res, next) => {
     var Q6 = "drop table recommendations ";
     SQL.query(Q6, (err, mySQLres) => {
         if (err) {
-            console.log("error in droping table ", err);
+            console.log("error in dropping table ", err);
             res.status(400).send({message: "error om dropping Reviews table" + err});
             return;
         }

@@ -1,46 +1,46 @@
 extends layout
 block content
     .container
-      .header  צור חשבון מורה
-      form.formScreenTwoThree(name="reg_teacher", action="/insertNewTeacher",method='post', onsubmit="return phonenumber(document.reg_teacher.phone_teacher)")
-        p
-          label(for="userName") שם משתמש:
-          input#userName(type="text", class="inputs-screen-2_3", name="userName", autocomplete="on", required minlength="3",title=" Please enter at least 3 chars ")
-        p
-          label(for="password") סיסמא:
-          input#password(type="password", class="inputs-screen-2_3", name="password", autocomplete="on", required minlength="6",title=" Please enter at least 6 digits ")
-        label(for="email") אימייל:
-        input#email(type="email", class="inputs-screen-2_3", name="email", autocomplete="on", required pattern=".+@post\.bgu\.ac\.il$" , title = " Please enter a valid BGU email address")
-        label(for="phone_teacher") מספר פלאפון:
-        input(type="tel", class="inputs-screen-2_3", id="phone_teacher", name="phone_teacher", autocomplete="on", required pattern="^05[0-9]{8}$", title="Please enter a valid Israeli mobile phone number")
-        label(for="yeartaken") שנות ניסיון:
-        select#yeartaken(name="yeartaken",required, class="inputs-screen-2_3_dropdown" )
-          option.textInSelect(value="", disabled, selected) בחר שנה
-          option(value="1") 1
-          option(value="2") 2
-          option(value="3") 3
-          option(value="4") 4
-          option(value="5") 5
-          option(value="6") 6
-          option(value="7") 7
-          option(value="8") 8
-          option(value="9") 9
-          option(value="10") 10
-          option(value="11") 11
-          option(value="12") 12
-          option(value="13") 13
-        label(for="ageteac") גיל:
-        input#ageteac(type="number", min="20", class="inputs-screen-2_3", name="ageteac", autocomplete="on", required)
-        p
-          label(for="departmentNumber3") מספר מחלקה:
-          select#departmentNumber3.formTeacheRegSelectStyle(name="departmentNumber3",required,onchange="selectElement('courseNumber3','');DependentDropdown('departmentNumber3','courseNumber3');")
-            option.textInSelect(value="", disabled, selected) בחר מספר מחלקה
-            each department3 in departments3
-              option(value=department3.department_id) #{department3.department_id} - #{department3.department_name}
-        p
-          label(for="courseNumber3") מספר קורס:
-          select#courseNumber3.formTeacheRegSelectStyle(name="courseNumber3", disabled , required)
-            option.textInSelect(value="111", disabled, selected) בחר מספר קורס
+        .header  צור חשבון מורה
+        form.formScreenTwoThree(name="reg_teacher", action="/insertNewTeacher",method='post', onsubmit="return phonenumber(document.reg_teacher.phone_teacher)")
+            p
+                label(for="userName") שם משתמש:
+                input#userName(type="text", class="inputs-screen-2_3", name="userName", autocomplete="on", required minlength="3",title=" Please enter at least 3 chars ")
+            p
+                label(for="password") סיסמא:
+                input#password(type="password", class="inputs-screen-2_3", name="password", autocomplete="on", required minlength="6",title=" Please enter at least 6 digits ")
+            label(for="email") אימייל:
+            input#email(type="email", class="inputs-screen-2_3", name="email", autocomplete="on", required pattern=".+@post\.bgu\.ac\.il$" , title = " Please enter a valid BGU email address")
+            label(for="phone_teacher") מספר פלאפון:
+            input(type="tel", class="inputs-screen-2_3", id="phone_teacher", name="phone_teacher", autocomplete="on", required pattern="^05[0-9]{8}$", title="Please enter a valid Israeli mobile phone number")
+            label(for="yeartaken") שנות ניסיון:
+            select#yeartaken(name="yeartaken",required, class="inputs-screen-2_3_dropdown" )
+                option.textInSelect(value="", disabled, selected) בחר שנה
+                option(value="1") 1
+                option(value="2") 2
+                option(value="3") 3
+                option(value="4") 4
+                option(value="5") 5
+                option(value="6") 6
+                option(value="7") 7
+                option(value="8") 8
+                option(value="9") 9
+                option(value="10") 10
+                option(value="11") 11
+                option(value="12") 12
+                option(value="13") 13
+            label(for="ageteac") גיל:
+            input#ageteac(type="number", min="20", class="inputs-screen-2_3", name="ageteac", autocomplete="on", required)
+            p
+                label(for="departmentNumber3") מספר מחלקה:
+                select#departmentNumber3.formTeacheRegSelectStyle(name="departmentNumber3",required,onchange="selectElement('courseNumber3','');DependentDropdown('departmentNumber3','courseNumber3');")
+                    option.textInSelect(value="", disabled, selected) בחר מספר מחלקה
+                    each department3 in departments3
+                        option(value=department3.department_id) #{department3.department_id} - #{department3.department_name}
+            p
+                label(for="courseNumber3") מספר קורס:
+                select#courseNumber3.formTeacheRegSelectStyle(name="courseNumber3", disabled , required)
+                    option.textInSelect(value="111", disabled, selected) בחר מספר קורס
 
-        p
-          button(type="submit", class="button2_3") צור חשבון
+            p
+                button(type="submit", class="button2_3") צור חשבון

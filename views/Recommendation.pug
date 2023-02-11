@@ -1,33 +1,33 @@
 extends layout
 block content
     div(class="intrest_container")
-      label(for="interest") בחר תחום עניין :
-      select#interest(name="interest", class="select_recommendation", onchange="DependentRecommendation('interest','recommendation1','recommendation2','recommendation3','recommendation4');showItem('services','flex');")
-        option.textInSelect(value="", disabled, selected) בחר מרשימה
-        each Recommendation in Recommendations
-          option(value=Recommendation.id) #{Recommendation.id} - #{Recommendation.subject}
+        label(for="interest") בחר תחום עניין :
+        select#interest(name="interest", class="select_recommendation", onchange="DependentRecommendation('interest','recommendation1','recommendation2','recommendation3','recommendation4');showItem('services','flex');")
+            option.textInSelect(value="", disabled, selected) בחר מרשימה
+            each Recommendation in Recommendations
+                option(value=Recommendation.id) #{Recommendation.id} - #{Recommendation.subject}
 
 
     #services.services
-      h1 הקורסים המומלצים שלנו
-      div(class="services__wrapper")
-        div(class="services__card")
-          h2#recommendation1
-          div(class="services__btn")
-            a(href="/coomingSoon")
-              button פרטי קורס
-        div(class="services__card")
-          h2#recommendation2
-          div(class="services__btn")
-            a(href="/coomingSoon")
-              button פרטי קורס
-        div(class="services__card")
-          h2#recommendation3
-          div(class="services__btn")
-            a(href="/coomingSoon")
-              button פרטי קורס
-        div(class="services__card")
-          h2#recommendation4
-          div(class="services__btn")
-            a(href="/coomingSoon")
-              button פרטי קורס
+        h1 הקורסים המומלצים שלנו
+        div(class="services__wrapper")
+            div(class="services__card")
+                h2#recommendation1
+                div(class="services__btn")
+                    a(href="/coomingSoon")
+                        button פרטי קורס
+            div(class="services__card")
+                h2#recommendation2
+                div(class="services__btn")
+                    a(href="/coomingSoon")
+                        button פרטי קורס
+            div(class="services__card")
+                h2#recommendation3
+                div(class="services__btn")
+                    a(href="/coomingSoon")
+                        button פרטי קורס
+            div(class="services__card")
+                h2#recommendation4
+                div(class="services__btn")
+                    a(href="/coomingSoon")
+                        button פרטי קורס
