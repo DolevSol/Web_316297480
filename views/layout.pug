@@ -15,8 +15,8 @@ nav.navbar
       span.bar
       span.bar
     ul.navbar__menu
-      li.navbar__item
-        a#home-page.navbar__links(href='/') בית
+      //li.navbar__item
+      //  a#home-page.navbar__links(href='/') בית
       li.navbar__item
         a#about-page.navbar__links(href='/about_us') אודות
       li.navbar__item
@@ -25,8 +25,22 @@ nav.navbar
         a#teacher-page.navbar__links(href='/SearchTeacher') חפש מורה
       li.navbar__item
         a#Recommendation-page.navbar__links(href='/Recommendation') מומלצים
-      li.navar__profile
-        a#profileMenu.navbar__links  #{username}
+      li.navbar__item
+        a#profileMenu.navbar__links(onclick="toggleMenu();") #{userLogIn}
+          div#subMenu.sub-nav-menu
+            a.sub-nav-link(href ='/updateUser')
+              img(src="../pics/setting.png" alt "" )
+              p עדכן מתשמש
+              span >
+            a.sub-nav-link(href ='/deleteUserConfirm')
+              img(src="../pics/help.png" alt "" )
+              p מחק מתשמש
+              span >
+            a.sub-nav-link(href ='/logOutUser')
+              img(src="../pics/logout.png" alt "" )
+              p התנתק
+              span >
+
 block content
 br
 .footer-basic
@@ -39,8 +53,8 @@ br
       a(href='https://www.facebook.com/bgu.uni/')
         i.icon.ion-social-facebook
     ul.list-inline
-      li.list-inline-item
-        a(href='/') בית
+      //li.list-inline-item
+      //  a(href='/') בית
       li.list-inline-item
         a(href='/about_us') אודות
       li.list-inline-item

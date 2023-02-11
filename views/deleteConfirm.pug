@@ -1,0 +1,6 @@
+extends layout
+block content
+ div.deletecontainer
+    p.deltep האם אתה בטוח שברצונך למחוק את המשתמש ?
+    form.deleteFrom(method="post", name="reg_user", action="/deleteUser")
+        button(type="submit", class="buttonDelete") מחק

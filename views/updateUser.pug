@@ -1,0 +1,28 @@
+extends layout
+block content
+    .container
+      .header עדכון חשבון
+        p  הכנס את הפרטים אותם תרצה לעדכן
+        p  פרטים אותם לא תרצה לעדכן, אנא השאר ריק
+      form.formScreenTwoThree(method="post", name="reg_user", action="/updateUserintoDB")
+        //, onsubmit="return phonenumber(document.reg_user.phone)"
+        p
+          label(for="password") סיסמא:
+          input#password(type="password", class="inputs-screen-2_3", name="password", autocomplete="on", )
+        label(for="email") אימייל:
+        input#email(type="email", class="inputs-screen-2_3", name="email", autocomplete="on", )
+        label(for="phone") מספר פלאפון:
+        input#phone(type="tel", class="inputs-screen-2_3", name="phone", autocomplete="on", )
+        label(for="yeartaken") שנת תחילת הלימודים:
+        select#yeartaken( name="yeartaken", class="inputs-screen-2_3_dropdown")
+          option.textInSelect(value="try1", disabled, selected) בחר שנה
+          option(value="2022") 2022
+          option(value="2021") 2021
+          option(value="2020") 2020
+          option(value="2019") 2019
+          option(value="2018") 2018
+          option(value="2017") 2017
+        label(for="age") גיל:
+        input#age(type="number", min="5", class="inputs-screen-2_3", name="age")
+        p
+          button(type="submit", class="button2_3") עדכן

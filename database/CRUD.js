@@ -1,6 +1,7 @@
 const sql = require('./db');
 const path = require("path");
 const {filters} = require("pug");
+const SQL = require("./db");
 
 const insertNewSignIn = (req, res) => {
     //validate date
@@ -29,7 +30,8 @@ const insertNewSignIn = (req, res) => {
         }
         // console.log("create student:", {id: mysqlres.});
         // res.send({massage: "you just signed in successifuly"});
-        res.render(path.join(__dirname, '../views/HomePage.pug'))
+        res.cookie(`username`, NewSignUp.username)
+        res.redirect('/SearchCourse')
         return;
     })
 
@@ -60,7 +62,7 @@ const checkLogin = (req, res) => {
         if (mysqlres.length > 0) {
             console.log("user exists:", {username: mysqlres[0].username})
             res.cookie(`username`, mysqlres[0].username);
-            res.render(path.join(__dirname, '../views/HomePage.pug'));
+            res.redirect('/SearchCourse')
         } else {
 
             res.status(400).send({message: "invalid username or password"});
@@ -81,7 +83,7 @@ const renderdepartment = (req, res) => {
             return;
         }
 
-        res.render('SearchCourse', {departments: mysqlres});
+        res.render('SearchCourse', {departments: mysqlres, userLogIn: req.cookies.username});
     })
 
 }
@@ -97,7 +99,7 @@ const renderTeacherSearch = (req, res) => {
             return;
         }
 
-        res.render('TeacherSearch', {departments2: mysqlres});
+        res.render('TeacherSearch', {departments2: mysqlres, userLogIn: req.cookies.username});
     })
 
 }
@@ -112,7 +114,7 @@ const renderTeacherReg = (req, res) => {
             return;
         }
 
-        res.render('Teacher_Reg', {departments3: mysqlres});
+        res.render('Teacher_Reg', {departments3: mysqlres, userLogIn: req.cookies.username});
     })
 
 }
@@ -126,7 +128,7 @@ const renderRecommendations = (req, res) => {
             return;
         }
 
-        res.render('Recommendation', {Recommendations: mysqlres});
+        res.render('Recommendation', {Recommendations: mysqlres, userLogIn: req.cookies.username});
     })
 
 }
@@ -205,7 +207,10 @@ const getCourseResult = (req, res) => {
             return;
         }
 
-        res.render(path.join(__dirname, '../views/CourseResults.pug'), {courseResultDatas: mysqlres})
+        res.render(path.join(__dirname, '../views/CourseResults.pug'), {
+            courseResultDatas: mysqlres,
+            userLogIn: req.cookies.username
+        })
         return;
     })
 
@@ -245,12 +250,112 @@ const createComment = (req, res) => {
         }
         // console.log("create student:", {id: mysqlres.});
         // res.send({massage: "you just signed in successifuly"});
-        res.redirect('/CourseData/'+ courseId)
+        res.redirect('/CourseData/' + courseId)
         return;
     })
 
 }
 
+
+const deleteUser = (req, res) => {
+    const username = req.cookies.username
+    var qurey = "DELETE FROM students WHERE username = ?;";
+    SQL.query(qurey, username, (err, mySQLres) => {
+        if (err) {
+            console.log("error in delete student ", err);
+            res.send("error in delete student ");
+            return;
+        }
+        console.log("delete user");
+        res.redirect('/home');
+        return;
+    })
+
+};
+
+const updateUser = (req, res) => {
+    const username = req.cookies.username
+    const updateData = {
+        "password": req.body.password,
+        "email": req.body.email,
+        "phone_number": req.body.phone,
+        "start_year": req.body.yeartaken,
+        "age": req.body.age
+    }
+    console.log(updateData);
+
+    let filters = [];
+    if (isNaN(updateData.password) && isNaN(updateData.email) && isNaN(updateData.phone_number) && isNaN(updateData.start_year) && isNaN(updateData.age)) {
+        res.render('SearchCourse', {userLogIn: req.cookies.username})
+    } else {
+        let qurey = 'UPDATE students SET'
+        if (!(updateData.password ==='')) {
+            if (filters.length === 0) {
+                qurey += ' password = ?'
+                filters.push(updateData.password)
+            } else {
+                qurey += ', password = ?'
+                filters.push(updateData.password)
+            }
+        }
+
+        if (!(updateData.email === '')) {
+            if (filters.length === 0) {
+                qurey += ' email = ?'
+                filters.push(updateData.email)
+            } else {
+                qurey += ', email = ?'
+                filters.push(updateData.email)
+            }
+        }
+
+        if (!(updateData.phone_number === '')) {
+            if (filters.length === 0) {
+                qurey += ' phone_number = ?'
+                filters.push(updateData.phone_number)
+            } else {
+                qurey += ', phone_number = ?'
+                filters.push(updateData.phone_number)
+            }
+        }
+
+        if (!isNaN(updateData.start_year )) {
+            if (filters.length === 0) {
+                qurey += ' start_year = ?'
+                filters.push(updateData.start_year)
+            } else {
+                qurey += ', start_year = ?'
+                filters.push(updateData.start_year)
+            }
+        }
+        if (!(updateData.age === '')) {
+            if (filters.length === 0) {
+                qurey += 'age = ?'
+                filters.push(updateData.age)
+            } else {
+                qurey += ', age = ?'
+                filters.push(updateData.age)
+            }
+        }
+
+        filters.push(username)
+        qurey += ' WHERE username = ?;'
+        //run qurey
+        console.log(qurey);
+        sql.query(qurey, filters, (err, mysqlres) => {
+                console.log(filters)
+                if (err) {
+                    console.log("error: ", err);
+                    res.status(400).send({message: "could not update data "});
+                    return;
+                }
+
+                res.redirect('/SearchCourse')
+                return;
+            }
+        )
+    }
+};
 
 module.exports = {
     insertNewSignIn,
@@ -261,5 +366,7 @@ module.exports = {
     renderTeacherSearch,
     renderTeacherReg,
     renderRecommendations,
-    createComment
+    createComment,
+    deleteUser,
+    updateUser
 }

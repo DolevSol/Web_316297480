@@ -1,10 +1,12 @@
-extends layout
+extends homePageLayout
 block content
     .container
         .imgScreen1
             img.screen1Hat(src='../pics/studentHat.png' alt='hat')
         .headerScreen1 CourseGrade
         p.textScreen1 לקבל את המידע החיוני ביותר, להחלטה הטובה ביותר.
+        br
+        p.textScreen2  לכניסה לאתר אנה התחברו או צרו חשבון.
         a(href='http://localhost:3000/RegistrationUser')
             input.button(type='submit' value='צור חשבון' name='createAccount')
         a(href='http://localhost:3000/Login')

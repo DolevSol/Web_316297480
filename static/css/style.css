@@ -184,9 +184,20 @@ nav a:hover {
     margin-bottom: 50px;
 
 }
+.header p {
+    font-size: 20px;
+    font-weight: normal;
+    padding-top: 10px;
+}
 
 .textScreen1 {
     font-size: 2vw;
+    min-font-size: 1vw;
+
+}
+
+.textScreen2 {
+    font-size: 1vw;
     min-font-size: 1vw;
 
 }
@@ -1201,4 +1212,82 @@ input:checked + .slider:before {
 .about-stats .progress-bars .progress-bar .progress-con .progress .diff {
     width: var(--width-value-2);
     width: var(--width-value-2);
+}
+
+.sub-nav-menu {
+    background: #FF9E3D;
+    /*padding: 20px;*/
+    margin: 0px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+.sub-nav-menu.open-menu {
+    max-height: 400px;
+}
+
+.update-info {
+    display: flex;
+    align-items: center;
+}
+
+.sub-nav-link {
+    display: flex ;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin: 12px 0px ;
+    padding: 0px 5px;
+}
+.sub-nav-link p {
+    width: 100% ;
+    font-size: 16px;
+}
+
+.sub-nav-link img {
+    width: 35px;
+    background: #e5e5e5;
+    border-radius: 50%;
+    padding: 6px;
+    margin-left: 15px ;
+}
+
+.sub-nav-link span {
+    font-size: 18px;
+    padding-right: 10px;
+    padding-left: 5px;
+}
+.deleteFrom {
+    display: flex;
+    margin: 0 auto;
+    width: 100px;
+    text-align: center;
+    justify-content: center;
+}
+.deltep {
+    margin-left: 200px;
+    font-size: 50px;
+    width: 100%;
+    padding: 40px 0px;
+}
+.buttonDelete {
+
+    background-color: #FF9E3D;
+    size: 30px;
+    text-align: center;
+    font-size: 30px;
+    padding: 14px 40px;
+    border-radius: 100px;
+    width: 250px;
+    margin: 30px 10px 30px 400px;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bolder;
+}
+.deletecontainer {
+    margin-right: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

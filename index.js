@@ -12,7 +12,7 @@ const cookieParser = require('cookie-parser')
 app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cookieParser()) ;
+app.use(cookieParser());
 
 
 // load view engine
@@ -21,11 +21,11 @@ app.set('view engine', 'pug');
 
 
 // Create Insert Show Drop Routes
-app.get('/CreateTable', [CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews,CreateDB.CreateRecommendation]);
-app.get('/InsertTable', [CreateDB.InsertStudents, CreateDB.InsertDepartments, CreateDB.InsertCourses, CreateDB.InsertTeachers, CreateDB.InsertCourseInstances, CreateDB.Insertreviews,CreateDB.InsertRecommendation]);
+app.get('/CreateTable', [CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews, CreateDB.CreateRecommendation]);
+app.get('/InsertTable', [CreateDB.InsertStudents, CreateDB.InsertDepartments, CreateDB.InsertCourses, CreateDB.InsertTeachers, CreateDB.InsertCourseInstances, CreateDB.Insertreviews, CreateDB.InsertRecommendation]);
 app.get('/CreateTable/CreateAggCourses', CreateDB.CreateAggCourses)
 app.get('/CreateTriggerCourseScore', CreateDB.CreateTriggerCourseScore)
-app.get('/DropTable', [CreateDB.DropRecommendation,CreateDB.DropCoursesScore, CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
+app.get('/DropTable', [CreateDB.DropRecommendation, CreateDB.DropCoursesScore, CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
 app.get('/ShowTable/ShowStudents', CreateDB.ShowStudents);
 app.get('/ShowTable/ShowDepartments', CreateDB.ShowDepartments);
 app.get('/ShowTable/ShowCourses', CreateDB.ShowCourses);
@@ -36,29 +36,43 @@ app.get('/ShowTable/ShowCourseScore', CreateDB.ShowCourseScore);
 app.get('/ShowTable/ShowRecommendations', CreateDB.ShowRecommendations);
 
 
-
 //Basic Routes for pages
 app.get('/', (req, res) => {
     res.redirect("/home")
 })
 app.get('/home', (req, res) => {
-    res.render('Homepage' , {username : req.cookies.username})
+    res.render('Homepage', {userLogIn: req.cookies.username})
 })
 app.get('/Login', (req, res) => {
     res.render('Login')
 })
 app.get('/about_us', (req, res) => {
-    res.render('about_us')
+    res.render('about_us', {userLogIn: req.cookies.username})
 })
-app.get('/comment',(req,res) => {
-    res.render('comment')
+app.get('/about_us_unauthorized', (req, res) => {
+    res.render('about_us_unauthorized', {userLogIn: req.cookies.username})
 })
-app.post('/CreateReview',CRUD.createComment)
+
+
+app.get('/updateUser', (req, res) => {
+    res.render("updateUser", {userLogIn: req.cookies.username})
+})
+app.post('/updateUserintoDB', CRUD.updateUser);
+app.get('/deleteUserConfirm', (req,res)=> {
+    res.render('deleteConfirm' , {userLogIn: req.cookies.username})
+})
+app.post('/deleteUser', CRUD.deleteUser)
+
+app.get('/logOutUser', (req, res) => {
+    res.redirect("/home")
+})
+
+app.post('/CreateReview', CRUD.createComment)
 app.get('/CourseData', (req, res) => {
-    res.render('CourseData')
+    res.render('CourseData', {userLogIn: req.cookies.username})
 })
 app.get('/CourseResult', CRUD.getCourseResult)
-app.get('/Recommendation', CRUD.renderRecommendations )
+app.get('/Recommendation', CRUD.renderRecommendations)
 app.get('/RegistrationUser', (req, res) => {
     res.render('RegistrationUser')
 })
@@ -156,7 +170,7 @@ app.get('/SearchCourse/:departmentId', (req, res) => {
 
 app.get('/CourseData/:CourseId', (req, res) => {
     const CourseId = req.params.CourseId;
-    res.cookie(`course_id`,CourseId);
+    res.cookie(`course_id`, CourseId);
     const queries = ['SELECT * FROM courses where course_id = ? ', 'SELECT * FROM reviews where course_id = ? ']
     sql.query(queries.join(';'), [CourseId, CourseId], (err, mysqlres) => {
         if (err) {
@@ -165,7 +179,11 @@ app.get('/CourseData/:CourseId', (req, res) => {
             return;
         }
 
-        res.render('CourseData', {ChosenCourse: mysqlres[0][0], reviewsOfCourses: mysqlres[1]})
+        res.render('CourseData', {
+            ChosenCourse: mysqlres[0][0],
+            reviewsOfCourses: mysqlres[1],
+            userLogIn: req.cookies.username
+        })
     })
 
 
@@ -176,8 +194,8 @@ app.get('/CourseData/:course_id/:year/:semester', (req, res) => {
     const year = req.params.year;
     const semester = req.params.semester;
     const course_id = req.params.course_id;
-    const queries = ['SELECT * FROM course_instances where year_taken = ? AND semester = ? AND course_id = ?  ','SELECT * FROM Courses_score WHERE course_id = ? '];
-    sql.query(queries.join(';'), [year, semester, course_id, course_id ], (err, mysqlres) => {
+    const queries = ['SELECT * FROM course_instances where year_taken = ? AND semester = ? AND course_id = ?  ', 'SELECT * FROM Courses_score WHERE course_id = ? '];
+    sql.query(queries.join(';'), [year, semester, course_id, course_id], (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
             res.status(400).send({message: "Problem with courses table "});
@@ -188,7 +206,6 @@ app.get('/CourseData/:course_id/:year/:semester', (req, res) => {
 
 
 });
-
 
 
 app.get('/Recommendation/:recommendationValue', (req, res) => {
