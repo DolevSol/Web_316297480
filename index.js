@@ -86,7 +86,7 @@ app.get('/SendEmail', (req, res) => {
     res.render('SendEmail')
 })
 app.get('/coomingSoon', (req, res) => {
-    res.render('coomingSoon')
+    res.render('coomingSoon', {userLogIn: req.cookies.username})
 })
 
 app.get('/RegistrationTeacher', CRUD.renderTeacherReg)
