@@ -12,11 +12,11 @@ const insertNewSignIn = (req, res) => {
 
     // insert input data from body into json
     const NewSignUp = {
-        "username": req.body.userName,
+        "username": req.body.username,
         "password": req.body.password,
         "email": req.body.email,
-        "phone_number": req.body.phone,
-        "start_year": req.body.yeartaken,
+        "phone_number": req.body.phone_number,
+        "start_year": req.body.start_year,
         "age": req.body.age
     }
     console.log(NewSignUp)
@@ -25,11 +25,12 @@ const insertNewSignIn = (req, res) => {
     sql.query(qurey, NewSignUp, (err, mysqlres) => {
         if (err) {
             console.log("error: error: ", err);
+            res.json({error: "could not sign in , Please Check fields and try again "})
             res.status(400).send({message: "could not sign in"});
             return;
         }
         res.cookie(`username`, NewSignUp.username)
-        res.redirect('/SearchCourse')
+        res.json({message: 'Login Succefully  !'})
         return;
     })
 
@@ -42,11 +43,11 @@ const checkLogin = (req, res) => {
         res.status(400).send({message: "content cannot be empty"})
         return;
     }
-    console.log(req.body)
+
     // insert input data from body into json
     const UserData = {
-        "username": req.body.userName1,
-        "password": req.body.password1
+        "username": req.body.username,
+        "password": req.body.password
     }
     console.log(UserData)
     //run qurey
@@ -60,10 +61,11 @@ const checkLogin = (req, res) => {
         if (mysqlres.length > 0) {
             console.log("user exists:", {username: mysqlres[0].username})
             res.cookie(`username`, mysqlres[0].username);
-            res.redirect('/SearchCourse')
+            res.json({message: 'Login Succefully  !'})
+            // res.redirect('/SearchCourse')
         } else {
+            res.json({error: "invalid username or password , Please try again !"})
 
-            res.status(400).send({message: "invalid username or password"});
         }
 
     })
@@ -278,12 +280,12 @@ const updateUser = (req, res) => {
         "start_year": req.body.yeartaken,
         "age": req.body.age
     }
-    console.log(updateData);
 
     let filters = [];
-    if (isNaN(updateData.password) && isNaN(updateData.email) && isNaN(updateData.phone_number) && isNaN(updateData.start_year) && isNaN(updateData.age)) {
-        res.render('SearchCourse', {userLogIn: req.cookies.username})
+    if ((updateData.password === '') && (updateData.email === '') && (updateData.phone_number === '') && isNaN(updateData.start_year) && (updateData.age === '')) {
+        res.redirect('/SearchCourse')
     } else {
+
         let qurey = 'UPDATE students SET'
         if (!(updateData.password === '')) {
             if (filters.length === 0) {

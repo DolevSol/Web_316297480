@@ -2,11 +2,11 @@ extends homePageLayout
 block content
     .container
       .header התחברות למערכת:
-      form.formScreenTwoThree(action="/checkLogin", method="post")
+      form#signInFrom.formScreenTwoThree(action="/checkLogin", method="post")
         p
           label(for="userName1") שם משתמש:
           input#userName1(type="text", class="inputs-screen-2_3", name="userName1", autocomplete="on", required)
         p
           label(for="password1") סיסמא:
           input#password1(type="password", class="inputs-screen-2_3", name="password1", autocomplete="on", required)
-          button(type="submit", class="button2_3") התחבר
+          button(type="submit", class="button2_3" onclick="checkLogIn()") התחבר

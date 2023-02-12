@@ -52,7 +52,9 @@ app.get('/about_us', (req, res) => {
 app.get('/about_us_unauthorized', (req, res) => {
     res.render('about_us_unauthorized', {userLogIn: req.cookies.username})
 })
-
+app.get('/comment',(req,res) => {
+    res.render('comment', {userLogIn: req.cookies.username})
+})
 
 app.get('/updateUser', (req, res) => {
     res.render("updateUser", {userLogIn: req.cookies.username})
@@ -66,7 +68,9 @@ app.post('/deleteUser', CRUD.deleteUser)
 app.get('/logOutUser', (req, res) => {
     res.redirect("/home")
 })
-
+app.get('/comment',(req,res)=> {
+    res.redirect('/CreateReview')
+})
 app.post('/CreateReview', CRUD.createComment)
 app.get('/CourseData', (req, res) => {
     res.render('CourseData', {userLogIn: req.cookies.username})

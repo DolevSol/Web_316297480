@@ -90,6 +90,51 @@ function phonenumber(inputtxt) {
 }
 
 
+function checkLogIn() {
+    document.getElementById("signInFrom").addEventListener('submit', (event) => {
+        event.preventDefault();
+        const username = document.getElementById('userName1').value;
+        const password = document.getElementById('password1').value;
+        fetch('/checkLogin', {
+            method: "post",
+            body: JSON.stringify({username, password}),
+            headers: {'Content-Type': 'application/json'}
+        }).then(res => res.json()).then(data => {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                alert(data.message);
+                document.location.href = 'Searchcourse'
+            }
+        })
+    })
+}
+
+function checkSignUp() {
+    document.getElementById("signUpFrom").addEventListener('submit', (event) => {
+        event.preventDefault();
+        const username = document.getElementById('userName').value;
+        const password = document.getElementById('password').value;
+        const email = document.getElementById('email').value;
+        const phone_number = document.getElementById('phone').value;
+        const start_year = document.getElementById('yeartaken').value;
+        const age = document.getElementById('age').value;
+        console.log(username ,password,email, phone_number,start_year,age )
+        fetch('/insertUserintoDB', {
+            method: "post",
+            body: JSON.stringify({username, password, email ,phone_number ,start_year ,age}),
+            headers: {'Content-Type': 'application/json'}
+        }).then(res => res.json()).then(data => {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                alert(data.message);
+                document.location.href = 'Searchcourse'
+            }
+        })
+    })
+}
+
 function DependentDropdown(parentId, childId) {
     const screen = window.location.pathname.split('/')[1]
     const parentSelect = document.getElementById(parentId);
