@@ -30,13 +30,13 @@ All Routs to create ,insert, show and drop tables appear after setting pug as vi
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 table creation syntax :
 
-CREATE TABLE students (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, start_year INT NOT NULL, age INT NOT NULL);
+CREATE TABLE IF NOT EXISTS students (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, start_year INT NOT NULL, age INT NOT NULL);
 
-CREATE TABLE departments (department_id INT NOT NULL PRIMARY KEY, department_name VARCHAR(255) NOT NULL);
+CREATE TABLE IF NOT EXISTS departments (department_id INT NOT NULL PRIMARY KEY, department_name VARCHAR(255) NOT NULL);
 
-CREATE TABLE teachers (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, experience INT NOT NULL, age INT NOT NULL, department_id INT NOT NULL, course_id INT NOT NULL, FOREIGN KEY (department_id) REFERENCES departments(department_id), FOREIGN KEY (course_id) REFERENCES courses(course_id));
+CREATE TABLE IF NOT EXISTS teachers (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, experience INT NOT NULL, age INT NOT NULL, department_id INT NOT NULL, course_id INT NOT NULL, FOREIGN KEY (department_id) REFERENCES departments(department_id), FOREIGN KEY (course_id) REFERENCES courses(course_id));
 
-CREATE TABLE course_instances (
+CREATE TABLE IF NOT EXISTS course_instances (
           course_id INT NOT NULL,
           year_taken YEAR NOT NULL,
           semester VARCHAR(1) NOT NULL,
@@ -45,9 +45,9 @@ CREATE TABLE course_instances (
           FOREIGN KEY (course_id) REFERENCES courses(course_id) ,
           PRIMARY KEY (course_id ,year_taken ,semester));
 
-CREATE TABLE reviews (review_id INT AUTO_INCREMENT PRIMARY KEY, review_date DATE, username VARCHAR(255) NOT NULL, course_id INT NOT NULL, title VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, load_rating FLOAT NOT NULL, difficulty_rating FLOAT NOT NULL, FOREIGN KEY (username) REFERENCES students(username), FOREIGN KEY (course_id) REFERENCES courses(course_id));
+CREATE TABLE IF NOT EXISTS reviews (review_id INT AUTO_INCREMENT PRIMARY KEY, review_date DATE, username VARCHAR(255) NOT NULL, course_id INT NOT NULL, title VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, load_rating FLOAT NOT NULL, difficulty_rating FLOAT NOT NULL, FOREIGN KEY (username) REFERENCES students(username), FOREIGN KEY (course_id) REFERENCES courses(course_id));
 
-CREATE TABLE recommendations (id INT PRIMARY KEY AUTO_INCREMENT,subject VARCHAR(255),course1 VARCHAR(255),course2 VARCHAR(255),course3 VARCHAR(255),course4 VARCHAR(255));
+CREATE TABLE IF NOT EXISTS recommendations (id INT PRIMARY KEY AUTO_INCREMENT,subject VARCHAR(255),course1 VARCHAR(255),course2 VARCHAR(255),course3 VARCHAR(255),course4 VARCHAR(255));
 
 
 PLEASE NOTE !  from here you must inserted the data first before creating this table and trigger ! it aggregated table that base on table data

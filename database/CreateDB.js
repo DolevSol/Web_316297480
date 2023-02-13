@@ -3,7 +3,7 @@ const path = require('path');
 const csv = require('csvtojson');
 
 const CreateStudents = (req, res, next) => {
-    const Q1 = "CREATE TABLE students (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, start_year INT NOT NULL, age INT NOT NULL);"
+    const Q1 = "CREATE TABLE IF NOT EXISTS students (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, start_year INT NOT NULL, age INT NOT NULL);"
     SQL.query(Q1, (err, mySQLres) => {
         if (err) {
             console.log("error ", err);
@@ -17,7 +17,7 @@ const CreateStudents = (req, res, next) => {
 
 
 const CreateDepartments = (req, res, next) => {
-    const Q2 = "CREATE TABLE departments (department_id INT NOT NULL PRIMARY KEY, department_name VARCHAR(255) NOT NULL);"
+    const Q2 = "CREATE TABLE IF NOT EXISTS departments (department_id INT NOT NULL PRIMARY KEY, department_name VARCHAR(255) NOT NULL);"
 
     SQL.query(Q2, (err, mySQLres) => {
         if (err) {
@@ -31,7 +31,7 @@ const CreateDepartments = (req, res, next) => {
 }
 
 const CreateCourses = (req, res, next) => {
-    const Q3 = "CREATE TABLE courses (course_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, course_name VARCHAR(255) NOT NULL, department_id INT NOT NULL, FOREIGN KEY (department_id) REFERENCES departments(department_id));"
+    const Q3 = "CREATE TABLE IF NOT EXISTS courses (course_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, course_name VARCHAR(255) NOT NULL, department_id INT NOT NULL, FOREIGN KEY (department_id) REFERENCES departments(department_id));"
 
     SQL.query(Q3, (err, mySQLres) => {
         if (err) {
@@ -44,7 +44,7 @@ const CreateCourses = (req, res, next) => {
     next()
 }
 const CreateTeachers = (req, res, next) => {
-    const Q4 = "CREATE TABLE teachers (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, experience INT NOT NULL, age INT NOT NULL, department_id INT NOT NULL, course_id INT NOT NULL, FOREIGN KEY (department_id) REFERENCES departments(department_id), FOREIGN KEY (course_id) REFERENCES courses(course_id));"
+    const Q4 = "CREATE TABLE IF NOT EXISTS teachers (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, experience INT NOT NULL, age INT NOT NULL, department_id INT NOT NULL, course_id INT NOT NULL, FOREIGN KEY (department_id) REFERENCES departments(department_id), FOREIGN KEY (course_id) REFERENCES courses(course_id));"
 
     SQL.query(Q4, (err, mySQLres) => {
         if (err) {
@@ -57,7 +57,7 @@ const CreateTeachers = (req, res, next) => {
     next()
 }
 const CreateCourseInstances = (req, res, next) => {
-    const Q5 = "CREATE TABLE course_instances (\n" +
+    const Q5 = "CREATE TABLE IF NOT EXISTS course_instances (\n" +
         "  course_id INT NOT NULL,\n" +
         "  year_taken YEAR NOT NULL,\n" +
         "  semester VARCHAR(1) NOT NULL,\n" +
@@ -79,7 +79,7 @@ const CreateCourseInstances = (req, res, next) => {
     next()
 }
 const CreateReviews = (req, res, next) => {
-    const Q6 = "CREATE TABLE reviews (review_id INT AUTO_INCREMENT PRIMARY KEY, review_date DATE, username VARCHAR(255) NOT NULL, course_id INT NOT NULL, title VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, load_rating FLOAT NOT NULL, difficulty_rating FLOAT NOT NULL, FOREIGN KEY (username) REFERENCES students(username), FOREIGN KEY (course_id) REFERENCES courses(course_id));"
+    const Q6 = "CREATE TABLE IF NOT EXISTS reviews (review_id INT AUTO_INCREMENT PRIMARY KEY, review_date DATE, username VARCHAR(255) NOT NULL, course_id INT NOT NULL, title VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, load_rating FLOAT NOT NULL, difficulty_rating FLOAT NOT NULL, FOREIGN KEY (username) REFERENCES students(username), FOREIGN KEY (course_id) REFERENCES courses(course_id));"
 
     SQL.query(Q6, (err, mySQLres) => {
         if (err) {
@@ -93,7 +93,7 @@ const CreateReviews = (req, res, next) => {
     next()
 }
 const CreateRecommendation = (req, res) => {
-    const Q6 = "CREATE TABLE recommendations (id INT PRIMARY KEY AUTO_INCREMENT,subject VARCHAR(255),course1 VARCHAR(255),course2 VARCHAR(255),course3 VARCHAR(255),course4 VARCHAR(255));"
+    const Q6 = "CREATE TABLE IF NOT EXISTS recommendations (id INT PRIMARY KEY AUTO_INCREMENT,subject VARCHAR(255),course1 VARCHAR(255),course2 VARCHAR(255),course3 VARCHAR(255),course4 VARCHAR(255));"
     SQL.query(Q6, (err, mySQLres) => {
         if (err) {
             console.log("error ", err);
