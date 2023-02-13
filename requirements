@@ -13,20 +13,19 @@ All Routs to create ,insert, show and drop tables appear after setting pug as vi
  please note - there is meaning of the order of the routs of creation and insertion  (for example line 18 - app.get('/CreateTable/CreateAggCourses', CreateDB.CreateAggCourses)
  must be created only after all the data for the tables was inserted):
 
-// Create Insert Show Drop Routes
-app.get('/CreateTable', [CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews, CreateDB.CreateRecommendation]);
-app.get('/InsertTable', [CreateDB.InsertStudents, CreateDB.InsertDepartments, CreateDB.InsertCourses, CreateDB.InsertTeachers, CreateDB.InsertCourseInstances, CreateDB.Insertreviews, CreateDB.InsertRecommendation]);
-app.get('/CreateTable/CreateAggCourses', CreateDB.CreateAggCourses)
-app.get('/CreateTriggerCourseScore', CreateDB.CreateTriggerCourseScore)
-app.get('/DropTable', [CreateDB.DropRecommendation, CreateDB.DropCoursesScore, CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
-app.get('/ShowTable/ShowStudents', CreateDB.ShowStudents);
-app.get('/ShowTable/ShowDepartments', CreateDB.ShowDepartments);
-app.get('/ShowTable/ShowCourses', CreateDB.ShowCourses);
-app.get('/ShowTable/ShowTeachers', CreateDB.ShowTeachers);
-app.get('/ShowTable/ShowCourseInstances', CreateDB.ShowCourseInstances);
-app.get('/ShowTable/Showreviews', CreateDB.Showreviews);
-app.get('/ShowTable/ShowCourseScore', CreateDB.ShowCourseScore);
-app.get('/ShowTable/ShowRecommendations', CreateDB.ShowRecommendations);
+/CreateTable
+/InsertTable
+/CreateTable/CreateAggCourses
+/CreateTriggerCourseScore
+/DropTable
+/ShowTable/ShowStudents
+/ShowTable/ShowDepartments
+/ShowTable/ShowCourses
+/ShowTable/ShowTeachers
+/ShowTable/ShowCourseInstances
+/ShowTable/Showreviews
+/ShowTable/ShowCourseScore
+/ShowTable/ShowRecommendations
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 table creation syntax :
