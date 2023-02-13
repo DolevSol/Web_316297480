@@ -1,0 +1,68 @@
+modules :
+
+express
+mysql2
+path
+csvtojson
+pug
+body-parser
+cookie-parser
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+All Routs to create ,insert, show and drop tables appear after setting pug as view engine in the index.js and here ,
+ please note - there is meaning of the order of the routs of creation and insertion  (for example line 18 - app.get('/CreateTable/CreateAggCourses', CreateDB.CreateAggCourses)
+ must be created only after all the data for the tables was inserted):
+
+// Create Insert Show Drop Routes
+app.get('/CreateTable', [CreateDB.CreateStudents, CreateDB.CreateDepartments, CreateDB.CreateCourses, CreateDB.CreateTeachers, CreateDB.CreateCourseInstances, CreateDB.CreateReviews, CreateDB.CreateRecommendation]);
+app.get('/InsertTable', [CreateDB.InsertStudents, CreateDB.InsertDepartments, CreateDB.InsertCourses, CreateDB.InsertTeachers, CreateDB.InsertCourseInstances, CreateDB.Insertreviews, CreateDB.InsertRecommendation]);
+app.get('/CreateTable/CreateAggCourses', CreateDB.CreateAggCourses)
+app.get('/CreateTriggerCourseScore', CreateDB.CreateTriggerCourseScore)
+app.get('/DropTable', [CreateDB.DropRecommendation, CreateDB.DropCoursesScore, CreateDB.DropReviews, CreateDB.DropCourseInstances, CreateDB.DropTeachers, CreateDB.DropCourses, CreateDB.DropDepartments, CreateDB.DropStudents]);
+app.get('/ShowTable/ShowStudents', CreateDB.ShowStudents);
+app.get('/ShowTable/ShowDepartments', CreateDB.ShowDepartments);
+app.get('/ShowTable/ShowCourses', CreateDB.ShowCourses);
+app.get('/ShowTable/ShowTeachers', CreateDB.ShowTeachers);
+app.get('/ShowTable/ShowCourseInstances', CreateDB.ShowCourseInstances);
+app.get('/ShowTable/Showreviews', CreateDB.Showreviews);
+app.get('/ShowTable/ShowCourseScore', CreateDB.ShowCourseScore);
+app.get('/ShowTable/ShowRecommendations', CreateDB.ShowRecommendations);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+table creation syntax :
+
+CREATE TABLE students (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, start_year INT NOT NULL, age INT NOT NULL);
+
+CREATE TABLE departments (department_id INT NOT NULL PRIMARY KEY, department_name VARCHAR(255) NOT NULL);
+
+CREATE TABLE teachers (username VARCHAR(255) NOT NULL PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, experience INT NOT NULL, age INT NOT NULL, department_id INT NOT NULL, course_id INT NOT NULL, FOREIGN KEY (department_id) REFERENCES departments(department_id), FOREIGN KEY (course_id) REFERENCES courses(course_id));
+
+CREATE TABLE course_instances (
+          course_id INT NOT NULL,
+          year_taken YEAR NOT NULL,
+          semester VARCHAR(1) NOT NULL,
+          average_score FLOAT NOT NULL,
+          standard_deviation FLOAT NOT NULL ,
+          FOREIGN KEY (course_id) REFERENCES courses(course_id) ,
+          PRIMARY KEY (course_id ,year_taken ,semester));
+
+CREATE TABLE reviews (review_id INT AUTO_INCREMENT PRIMARY KEY, review_date DATE, username VARCHAR(255) NOT NULL, course_id INT NOT NULL, title VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, load_rating FLOAT NOT NULL, difficulty_rating FLOAT NOT NULL, FOREIGN KEY (username) REFERENCES students(username), FOREIGN KEY (course_id) REFERENCES courses(course_id));
+
+CREATE TABLE recommendations (id INT PRIMARY KEY AUTO_INCREMENT,subject VARCHAR(255),course1 VARCHAR(255),course2 VARCHAR(255),course3 VARCHAR(255),course4 VARCHAR(255));
+
+
+PLEASE NOTE !  from here you must inserted the data first before creating this table and trigger ! it aggregated table that base on table data
+
+ CREATE TABLE IF NOT EXISTS Courses_score AS (
+            SELECT d.department_id, ci.course_id, c.course_name,
+                   ROUND(AVG(COALESCE(r.load_rating, 0)), 2) AS load_rating,
+                   ROUND(AVG(COALESCE(r.difficulty_rating, 0)), 2) AS difficulty_rating
+            FROM course_instances AS ci
+            JOIN courses AS c ON ci.course_id = c.course_id
+            JOIN departments AS d ON c.department_id =d.department_id
+            LEFT JOIN reviews AS r ON r.course_id=c.course_id
+            GROUP BY d.department_id, ci.course_id, c.course_name);
+
+
+
+ CREATE TRIGGER update_courses_score AFTER INSERT ON reviews FOR EACH ROW BEGIN UPDATE courses_score SET load_rating = (SELECT ROUND(AVG(r.load_rating), 2) FROM reviews r WHERE r.course_id = new.course_id), difficulty_rating = (SELECT ROUND(AVG(r.difficulty_rating), 2) FROM reviews r WHERE r.course_id = new.course_id) WHERE course_id = new.course_id; END ;
