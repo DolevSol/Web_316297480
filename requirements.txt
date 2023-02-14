@@ -7,7 +7,7 @@ csvtojson
 pug
 body-parser
 cookie-parser
----------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 All Routs to create ,insert, show and drop tables appear after setting pug as view engine in the index.js and here ,
  please note - there is meaning of the order of the routs of creation and insertion  (for example line 18 - app.get('/CreateTable/CreateAggCourses', CreateDB.CreateAggCourses)
@@ -17,7 +17,7 @@ All Routs to create ,insert, show and drop tables appear after setting pug as vi
 /InsertTable
 /CreateTable/CreateAggCourses
 /CreateTriggerCourseScore
-/DropTable
+/DropTables
 /ShowTable/ShowStudents
 /ShowTable/ShowDepartments
 /ShowTable/ShowCourses
@@ -64,4 +64,4 @@ PLEASE NOTE !  from here you must inserted the data first before creating this t
 
 
 
- CREATE TRIGGER update_courses_score AFTER INSERT ON reviews FOR EACH ROW BEGIN UPDATE courses_score SET load_rating = (SELECT ROUND(AVG(r.load_rating), 2) FROM reviews r WHERE r.course_id = new.course_id), difficulty_rating = (SELECT ROUND(AVG(r.difficulty_rating), 2) FROM reviews r WHERE r.course_id = new.course_id) WHERE course_id = new.course_id; END ;
+CREATE TRIGGER update_courses_score AFTER INSERT ON reviews FOR EACH ROW BEGIN UPDATE courses_score SET load_rating = (SELECT ROUND(AVG(r.load_rating), 2) FROM reviews r WHERE r.course_id = new.course_id), difficulty_rating = (SELECT ROUND(AVG(r.difficulty_rating), 2) FROM reviews r WHERE r.course_id = new.course_id) WHERE course_id = new.course_id; END ;

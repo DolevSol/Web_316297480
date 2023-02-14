@@ -445,7 +445,7 @@ const Showreviews = (req, res) => {
 };
 
 const ShowCourseScore = (req, res) => {
-    var Q7 = "SELECT * FROM reviews";
+    var Q7 = "SELECT * FROM Courses_score";
     SQL.query(Q7, (err, mySQLres) => {
         if (err) {
             console.log("error in showing CourseScore table ", err);

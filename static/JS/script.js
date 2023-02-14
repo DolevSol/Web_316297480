@@ -119,10 +119,10 @@ function checkSignUp() {
         const phone_number = document.getElementById('phone').value;
         const start_year = document.getElementById('yeartaken').value;
         const age = document.getElementById('age').value;
-        console.log(username ,password,email, phone_number,start_year,age )
+        console.log(username, password, email, phone_number, start_year, age)
         fetch('/insertUserintoDB', {
             method: "post",
-            body: JSON.stringify({username, password, email ,phone_number ,start_year ,age}),
+            body: JSON.stringify({username, password, email, phone_number, start_year, age}),
             headers: {'Content-Type': 'application/json'}
         }).then(res => res.json()).then(data => {
             if (data.error) {
@@ -134,6 +134,8 @@ function checkSignUp() {
         })
     })
 }
+
+
 
 function DependentDropdown(parentId, childId) {
     const screen = window.location.pathname.split('/')[1]

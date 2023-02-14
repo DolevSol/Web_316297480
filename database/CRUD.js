@@ -21,19 +21,29 @@ const insertNewSignIn = (req, res) => {
     }
     console.log(NewSignUp)
     //run qurey
-    const qurey = 'INSERT INTO students SET?';
-    sql.query(qurey, NewSignUp, (err, mysqlres) => {
-        if (err) {
-            console.log("error: error: ", err);
-            res.json({error: "could not sign in , Please Check fields and try again "})
-            res.status(400).send({message: "could not sign in"});
-            return;
-        }
-        res.cookie(`username`, NewSignUp.username)
-        res.json({message: 'Login Succefully  !'})
-        return;
-    })
+    const Q1 = 'SELECT username FROM students WHERE username = ?'
+    sql.query(Q1, NewSignUp.username, (err, mysqlres) => {
 
+        if (mysqlres.length > 0) {
+            res.json({error: "could not sign in , Please Choose different user name"})
+            res.status(400).send({message: "could not sign in"});
+        } else {
+            const qurey = 'INSERT INTO students SET?';
+            sql.query(qurey, NewSignUp, (err, mysqlres) => {
+                if (err) {
+                    console.log("error: error: ", err);
+                    res.json({error: "could not sign in , Please Check fields and try again "})
+                    res.status(400).send({message: "could not sign in"});
+                    return;
+                }
+                res.cookie(`username`, NewSignUp.username)
+                res.json({message: 'Sign in  Succefully  !'})
+                return;
+            })
+
+        }
+
+    })
 }
 
 
@@ -255,20 +265,31 @@ const createComment = (req, res) => {
 }
 
 
+
 const deleteUser = (req, res) => {
-    const username = req.cookies.username
-    var qurey = "DELETE FROM students WHERE username = ?;";
-    SQL.query(qurey, username, (err, mySQLres) => {
+    const username = req.cookies.username;
+
+    const reviewQuery = "DELETE FROM reviews WHERE username = ?;";
+    SQL.query(reviewQuery, username, (err, result) => {
         if (err) {
-            console.log("error in delete student ", err);
-            res.send("error in delete student ");
+            console.log("error deleting reviews for user ", username, err);
+            res.send("error deleting reviews for user");
             return;
         }
-        console.log("delete user");
-        res.redirect('/home');
-        return;
-    })
 
+        // Then, delete the user from the `students` table
+        const studentQuery = "DELETE FROM students WHERE username = ?;";
+        SQL.query(studentQuery, username, (err, result) => {
+            if (err) {
+                console.log("error deleting user ", username, err);
+                res.send("error deleting user");
+                return;
+            }
+
+            console.log("user deleted: ", username);
+            res.redirect('/home');
+        });
+    });
 };
 
 const updateUser = (req, res) => {
